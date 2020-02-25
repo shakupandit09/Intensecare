@@ -1,0 +1,46 @@
+﻿@model IntenseCare.Models.tblPayment 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <div class="card shadow md-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 fornt fa-weight-bold text-dark">
+                <a href="@Url.Action("Index","Payment")" class="btn btn-dark">
+                    <i class="fa fa-backward fa-1x"></i>
+                </a>
+            </h6>
+
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3 class="text-dark"> @ViewBag.Patientname's profile</h3>
+                        </div>
+                        Payment Id :<b>@Model.PaymentId </b><br />
+                        Doctor Id :<b>@ViewBag.DoctorName</b><br />
+
+                        Admit Id :<b>@Model.AdmitDetailId</b><br />
+                        Transaction Type: <b>@Model.TransactionType</b><br />
+                        Transaction Id :<b>@Model.TransactionId </b><br />
+                        Card Type :<b>@Model.CardType</b><br />
+
+                        Cheque No :<b>@Model.ChequeNo</b><br />
+                        PaidOn : <b>@Model.PaidOn</b><br />
+                        Payment Amount : <b>@Model.PaymentAmt</b><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

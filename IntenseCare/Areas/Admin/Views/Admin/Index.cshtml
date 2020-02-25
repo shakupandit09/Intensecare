@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!-- Custom fonts for this template-->
+    <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet ">
+    <script>
+        function Validate() {
+            var email = document.frmCreate.txtEmail;
+            var password = document.frmCreate.txtPassword;
+
+            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (email.value != "" && email.value.match(email_pat)) {
+            }
+            else {
+                alert("Email is not Proper");
+                email.focus();
+                return false;
+            }
+            var pass_pat = /^[A-Za-z0-9]+$/;
+            if (password != "" && password.value.match(pass_pat)) {
+            }
+            else {
+                alert("Wrong Password or Password does not match");
+                password.focus();
+                return false;
+            }
+        }
+        </script>
+</head>
+<body class="bg-dark">
+    <div>
+
+        <div class="container">
+            <div class="card card-login mx-auto mt-5">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form method="post" name="frmCreate">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="email" name="Email" id="Email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                                <label for="Email">Email address</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="password" name="Password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                                <label for="inputPassword">Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="remember-me">
+                                    Remember Password
+                                </label>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-block" value="Login" onclick="return Validate()" />
+                    </form>
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="@Url.Action("registration")">Register an Account</a>
+                        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>
+    <script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable <IntenseCare.Models.Datamodel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Add", "add", new { })
+</p>
+<h2>List of Patient Details </h2>
+<div class="col-md-12">
+
+
+    <table class=" table table-hover" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <th>PatientId</th>
+                <th>Symptoms</th>
+                <th>IsActive</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td><a href="@Url.Action("Detail","Patient",new { id = item.Patient.PatientId})">@item.Patient.FirstName </a></td>
+                    <td>@item.patientDetail.Symptoms</td>
+                    <td id="ActiveContent">
+                        @if (item.patientDetail.IsActive == true)
+                        {
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" checked class="custom-control-input" id="Active_@item.patientDetail.PatientDetailId" onchange="return activate(@item.patientDetail.PatientDetailId)">
+                                <label class="custom-control-label" for="Active_@item.patientDetail.PatientDetailId"></label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="Active_@item.patientDetail.PatientDetailId" onchange="return activate(@item.patientDetail.PatientDetailId)">
+                                <label class="custom-control-label" for="Active_@item.patientDetail.PatientDetailId"></label>
+                            </div>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+
+<script>
+            function activate(id) {
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "@Url.Action("Active", "Patientdetails")" + "/" + id,
+                            success: function (response) {
+                                if (response == true) {
+                                    alert('Account Activated');
+                                }
+                                else {
+                                    alert('Account Deactivated');
+                                }
+                            },
+                            failure: function (response) {
+                                    alert('Fail -' + response.responseText);
+                                },
+                            error: function (response) {
+                                    alert('Error -' + response.responseText);
+                                }
+                            }
+                    );
+                }
+</script>
+
+
+
+
+
+

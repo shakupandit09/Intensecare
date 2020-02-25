@@ -1,0 +1,42 @@
+﻿@model IntenseCare.Models.tblDoctorAbsence 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <div class="card shadow md-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 fornt fa-weight-bold text-dark">
+                <a href="@Url.Action("Index","DoctorAbsent")" class="btn btn-dark">
+                    <i class="fa fa-backward fa-1x"></i>
+                </a>
+            </h6>
+
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3 class="text-dark"> @ViewBag.DoctorName's profile</h3>
+                        </div>
+                        DoctorAbsence Id :<b>@Model.DoctorAbsenceId</b><br />
+                        FromDate :<b>@Model.FromDate</b><br />
+                        FromTime :<b>@Model.FromTime</b><br />
+                        ToDate  : <b>@Model.ToDate</b><br />
+                        CreatedOn :<b>@Model.CreatedOn</b>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "registration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @section scripts{
+        <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+    }
+    @*<script>
+        function Validate() {
+            var name = document.frmCreate.Name;
+            var password = document.frmCreate.Password;
+            var cpassword = document.frmCreate.CPassword;
+            var email = document.frmCreate.Email;
+            var contact_no = document.frmCreate.ContactNo;
+
+            var name_pat = /^[A-Za-z]+$/;
+            if (name.value != "" && name.value.match(name_pat)) {
+            }
+            else {
+                alert("Name is not Proper");
+                name.focus();
+                return false;
+            }
+            var pass_pat = /^[A-Za-z]+$/;
+            if (password != "" && password.value.match(pass_pat)) {
+            }
+            else {
+                alert("Wrong Password or Password does not match");
+                password.focus();
+                return false;
+            }
+            if (password.value == cpassword.value) { }
+            else {
+                alert("Password does not match");
+                cpassword.focus();
+                return false;
+            }
+
+            var email_pat = /^\w+([\.-]?\w+)*@@*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if (email.value != "" && email.value.match(email_pat)) {
+                }
+                else {
+                    alert("Email is not Proper");
+                    email.focus();
+                    return false;
+
+                }
+                var contact_no_pat = /^[0-9]+$/;
+                if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
+                }
+                else {
+                    alert("contact number is not Proper");
+                    contact_no.focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>*@
+
+            <meta name="viewport" content="width=device-width" />
+            <title>registration</title>
+            <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+            <!-- Custom styles for this template-->
+            <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
+
+        </head>
+
+        <body class="bg-dark">
+            <div class="container">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header">Add Admit details</div>
+                    <div class="card-body">
+                        <form method="post" name="frmCreate">
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="DoctorId" name="DoctorId" class="form-control" placeholder="Enter name" required="required" autofocus="autofocus">
+                                            <label for="DoctorId">Doctor Id</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="PatientId" name="PatientId" class="form-control" placeholder="Enter Password" required="required">
+                                            <label for="PatientId">Patient Id</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="text" id="NurseId" name="NurseId" class="form-control" placeholder="Nurse Id" required="required">
+                                    <label for="NurseId">Nurse Id</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="WardType" name="WardType" class="form-control" placeholder="Ward Type" required="required">
+                                            <label for="WardType">Ward Type</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="WardNo" name="WardNo" class="form-control" placeholder="Ward No" required="required">
+                                            <label for="WardNo">Ward No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="CreatedBy" name="CreatedBy" class="form-control" placeholder="CreatedBy" required="required">
+                                            <label for="CreatedBy">CreatedBy</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="CreatedOn" name="CreatedOn" class="form-control" placeholder="Created On  " required="required">
+                                            <label for="CreatedOn">CreatedOn</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="ModifiedBy" name="ModifiedBy" class="form-control" placeholder="ModifiedBy  ">
+                                            <label for="ModifiedBy">ModifiedBy</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-label-group">
+                                            <input type="text" id="ModifiedOn" name="ModifiedOn" class="form-control" placeholder="ModifiedOn">
+                                            <label for="ModifiedOn">ModifiedOn</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <input type="Submit" value="Submit" class="btn btn-primary btn-block" onclick="return Validate()" />
+                        </form>
+                        <div class="text-center">
+                            <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Login Page</a>
+                            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript-->
+            <script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>
+            <script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        </body>
+    </html>
+
+
+
+

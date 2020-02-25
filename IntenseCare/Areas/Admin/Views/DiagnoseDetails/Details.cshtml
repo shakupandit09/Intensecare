@@ -1,0 +1,64 @@
+﻿@model IntenseCare.Models.tblDiagnoseDetail 
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <div class="card shadow md-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 fornt fa-weight-bold text-dark">
+                <a href="@Url.Action("Index","DiagnoseDetails")" class="btn btn-dark">
+                    <i class="fa fa-backward fa-1x"></i>
+                </a>
+            </h6>
+
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
+                        </div>                        
+                        Doctor Id :  @ViewBag.DoctorName<br/>
+                        Diagnose Id :<b>@Model.DiagnosisId</b><br/>
+                        Admit Id : <b>@Model.AdmitDetailId</b><br/>
+                        Diagnoses : <b>@Model.Diagnosis</b><br/>
+                        Remarks :<b>@Model.Remarks</b><br/>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsFromreport &nbsp; &nbsp; :@if (Model.IsFormReport == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="Insert_@Model.DiagnosisId" onchange="return activate(@Model.DiagnosisId)">
+                                        <label class="custom-control-label" for="Insert_@Model.DiagnosisId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="Insert_@Model.DiagnosisId" onchange="return activate(@Model.DiagnosisId)">
+                                        <label class="custom-control-label" for="Insert_@Model.DiagnosisId"></label>
+                                    </div>
+                                }
+                            </h5>
+                         </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
