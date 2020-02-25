@@ -32,6 +32,7 @@
                 <th>ToDate</th>
                 <th>FromTime</th>
                 <th>CreatedOn</th>
+                <th>Action</th>
 
 
             </tr>
@@ -46,7 +47,14 @@
                 <td>@item.Absence.ToDate</td>
                 <td>@item.Absence.FromTime</td>
                 <td>@item.Absence.CreatedOn</td>
-
+                <td>
+                    <a href="@Url.Action("Edit",new { Id= item.Absence.DoctorAbsenceId})" class=" btn btn-sm btn-circle btn btn-primary">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a href="@Url.Action("Delete",new { Id= item.Absence.DoctorAbsenceId})" class="btn btn-sm btn-circle btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
             }
         </tbody>

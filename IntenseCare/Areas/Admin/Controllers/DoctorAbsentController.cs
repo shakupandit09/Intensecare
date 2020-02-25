@@ -55,12 +55,33 @@ namespace IntenseCare.Areas.Admin.Controllers
             string name = ViewBag.DoctorName;
             return View(ad);
         }
-        //public ActionResult Delete(int id)
-        //{
-        //    tbl ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
-        //    dc.tblAdmins.Remove(ad);
-        //    dc.SaveChanges();
-        //    return RedirectToAction("list");
-        //}
+        public ActionResult Delete(int id)
+        {
+            tblDoctorAbsence  ad = dc.tblDoctorAbsences .SingleOrDefault(ob => ob.DoctorAbsenceId  == id);
+            dc.tblDoctorAbsences .Remove(ad);
+            dc.SaveChanges();
+            return RedirectToAction("list");
+        }
+        public ActionResult Edit(int id)
+        {
+            TempData["UpdateId"] = id;
+            tblDoctorAbsence  ad = dc.tblDoctorAbsences .SingleOrDefault(ob => ob.DoctorAbsenceId == id);
+
+            return View(ad);
+        }
+        [HttpPost]
+        public ActionResult Edit(FormCollection form)
+        {
+            int id = Convert.ToInt32(TempData["UpdateId"]);
+
+           tblDoctorAbsence  ad = dc.tblDoctorAbsences .SingleOrDefault(ob => ob.DoctorAbsenceId  == id);
+            ad.DoctorId  = Convert.ToInt32(form["DoctorId"]);
+            ad.FromTime = TimeSpan.Parse(form["FromTime"]);
+            ad.ToDate  = Convert.ToDateTime(form["ToDate"]);
+            ad.FromDate = Convert.ToDateTime(form["FromDate"]); 
+            dc.SaveChanges();
+            return RedirectToAction("Index","DoctorAbsent");
+        }
+
     }
 }

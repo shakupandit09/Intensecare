@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <p>
-    @Html.ActionLink("Add", "add", new { })
+    @Html.ActionLink("Add Doctor Slot", "Insert", new { })
 </p>
 <h2>List of DoctorSlot Details</h2>
 <div class="col-md-12">
@@ -19,6 +19,7 @@
                 <th>DayWeek</th>
                 <th>StartTime</th>
                 <th>EndTime</th>
+                <th>Action</th>
              
 
             </tr>
@@ -33,7 +34,14 @@
                     <td>@item.Slot.DayWeek</td>
                     <td>@item.Slot.StartTime</td>
                     <td>@item.Slot.EndTime</td>
-                 
+                    <td>
+                        <a href="@Url.Action("Edit",new { Id= item.Slot.DoctorSlotId})" class=" btn btn-sm btn-circle btn btn-primary">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="@Url.Action("Delete",new { Id= item.Slot.DoctorSlotId})" class="btn btn-sm btn-circle btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>
