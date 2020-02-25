@@ -2256,6 +2256,7 @@
     <Content Include="Areas\Admin\Views\Admit\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Nurse\registration.cshtml" />
     <Content Include="Areas\Admin\Views\Nurse\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DoctorAbsent\Insert.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
