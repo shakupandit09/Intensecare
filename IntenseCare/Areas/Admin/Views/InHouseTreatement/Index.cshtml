@@ -1,0 +1,54 @@
+﻿@model IEnumerable<IntenseCare.Models.Datamodel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Add", "add", new { })
+</p>
+<h2>List of In House Treatement Patient Details </h2>
+<div class="col-md-12">
+
+
+    <table class=" table table-hover" id="example">
+        <thead class="thead-dark">
+            <tr>
+               
+
+                <th>PatientId</th>
+                <th>MedicineName</th>
+                <th>Treatement</th>
+                <th>Remarks</th>
+                <th>TreatementTime</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Details","InHouseTreatement",new { id = item.Patient.PatientId })">@item.Patient.FirstName </a></td>
+                   @* <td>@item.Patient.FirstName</td>*@
+                    <td>@item.HTreat.MedicineName</td>
+                    <td>@item.HTreat.Treatement</td>
+                    <td>@item.HTreat.Remarks</td>
+                    <td>@item.HTreat.TreatementTime</td>
+                    
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+
+
+
+
+
+
+

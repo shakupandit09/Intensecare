@@ -1,0 +1,53 @@
+﻿@model IntenseCare.Models.Datamodel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <div class="card shadow md-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 fornt fa-weight-bold text-dark">
+                <a href="@Url.Action("Index","PatientDetail")" class="btn btn-dark">
+                    <i class="fa fa-backward fa-1x"></i>
+                </a>
+            </h6>
+
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3 class="text-dark"> @Html.DisplayFor(model => model.Patient.FirstName)'s profile</h3>
+                        </div>
+                        PatientDetail Id :<b>@Model.patientDetail.PatientDetailId</b><br />
+                        @*Patient Id :<b>@Model.Patient.PatientId</b><br />*@
+                        Symptoms: <b>@Model.patientDetail.Symptoms</b><br />
+                        Admit Id :<b>@Model.Admit.AdmitDetailId</b>
+                        <div class="row">
+                            <br />  <br />
+                            <div class="alert-danger" style="margin-top:40px; margin-left:10px">
+                                @{
+                                    if (Model.patientDetail.IsActive == true)
+                                    {
+                                        <a href="@Url.Action("Activate","PatientDetail")" class="btn btn-danger">Deativate Account</a>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

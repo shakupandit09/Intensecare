@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateID" Type="int" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblAchievement">
+          <Key>
+            <PropertyRef Name="AchievementId" />
+          </Key>
+          <Property Name="AchievementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="Achievement" Type="varchar" MaxLength="100" />
+          <Property Name="AchievementDescription" Type="varchar" MaxLength="300" />
+          <Property Name="AchievedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Emailid" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsInsert" Type="bit" Nullable="false" />
+          <Property Name="IsEdit" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="IsSuper" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAdminIquiry">
+          <Key>
+            <PropertyRef Name="AdminInquiryID" />
+          </Key>
+          <Property Name="AdminInquiryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirtsName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Inquiry" Type="varchar(max)" Nullable="false" />
+          <Property Name="InquiryOn" Type="datetime" Nullable="false" />
+          <Property Name="Reply" Type="varchar(max)" />
+          <Property Name="ReplyOn" Type="datetime" />
+          <Property Name="ReplyBy" Type="int" />
+          <Property Name="IsReply" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAdmitDetail">
+          <Key>
+            <PropertyRef Name="AdmitDetailId" />
+          </Key>
+          <Property Name="AdmitDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="NurseId" Type="int" Nullable="false" />
+          <Property Name="WardType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="WardNo" Type="int" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsDischarge" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAppoinment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppointmentStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="Appointment_date" Type="date" Nullable="false" />
+          <Property Name="Appointment_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="BookedOn" Type="datetime" Nullable="false" />
+          <Property Name="Reason" Type="varchar(max)" />
+          <Property Name="SlotID" Type="int" Nullable="false" />
+          <Property Name="IsConfirmed" Type="bit" Nullable="false" />
+          <Property Name="IsFinished" Type="bit" Nullable="false" />
+          <Property Name="sCancelled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCMSPage">
+          <Key>
+            <PropertyRef Name="CMSPageId" />
+          </Key>
+          <Property Name="CMSPageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageTittle" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDiagnoseDetail">
+          <Key>
+            <PropertyRef Name="DiagnosisId" />
+          </Key>
+          <Property Name="DiagnosisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="Diagnosis" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="IsFormReport" Type="bit" />
+          <Property Name="AdmitDetailId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="ProfileImageUrl" Type="varchar" MaxLength="50" />
+          <Property Name="Degree" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="YearOfExperience" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="ApprovedOn" Type="datetime" />
+          <Property Name="Specialization" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblDoctorAbsence">
+          <Key>
+            <PropertyRef Name="DoctorAbsenceId" />
+          </Key>
+          <Property Name="DoctorAbsenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="FromDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="FromTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblDoctorInquiry">
+          <Key>
+            <PropertyRef Name="DoctorInquiryID" />
+          </Key>
+          <Property Name="DoctorInquiryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="EmailID" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Inquiry" Type="varchar(max)" Nullable="false" />
+          <Property Name="InquiryOn" Type="datetime" Nullable="false" />
+          <Property Name="Reply" Type="varchar(max)" />
+          <Property Name="ReplyOn" Type="datetime" />
+          <Property Name="ReplyBy" Type="int" />
+          <Property Name="IsReply" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDoctorSlot">
+          <Key>
+            <PropertyRef Name="DoctorSlotId" />
+          </Key>
+          <Property Name="DoctorSlotId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="DayWeek" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OpdShedule" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblFeedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="EmailId" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="FeedbackOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblInHouseTreatement">
+          <Key>
+            <PropertyRef Name="InHouseTreatementId" />
+          </Key>
+          <Property Name="InHouseTreatementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="AdmitDetailId" Type="int" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="NurseId" Type="int" Nullable="false" />
+          <Property Name="MedicineName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Treatement" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="300" />
+          <Property Name="TreatementTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TreatedOn" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IsGiven" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblNewsLetter">
+          <Key>
+            <PropertyRef Name="NewsLetterId" />
+          </Key>
+          <Property Name="NewsLetterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SubscribedOn" Type="datetime" />
+          <Property Name="UnSubscribedOn" Type="datetime" />
+          <Property Name="IsSubscribed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblNurse">
+          <Key>
+            <PropertyRef Name="NurseId" />
+          </Key>
+          <Property Name="NurseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pin" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pin" Type="int" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="250" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DateOFBirth" Type="date" />
+          <Property Name="History" Type="varchar" MaxLength="50" />
+          <Property Name="ReferencedBy" Type="int" />
+          <Property Name="NomineeName" Type="varchar" MaxLength="50" />
+          <Property Name="NomineeContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="NomineeAddress" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblPatientDetail">
+          <Key>
+            <PropertyRef Name="PatientDetailId" />
+          </Key>
+          <Property Name="PatientDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Symptoms" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="AdmitDetailId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="PaymentAmt" Type="int" Nullable="false" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardType" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="ChequeNo" Type="int" />
+          <Property Name="PaidOn" Type="datetime" Nullable="false" />
+          <Property Name="AdmitDetailId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPrescription">
+          <Key>
+            <PropertyRef Name="PrescriptionId" />
+          </Key>
+          <Property Name="PrescriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="AdmitDetailId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPrescriptionDetail">
+          <Key>
+            <PropertyRef Name="PrescriptionDetailsId" />
+          </Key>
+          <Property Name="PrescriptionDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrescriptionId" Type="int" Nullable="false" />
+          <Property Name="MedicineName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="300" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Prescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="ReviewedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CityMaster_StateMaster">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateMaster_CountryMaster">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppointmentModelStoreContainer">
+          <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAchievement" EntityType="Self.tblAchievement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdminIquiry" EntityType="Self.tblAdminIquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmitDetail" EntityType="Self.tblAdmitDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAppoinment" EntityType="Self.tblAppoinment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCMSPage" EntityType="Self.tblCMSPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDiagnoseDetail" EntityType="Self.tblDiagnoseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctorAbsence" EntityType="Self.tblDoctorAbsence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctorInquiry" EntityType="Self.tblDoctorInquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctorSlot" EntityType="Self.tblDoctorSlot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFeedback" EntityType="Self.tblFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblInHouseTreatement" EntityType="Self.TblInHouseTreatement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNewsLetter" EntityType="Self.tblNewsLetter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNurse" EntityType="Self.tblNurse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPatient" EntityType="Self.tblPatient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPatientDetail" EntityType="Self.tblPatientDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPayment" EntityType="Self.tblPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrescription" EntityType="Self.tblPrescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrescriptionDetail" EntityType="Self.tblPrescriptionDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReview" EntityType="Self.tblReview" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMaster" />
+            <End Role="CityMaster" EntitySet="CityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMaster" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppointmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int32" />
+          <NavigationProperty Name="StateMaster" Relationship="Self.FK_CityMaster_StateMaster" FromRole="CityMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StateMasters" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="CityMasters" Relationship="Self.FK_CityMaster_StateMaster" FromRole="StateMaster" ToRole="CityMaster" />
+          <NavigationProperty Name="CountryMaster" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
+        </EntityType>
+        <EntityType Name="tblAchievement">
+          <Key>
+            <PropertyRef Name="AchievementId" />
+          </Key>
+          <Property Name="AchievementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="Achievement" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AchievementDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AchievedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Emailid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsInsert" Type="Boolean" Nullable="false" />
+          <Property Name="IsEdit" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="IsSuper" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblAdminIquiry">
+          <Key>
+            <PropertyRef Name="AdminInquiryID" />
+          </Key>
+          <Property Name="AdminInquiryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirtsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Inquiry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InquiryOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reply" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyOn" Type="DateTime" Precision="3" />
+          <Property Name="ReplyBy" Type="Int32" />
+          <Property Name="IsReply" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAdmitDetail">
+          <Key>
+            <PropertyRef Name="AdmitDetailId" />
+          </Key>
+          <Property Name="AdmitDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="NurseId" Type="Int32" Nullable="false" />
+          <Property Name="WardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WardNo" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDischarge" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAppoinment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="Appointment_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Appointment_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="BookedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SlotID" Type="Int32" Nullable="false" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="IsFinished" Type="Boolean" Nullable="false" />
+          <Property Name="sCancelled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCMSPage">
+          <Key>
+            <PropertyRef Name="CMSPageId" />
+          </Key>
+          <Property Name="CMSPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageTittle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblDiagnoseDetail">
+          <Key>
+            <PropertyRef Name="DiagnosisId" />
+          </Key>
+          <Property Name="DiagnosisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="Diagnosis" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsFormReport" Type="Boolean" />
+          <Property Name="AdmitDetailId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="ProfileImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YearOfExperience" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Specialization" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblDoctorAbsence">
+          <Key>
+            <PropertyRef Name="DoctorAbsenceId" />
+          </Key>
+          <Property Name="DoctorAbsenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FromTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblDoctorInquiry">
+          <Key>
+            <PropertyRef Name="DoctorInquiryID" />
+          </Key>
+          <Property Name="DoctorInquiryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="EmailID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Inquiry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InquiryOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reply" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyOn" Type="DateTime" Precision="3" />
+          <Property Name="ReplyBy" Type="Int32" />
+          <Property Name="IsReply" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDoctorSlot">
+          <Key>
+            <PropertyRef Name="DoctorSlotId" />
+          </Key>
+          <Property Name="DoctorSlotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="DayWeek" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OpdShedule" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblFeedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FeedbackOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblInHouseTreatement">
+          <Key>
+            <PropertyRef Name="InHouseTreatementId" />
+          </Key>
+          <Property Name="InHouseTreatementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="AdmitDetailId" Type="Int32" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="NurseId" Type="Int32" Nullable="false" />
+          <Property Name="MedicineName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Treatement" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TreatementTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TreatedOn" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IsGiven" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblNewsLetter">
+          <Key>
+            <PropertyRef Name="NewsLetterId" />
+          </Key>
+          <Property Name="NewsLetterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubscribedOn" Type="DateTime" Precision="3" />
+          <Property Name="UnSubscribedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsSubscribed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblNurse">
+          <Key>
+            <PropertyRef Name="NurseId" />
+          </Key>
+          <Property Name="NurseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pin" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pin" Type="Int32" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOFBirth" Type="DateTime" Precision="0" />
+          <Property Name="History" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferencedBy" Type="Int32" />
+          <Property Name="NomineeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NomineeContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NomineeAddress" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPatientDetail">
+          <Key>
+            <PropertyRef Name="PatientDetailId" />
+          </Key>
+          <Property Name="PatientDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Symptoms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="AdmitDetailId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentAmt" Type="Int32" Nullable="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="ChequeNo" Type="Int32" />
+          <Property Name="PaidOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdmitDetailId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPrescription">
+          <Key>
+            <PropertyRef Name="PrescriptionId" />
+          </Key>
+          <Property Name="PrescriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdmitDetailId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPrescriptionDetail">
+          <Key>
+            <PropertyRef Name="PrescriptionDetailsId" />
+          </Key>
+          <Property Name="PrescriptionDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="MedicineName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Prescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="ReviewedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CityMaster_StateMaster">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateMaster_CountryMaster">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppointmentEntities9" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
+          <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
+          <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
+          <EntitySet Name="tblAchievements" EntityType="Self.tblAchievement" />
+          <EntitySet Name="tblAdmins" EntityType="Self.tblAdmin" />
+          <EntitySet Name="tblAdminIquiries" EntityType="Self.tblAdminIquiry" />
+          <EntitySet Name="tblAdmitDetails" EntityType="Self.tblAdmitDetail" />
+          <EntitySet Name="tblAppoinments" EntityType="Self.tblAppoinment" />
+          <EntitySet Name="tblCMSPages" EntityType="Self.tblCMSPage" />
+          <EntitySet Name="tblDiagnoseDetails" EntityType="Self.tblDiagnoseDetail" />
+          <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
+          <EntitySet Name="tblDoctorAbsences" EntityType="Self.tblDoctorAbsence" />
+          <EntitySet Name="tblDoctorInquiries" EntityType="Self.tblDoctorInquiry" />
+          <EntitySet Name="tblDoctorSlots" EntityType="Self.tblDoctorSlot" />
+          <EntitySet Name="tblFeedbacks" EntityType="Self.tblFeedback" />
+          <EntitySet Name="TblInHouseTreatements" EntityType="Self.TblInHouseTreatement" />
+          <EntitySet Name="tblNewsLetters" EntityType="Self.tblNewsLetter" />
+          <EntitySet Name="tblNurses" EntityType="Self.tblNurse" />
+          <EntitySet Name="tblPatients" EntityType="Self.tblPatient" />
+          <EntitySet Name="tblPatientDetails" EntityType="Self.tblPatientDetail" />
+          <EntitySet Name="tblPayments" EntityType="Self.tblPayment" />
+          <EntitySet Name="tblPrescriptions" EntityType="Self.tblPrescription" />
+          <EntitySet Name="tblPrescriptionDetails" EntityType="Self.tblPrescriptionDetail" />
+          <EntitySet Name="tblReviews" EntityType="Self.tblReview" />
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="CityMaster" EntitySet="CityMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMasters" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppointmentModelStoreContainer" CdmEntityContainer="AppointmentEntities9">
+          <EntitySetMapping Name="CityMasters">
+            <EntityTypeMapping TypeName="AppointmentModel.CityMaster">
+              <MappingFragment StoreEntitySet="CityMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryMasters">
+            <EntityTypeMapping TypeName="AppointmentModel.CountryMaster">
+              <MappingFragment StoreEntitySet="CountryMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="AppointmentModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAchievements">
+            <EntityTypeMapping TypeName="AppointmentModel.tblAchievement">
+              <MappingFragment StoreEntitySet="tblAchievement">
+                <ScalarProperty Name="AchievementId" ColumnName="AchievementId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Achievement" ColumnName="Achievement" />
+                <ScalarProperty Name="AchievementDescription" ColumnName="AchievementDescription" />
+                <ScalarProperty Name="AchievedDate" ColumnName="AchievedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmins">
+            <EntityTypeMapping TypeName="AppointmentModel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsInsert" ColumnName="IsInsert" />
+                <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsSuper" ColumnName="IsSuper" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdminIquiries">
+            <EntityTypeMapping TypeName="AppointmentModel.tblAdminIquiry">
+              <MappingFragment StoreEntitySet="tblAdminIquiry">
+                <ScalarProperty Name="AdminInquiryID" ColumnName="AdminInquiryID" />
+                <ScalarProperty Name="FirtsName" ColumnName="FirtsName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Inquiry" ColumnName="Inquiry" />
+                <ScalarProperty Name="InquiryOn" ColumnName="InquiryOn" />
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="ReplyOn" ColumnName="ReplyOn" />
+                <ScalarProperty Name="ReplyBy" ColumnName="ReplyBy" />
+                <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmitDetails">
+            <EntityTypeMapping TypeName="AppointmentModel.tblAdmitDetail">
+              <MappingFragment StoreEntitySet="tblAdmitDetail">
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="NurseId" ColumnName="NurseId" />
+                <ScalarProperty Name="WardType" ColumnName="WardType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsDischarge" ColumnName="IsDischarge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAppoinments">
+            <EntityTypeMapping TypeName="AppointmentModel.tblAppoinment">
+              <MappingFragment StoreEntitySet="tblAppoinment">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="AppointmentStatus" ColumnName="AppointmentStatus" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="Appointment_date" ColumnName="Appointment_date" />
+                <ScalarProperty Name="Appointment_time" ColumnName="Appointment_time" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="BookedOn" ColumnName="BookedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+                <ScalarProperty Name="sCancelled" ColumnName="sCancelled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCMSPages">
+            <EntityTypeMapping TypeName="AppointmentModel.tblCMSPage">
+              <MappingFragment StoreEntitySet="tblCMSPage">
+                <ScalarProperty Name="CMSPageId" ColumnName="CMSPageId" />
+                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDiagnoseDetails">
+            <EntityTypeMapping TypeName="AppointmentModel.tblDiagnoseDetail">
+              <MappingFragment StoreEntitySet="tblDiagnoseDetail">
+                <ScalarProperty Name="DiagnosisId" ColumnName="DiagnosisId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsFormReport" ColumnName="IsFormReport" />
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctors">
+            <EntityTypeMapping TypeName="AppointmentModel.tblDoctor">
+              <MappingFragment StoreEntitySet="tblDoctor">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="YearOfExperience" ColumnName="YearOfExperience" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctorAbsences">
+            <EntityTypeMapping TypeName="AppointmentModel.tblDoctorAbsence">
+              <MappingFragment StoreEntitySet="tblDoctorAbsence">
+                <ScalarProperty Name="DoctorAbsenceId" ColumnName="DoctorAbsenceId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctorInquiries">
+            <EntityTypeMapping TypeName="AppointmentModel.tblDoctorInquiry">
+              <MappingFragment StoreEntitySet="tblDoctorInquiry">
+                <ScalarProperty Name="DoctorInquiryID" ColumnName="DoctorInquiryID" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Inquiry" ColumnName="Inquiry" />
+                <ScalarProperty Name="InquiryOn" ColumnName="InquiryOn" />
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="ReplyOn" ColumnName="ReplyOn" />
+                <ScalarProperty Name="ReplyBy" ColumnName="ReplyBy" />
+                <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctorSlots">
+            <EntityTypeMapping TypeName="AppointmentModel.tblDoctorSlot">
+              <MappingFragment StoreEntitySet="tblDoctorSlot">
+                <ScalarProperty Name="DoctorSlotId" ColumnName="DoctorSlotId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="DayWeek" ColumnName="DayWeek" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="OpdShedule" ColumnName="OpdShedule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeedbacks">
+            <EntityTypeMapping TypeName="AppointmentModel.tblFeedback">
+              <MappingFragment StoreEntitySet="tblFeedback">
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FeedbackOn" ColumnName="FeedbackOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblInHouseTreatements">
+            <EntityTypeMapping TypeName="AppointmentModel.TblInHouseTreatement">
+              <MappingFragment StoreEntitySet="TblInHouseTreatement">
+                <ScalarProperty Name="InHouseTreatementId" ColumnName="InHouseTreatementId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="NurseId" ColumnName="NurseId" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="Treatement" ColumnName="Treatement" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TreatementTime" ColumnName="TreatementTime" />
+                <ScalarProperty Name="TreatedOn" ColumnName="TreatedOn" />
+                <ScalarProperty Name="IsGiven" ColumnName="IsGiven" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNewsLetters">
+            <EntityTypeMapping TypeName="AppointmentModel.tblNewsLetter">
+              <MappingFragment StoreEntitySet="tblNewsLetter">
+                <ScalarProperty Name="NewsLetterId" ColumnName="NewsLetterId" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="SubscribedOn" ColumnName="SubscribedOn" />
+                <ScalarProperty Name="UnSubscribedOn" ColumnName="UnSubscribedOn" />
+                <ScalarProperty Name="IsSubscribed" ColumnName="IsSubscribed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNurses">
+            <EntityTypeMapping TypeName="AppointmentModel.tblNurse">
+              <MappingFragment StoreEntitySet="tblNurse">
+                <ScalarProperty Name="NurseId" ColumnName="NurseId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPatients">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPatient">
+              <MappingFragment StoreEntitySet="tblPatient">
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="DateOFBirth" ColumnName="DateOFBirth" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="ReferencedBy" ColumnName="ReferencedBy" />
+                <ScalarProperty Name="NomineeName" ColumnName="NomineeName" />
+                <ScalarProperty Name="NomineeContactNo" ColumnName="NomineeContactNo" />
+                <ScalarProperty Name="NomineeAddress" ColumnName="NomineeAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPatientDetails">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPatientDetail">
+              <MappingFragment StoreEntitySet="tblPatientDetail">
+                <ScalarProperty Name="PatientDetailId" ColumnName="PatientDetailId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayment">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PaymentAmt" ColumnName="PaymentAmt" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="PaidOn" ColumnName="PaidOn" />
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrescriptions">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPrescription">
+              <MappingFragment StoreEntitySet="tblPrescription">
+                <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrescriptionDetails">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPrescriptionDetail">
+              <MappingFragment StoreEntitySet="tblPrescriptionDetail">
+                <ScalarProperty Name="PrescriptionDetailsId" ColumnName="PrescriptionDetailsId" />
+                <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Prescription" ColumnName="Prescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReviews">
+            <EntityTypeMapping TypeName="AppointmentModel.tblReview">
+              <MappingFragment StoreEntitySet="tblReview">
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ReviewedOn" ColumnName="ReviewedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

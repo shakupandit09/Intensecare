@@ -1,0 +1,44 @@
+﻿@model IEnumerable < IntenseCare.Models.Datamodel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Add", "add", new { })
+</p>
+<h2>List of DoctorSlot Details</h2>
+<div class="col-md-12">
+
+
+    <table class=" table table-hover" id="example">
+        <thead class="thead-dark">
+            <tr>
+
+                <th>DoctorId</th>
+                <th>DayWeek</th>
+                <th>StartTime</th>
+                <th>EndTime</th>
+             
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td><a href="@Url.Action("Details","DoctorSlot",new { id = item.Slot.DoctorSlotId})">@item.Doctor.FirstName </a></td>
+                   @* <td>@item.Doctor.FirstName</td>*@
+                    <td>@item.Slot.DayWeek</td>
+                    <td>@item.Slot.StartTime</td>
+                    <td>@item.Slot.EndTime</td>
+                 
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

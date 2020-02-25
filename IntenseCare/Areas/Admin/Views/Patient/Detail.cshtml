@@ -1,0 +1,126 @@
+﻿@model IntenseCare.Models.tblPatient 
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <div class="card shadow md-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 fornt fa-weight-bold text-dark">
+                <a href="@Url.Action("Index","Patient")" class="btn btn-dark">
+                    <i class="fa fa-backward fa-1x"></i>
+                </a>
+            </h6>
+
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3 class="text-dark"> @Html.DisplayFor(model => model.FirstName)'s profile</h3>
+                        </div>
+                        <div class="row">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="mailto: @Html.DisplayFor(model => model.EmailId)">
+                                <h6> @Html.DisplayFor(model => model.EmailId)</h6>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <i class="fa fa-1x fa-phone"></i>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
+                                <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
+                            </a>
+                        </div>
+                        Last Name : <b>@Model.LastName</b><br/>
+                        Gender : <b>@Model.Gender</b><br/>
+                        CityId : <b>@Model.CityId</b><br/>
+                        History : <b>@Model.History</b><br/>
+                        ReferenceBy : <b>@Model.ReferencedBy</b><br/>
+                        Date of birth: <b>@Model.DateOFBirth</b><br/>
+                        Address :<b>@Model.Address</b><br />
+                        NomineeName :<b>@Model.NomineeName</b><br/>
+                        NomineeAddress :<b>@Model.NomineeAddress</b><br/>
+                        NomineeContactNo : <b>@Model.NomineeContactNo  </b><br/>
+                        CreatedOn:<b>@Model.CreatedOn</b><br/>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsActive &nbsp; &nbsp; :@if (Model.IsActive == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="Active_@Model.PatientId" onchange="return activate(@Model.PatientId)">
+                                        <label class="custom-control-label" for="Active_@Model.PatientId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="Active_@Model.PatientId" onchange="return activate(@Model.PatientId)">
+                                        <label class="custom-control-label" for="Active_@Model.PatientId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsVerified &nbsp; &nbsp; :@if (Model.IsVerified == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="Verified_@Model.PatientId" onchange="return activate(@Model.PatientId)">
+                                        <label class="custom-control-label" for="Verified_@Model.PatientId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="Verified_@Model.PatientId" onchange="return activate(@Model.PatientId)">
+                                        <label class="custom-control-label" for="Verified_@Model.PatientId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsMobileVerified  &nbsp; &nbsp; :@if (Model.IsMobileVerified == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="MobileVerified _@Model.PatientId" onchange="return activate(@Model.PatientId)">
+                                        <label class="custom-control-label" for="MobileVerified _@Model.PatientId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="MobileVerified _@Model.PatientId" onchange="return activate(@Model.PatientId)">
+                                        <label class="custom-control-label" for="MobileVerified _@Model.PatientId"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <br />  <br />
+                            <div class="alert-danger" style="margin-top:40px; margin-left:10px">
+                                @{
+                                    if (Model.IsActive == true)
+                                    {
+                                        <a href="@Url.Action("Activate","Doctor")" class="btn btn-danger">Deativate Account</a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

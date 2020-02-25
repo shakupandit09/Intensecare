@@ -1,0 +1,118 @@
+﻿@model IntenseCare.Models.tblAppoinment 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <div class="card shadow md-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 fornt fa-weight-bold text-dark">
+                <a href="@Url.Action("Index","Appointment")" class="btn btn-dark">
+                    <i class="fa fa-backward fa-1x"></i>
+                </a>
+            </h6>
+
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
+                        </div>
+                        Appointment Id : <b>@Model.AppointmentID</b><br />
+                        Doctor Id :<b>@ViewBag.DoctorName</b><br />
+                        Slot Id :<b>@Model.SlotID</b><br />
+                        Reason :<b>@Model.Reason</b><br />
+                        Description :<b>@Model.Description</b><br />
+                        Appointment Status :<b>@Model.AppointmentStatus</b><br />
+                        Appointment Date :<b>@Model.Appointment_date</b><br />
+                        Appointment Time  : <b>@Model.Appointment_time</b><br />
+                        BookedOn :<b>@Model.BookedOn</b><br />
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsNew &nbsp; &nbsp; :@if (Model.IsNew == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="New_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="New_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="New_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="New_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsFinished &nbsp; &nbsp; :@if (Model.IsFinished == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="Finished_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="Finished_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="Finished_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="Finished_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsConfirmed &nbsp; &nbsp; :@if (Model.IsConfirmed == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="Confirmed_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="Confirmed_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="Confirmed_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="Confirmed_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="fa fa-1x">
+                                IsCancelled &nbsp; &nbsp; :@if (Model.sCancelled == true)
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" checked class="custom-control-input" id="Cancelled_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="Cancelled_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                        <input type="checkbox" class="custom-control-input" id="Cancelled_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
+                                        <label class="custom-control-label" for="Cancelled_@Model.AppointmentID"></label>
+                                    </div>
+                                }
+                            </h5>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
