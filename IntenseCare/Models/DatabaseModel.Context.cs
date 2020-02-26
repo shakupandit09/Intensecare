@@ -13,10 +13,10 @@ namespace IntenseCare.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AppointmentEntities9 : DbContext
+    public partial class AppointmentEntities10 : DbContext
     {
-        public AppointmentEntities9()
-            : base("name=AppointmentEntities9")
+        public AppointmentEntities10()
+            : base("name=AppointmentEntities10")
         {
         }
     

@@ -1,0 +1,13 @@
+﻿@model IntenseCare.Models.tblCMSPage 
+@{
+    ViewBag.Title = "ViewCMS";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewCMS</h2>
+<div>
+    <h2>@Html.DisplayNameFor(model =>model.PageTittle)</h2>
+    <hr/>
+    <p>@Html.Raw(Model.Description)</p>
+</div>
+

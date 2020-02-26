@@ -117,6 +117,7 @@
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDiagnoseDetail">
           <Key>
@@ -511,6 +512,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDiagnoseDetail">
           <Key>
@@ -750,7 +752,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AppointmentEntities9" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AppointmentEntities10" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
           <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
           <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
@@ -789,7 +791,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AppointmentModelStoreContainer" CdmEntityContainer="AppointmentEntities9">
+        <EntityContainerMapping StorageEntityContainer="AppointmentModelStoreContainer" CdmEntityContainer="AppointmentEntities10">
           <EntitySetMapping Name="CityMasters">
             <EntityTypeMapping TypeName="AppointmentModel.CityMaster">
               <MappingFragment StoreEntitySet="CityMaster">
@@ -909,6 +911,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

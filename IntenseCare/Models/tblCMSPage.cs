@@ -19,5 +19,6 @@ namespace IntenseCare.Models
         public string Description { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public bool IsActive { get; set; }
     }
 }
