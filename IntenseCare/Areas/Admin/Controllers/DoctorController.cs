@@ -26,7 +26,7 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Add()
         {
             var country = dc.CountryMasters;
-            ViewBag.country = new SelectList(country, "ID", "Name");
+            ViewBag.Country = new SelectList(country, "ID", "Name");
             return View();
         }
         [HttpPost]
@@ -40,7 +40,7 @@ namespace IntenseCare.Areas.Admin.Controllers
                 if (size <= 1024 && (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png")))
                 {
                     name = code() + "" + extension;
-                    string path = Server.MapPath("~/profile/");
+                    string path = Server.MapPath("~/Areas/image/");
                     txtfile.SaveAs(path + "" + name);
                 }
             }
@@ -53,7 +53,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.ContactNo = form["ContactNo"];
             ad.DOB = Convert.ToDateTime(form["DOB"]);
             ad.Address = form["Address"];
-            ad.CityID = Convert.ToInt32(form["CityId"]);
+            //ad.CityID = Convert.ToInt32(form["CityId"]);
             ad.Degree = form["Degree"];
             ad.YearOfExperience = Convert.ToInt32(form["YearOfExp"]);
             ad.IsActive = true;
@@ -69,17 +69,18 @@ namespace IntenseCare.Areas.Admin.Controllers
             //return View();
         }
         [HttpPost]
-        public JsonResult getstate(int cid)
+       
+        public JsonResult getState(int cid)
         {
-            var state = from ob in dc.StateMasters where ob.CountryID == cid select ob;
-            SelectList statelist = new SelectList(state, "ID", "Name");
+            var State = from ob in dc.StateMasters where ob.CountryID == cid select ob;
+            SelectList statelist = new SelectList(State, "ID", "Name");
             return Json(statelist, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult getcity(int sid)
+        public JsonResult getCity(int sid)
         {
-            var city = from ob in dc.CityMasters where ob.StateID == sid select ob;
-            SelectList citylist = new SelectList(city, "ID", "Name");
+            var City = from ob in dc.CityMasters where ob.StateID == sid select ob;
+            SelectList citylist = new SelectList(City, "ID", "Name");
             return Json(citylist, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Detail(int id)

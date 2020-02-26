@@ -2215,7 +2215,6 @@
     <Content Include="Areas\Admin\Views\Doctor\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Doctor\Detail.cshtml" />
-    <Content Include="Areas\Admin\Views\Doctor\tmp.cshtml" />
     <Content Include="Areas\Admin\Views\DoctorAbsent\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Achievement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DoctorSlot\Index.cshtml" />

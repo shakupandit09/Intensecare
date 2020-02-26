@@ -3,289 +3,245 @@
     ViewBag.Title = "Add";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-    @section scripts{
-    }
-    <script>
-        function Validate() {
-            var firstname = document.frmCreate.FirstName;
-            var lastname = document.frmCreate.LasttName;
-            var password = document.frmCreate.Password;
-            var cpassword = document.frmCreate.CPassword;
-            var email = document.frmCreate.Email;
-            var contact_no = document.frmCreate.ContactNo;
-            var Address = document.frmCreate.Address;
+@section scripts{
+}
+<script>
+    function Validate() {
+        var firstname = document.frmCreate.FirstName;
+        var lastname = document.frmCreate.LasttName;
+        var password = document.frmCreate.Password;
+        var cpassword = document.frmCreate.CPassword;
+        var email = document.frmCreate.Email;
+        var contact_no = document.frmCreate.ContactNo;
+        var Address = document.frmCreate.Address;
+        var Degree = document.frmCreate.Degree;
+        var Special = document.frmCreate.Specialization;
+        var YearOfExp = document.frmCreate.YearOfExp;
 
-            var name_pat = /^[A-Za-z]+$/;
-            if (firstname.value != "" && firstname.value.match(name_pat)) {
-            }
-            else {
-                alert("FirstName is not Proper");
-                name.focus();
-                return false;
-            }
-            var name_pat = /^[A-Za-z]+$/;
-            if (lastname.value != "" && lastname.value.match(name_pat)) {
-            }
-            else {
-                alert("LastName is not Proper");
-                name.focus();
-                return false;
-            }
-            var pass_pat = /^[A-Za-z0-9]+$/;
-            if (password != "" && password.value.match(pass_pat)) {
-            }
-            else {
-                alert("Wrong Password or Password does not match");
-                password.focus();
-                return false;
-            }
-            if (password.value == cpassword.value) { }
-            else {
-                alert("Password does not match");
-                cpassword.focus();
-                return false;
-            }
-
-            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if (email.value != "" && email.value.match(email_pat)) {
-            }
-            else {
-                alert("Email is not Proper");
-                email.focus();
-                return false;
-
-            }
-            var contact_no_pat = /^[0-9]+$/;
-            if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
-            }
-            else {
-                alert("contact number is not Proper");
-                contact_no.focus();
-                return false;
-            }
-            var add_pat = /^[A-Za-z0-9]+$/;
-            if (Address.value != "" && Address.value.match(add_pat)) {
-            }
-            else {
-                alert("Address is not Proper");
-                Address.focus();
-                return false;
-            }
-            return true;
+        var name_pat = /^[A-Za-z]+$/;
+        if (firstname.value != "" && firstname.value.match(name_pat)) {
         }
-    </script>
-    @*<meta name="viewport" content="width=device-width" />
-    <title>Add</title>
-    <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-     Custom styles for this template
-    <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">*@
+        else {
+            alert("FirstName is not Proper");
+            firstname.focus();
+            return false;
+        }
+        var name_pat = /^[A-Za-z]+$/;
+        if (lastname.value != "" && lastname.value.match(name_pat)) {
+        }
+        else {
+            alert("LastName is not Proper");
+            lastname.focus();
+            return false;
+        }
+        var pass_pat = /^[A-Za-z0-9]+$/;
+        if (password != "" && password.value.match(pass_pat)) {
+        }
+        else {
+            alert("Wrong Password or Password does not match");
+            password.focus();
+            return false;
+        }
+        if (password.value == cpassword.value) { }
+        else {
+            alert("Password does not match");
+            cpassword.focus();
+            return false;
+        }
 
-       <div class="card-header text-center"><b>Add New Doctor's</b>
+        var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (email.value != "" && email.value.match(email_pat)) {
+        }
+        else {
+            alert("Email is not Proper");
+            email.focus();
+            return false;
+
+        }
+        var contact_no_pat = /^[0-9]+$/;
+        if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
+        }
+        else {
+            alert("contact number is not Proper");
+            contact_no.focus();
+            return false;
+        }
+        var add_pat = /^[A-Za-z0-9]+$/;
+        if (Address.value != "" && Address.value.match(add_pat)) {
+        }
+        else {
+            alert("Address is not Proper");
+            Address.focus();
+            return false;
+        }
+        var Deg_pat = /^[A-Za-z]+$/;
+        if (Degree.value != "" && Degree.value.match(Deg_pat)) {
+        }
+        else {
+            alert("Degree is not Proper");
+            Degree.focus();
+            return false;
+        }
+        var Spe_pat = /^[A-Za-z]+$/;
+        if (Special.value != "" && Special.value.match(Spe_pat)) {
+        }
+        else {
+            alert("Specialization is not Proper");
+            Special.focus();
+            return false;
+        }
+        var YOE_pat = /^[0-9]+$/;
+        if (YearOfExp.value != "" && YearOfExp.value.match(YOE_pat)) {
+        }
+        else {
+            alert("Year Of Exp is not Proper");
+            YearOfExp.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Add New Doctor</h6>
     </div>
-       <iv class="card-body">
-           <form method="post" name="frmCreate">
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="text" id="FirstName" name="FirstName" class="form-control" placeholder="Enter First name" required="required" autofocus="autofocus">
-                               <label for="FirstName">FirstName</label>
-                           </div>
-                       </div>
-                       <div class="col-lg-6">
-                           <div class="form-label-group">
-                               <input type="text" id="LastName" name="LastName" class="form-control" placeholder="Enter Last name" required="required" autofocus="autofocus">
-                               <label for="LastName">LastName</label>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter Password" required="required">
-                               <label for="Password">Password</label>
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <div class="form-group">
-                               <div class="form-label-group">
-                                   <input type="password" id="Cpassword" name="Cpassword" class="form-control" placeholder="Enter CPassword" required="required">
-                                   <label for="Cpassword">Confirm Password</label>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required="required">
-                               <label for="Email">Email Address</label>
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="text" id="ContactNo" name="ContactNo" class="form-control" placeholder="Contact No" required="required">
-                               <label for="ContactNo">Contact No</label>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="text" id="DOB" name="DOB" class="form-control" placeholder="Enter DOB" required="required">
-                               <label for="DOB">DOB</label>
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="text" id="Address" name="Address" class="form-control" placeholder="Enter Address" required="required">
-                               <label for="Address">Address</label>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-4">
-                           <div class="form-label-group">
-                               @Html.DropDownList("ddcountry", ViewBag.country as SelectList, "select country", new { @class = "form-control" })
-                              
-                           </div>
-                       </div>
-                       <div class="col-md-4">
-                           <div class="form-label-group">
-                               <select id="ddstate" class="form-control"></select>
-                           </div>
-                       </div>
-                       <div class="col-md-4">
-                           <div class="form-label-group">
-                               <select id="ddcity" class="form-control"></select>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-12">
-                           <div class="form-label-group">
-                               <input type="radio" id="gen" name="gen" value="Female" required="required">Female
-                               <input type="radio" id="gen" name="gen" value="Male" required="required">Male
-                           </div>
-                       </div>
-                   </div>
-               </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password">
+                </div>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="Cpassword" name="Cpassword" placeholder="Enter Cpassword ">
+                </div>
 
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="text" id="Degree" name="Degree" class="form-control" placeholder="Enter Degree" required="required">
-                               <label for="Degree">Degree</label>
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <div class="form-label-group">
-                               <input type="text" id="YearOfexp" name="YearOfexp" class="form-control" placeholder="Enter YearOf experience" required="required">
-                               <label for="YearOfexp">Year Of experience</label>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="form-group">
-                   <div class="form-row">
-                       <div class="col-md-4">
-                           <div class="form-label-group">
-                               <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Enter Specialization" required="required">
-                               <label for="Specialization">Specialization</label>
-                           </div>
-                       </div>
-                       <div class="col-md-4">
-                           <div class="form-label-group">
-                               <input type="text" id="ApprovedBy" name="ApprovedBy" class="form-control" placeholder="CreatedBy" required="required">
-                               <label for="ApprovedBy">ApprovedBy</label>
-                           </div>
-                       </div>
-                       <div class="col-md-4">
-                           <div class="form-label-group">
-                               <input type="file" accept="image/*" onchange=" return loadFile(event)" class="form-control-file" placeholder="Choose your Profile Image" id="txtFile" name="txtFile" />
-                               @*<label for="txtFile"> Profile Image</label>*@
-                           </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address">
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number">
+                </div>
 
-                       </div>
-                       <div class="col-4">
-                           <img src="#" name="txtProfPic" id="txtProfPic" class="img img-thumbnail" style="width:100px; height:100px" hidden />
-                       </div>
-                   </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
+                    <select id="ddState" class="form-control"></select>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
+                    <select id="ddCity" class="form-control"></select>
+                </div>
 
-               </div>
-               </div>
-               <div class="text-center">
-                   <input type="Submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
-               </div>
-           </form>
-           <script>
-               var loadFile = function (event) {
-                   var output = document.getElementById('txtProfPic');
-                   output.src = URL.createObjectURL(event.target.files[0]);
-                   output.hidden = false;
-               };
-           </script>
-           <div class="text-center">
-               <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Login Page</a>
-               <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-           </div>
-           <a href="@Url.Action("Index","Doctor")" class="btn btn-dark">
-               Back To List
-           </a>
-           <!-- Bootstrap core JavaScript-->
-           @*<script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>*@
-           @*<script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
-           <!-- Core plugin JavaScript-->
-           @*<script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>*@
-           <script src="~/Scripts/jquery-3.3.1.js"></script>
-           <script type="text/javascript">
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="radio" id="Gen" name="Gen" value="Female" required>Female
+                    <input type="radio" id="Gen" name="Gen" value="Male" required>Male
+                </div>
+                <div class="col-sm-6">
+                    <input type="Date" class="form-control" id="DOB" name="DOB" placeholder="Enter Date of birth" required >
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="Degree" name="Degree" placeholder="Enter Degree">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="YearOfExp" name="YearOfExp" placeholder="Enter YearOfExp">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="ApprovedBy" name="ApprovedBy" placeholder="Enter ApprovedBy">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="Specialization" name="Specialization" placeholder="Enter Specialization">
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-label-group">
+                        <input type="file" accept="~/Areas/image/*" onchange=" return loadFile(event)" class="form-control-file" placeholder="Choose your Profile Image" id="txtFile" name="txtFile" />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="#" name="txtProfPic" id="txtProfPic" class="img img-thumbnail" style="width:100px; height:100px" hidden />
+                </div>
+            </div>
+            <input type="submit" value="Add Doctor" class="btn btn-success" onclick="return Validate()" align="Center" />
+        </form>
+        <script>
+            var loadFile = function (event) {
+                var output = document.getElementById('txtProfPic');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.hidden = false;
+            };
+        </script>
+        <div class="text-center">
+            <a class="d-block small mt-3" href="@Url.Action("Index","Doctor")">Back To List</a>
+            <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Login Page</a>
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
     $(document).ready(function () {
-        $('#ddcountry').change(function () {
-            alert("data get");
-            @*$.ajax({
-                type: "post"
-                Url: "@Url.Action("GetState","Doctor")",
-                data: { cid: $('#ddcountry').val() },
-                datatype: "Json",
-                traditional: true,
-                success: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        $('#ddstate').append('<option value=' + data[i].value + '>' + data[i].Text + '</option>');
-                    }
-                    $('#ddstate').focus();
-                }
-            });*@
-        });
-         $('#ddstate').change(function () {
+        $('#ddCountry').change(function () {
+           // alert("Aavi Gayu");
             $.ajax({
-                type: "post"
-                Url: "@Url.Action("GetCity","Doctor")",
-                data: { cid: $('#ddstate').val() },
-                datatype: "Json",
+                type: "post",
+                url: "@Url.Action("GetState","Doctor")",
+                data: { cid: $('#ddCountry').val() },
+                datatype: "json",
                 traditional: true,
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
-                        $('#ddcity').append('<option value=' + data[i].value + '>' + data[i].Text + '</option>');
+                        $('#ddState').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
                     }
-                    $('#ddcity').focus();
+                    $('#ddState').focus();
+                }
+            });
+        });
+
+        $('#ddState').change(function () {
+           //alert("Aavi Gayu");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("getCity", "Doctor")",
+                data: { sid: $('#ddState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ddCity').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                    }
+                    $('#ddCity').focus();
                 }
             });
         });
 
     });
 
-           </script>
+</script>
+
 
 
 

@@ -31,8 +31,9 @@ namespace IntenseCare.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult registration(FormCollection form, HttpPostedFileBase txtfile)
+        public ActionResult registration(FormCollection form)
         {
+
             tblNurse  ad = new tblNurse ();
             ad.FirstName = form["FirstName"];
             ad.LastName = form["LastName"];

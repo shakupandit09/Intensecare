@@ -74,7 +74,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 
           tblDoctorSlot  ad = dc.tblDoctorSlots .SingleOrDefault(ob => ob.DoctorSlotId  == id);
             ad.DoctorId = Convert.ToInt32(form["DoctorId"]);
-            ad.StartTime  = TimeSpan.Parse(form["StartTime "]);
+            ad.StartTime  = TimeSpan.Parse(form["StartTime"]);
             ad.EndTime  = TimeSpan.Parse(form["EndTime"]);
             ad.DayWeek  = Convert.ToInt32(form["DayWeek"]);
             ad.OpdShedule = Convert.ToDateTime(form["OpdShedule"]);
