@@ -111,10 +111,10 @@
                     @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
-                    <select id="ddState" class="form-control"></select>
+                    <select id="ddState" name="ddState" class="form-control"></select>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
-                    <select id="ddCity" class="form-control"></select>
+                    <select id="ddCity" name="ddCity" class="form-control"></select>
                 </div>
 
             </div>
@@ -124,7 +124,7 @@
                     <input type="radio" id="Gen" name="Gen" value="Male" required>Male
                 </div>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address">
+                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address" required>
                 </div>
             </div>
             <div class="form-group row">

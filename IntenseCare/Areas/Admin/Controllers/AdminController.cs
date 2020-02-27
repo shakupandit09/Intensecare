@@ -70,7 +70,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.CreatedOn = DateTime.Now;
             dc.tblAdmins.Add(ad);
             dc.SaveChanges();
-            return RedirectToAction("Index","Admin");
+            return RedirectToAction("list","Admin");
         }
         //public string code()
         //{
@@ -80,6 +80,8 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
+            //ViewBag.AdminName = (from ob in dc.tblAdmins  where ob.AdminId  == ad.CreatedBy  select ob).Take(1).SingleOrDefault().Name;
+            //string name = ViewBag.AdminName;
             return View(ad);
         }
         public ActionResult Delete(int id)

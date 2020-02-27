@@ -30,18 +30,18 @@ namespace IntenseCare.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add(FormCollection form , HttpPostedFileBase txtfile)
+        public ActionResult Add(FormCollection form , HttpPostedFileBase txtFile)
         {
-            string name = "";
-            if (txtfile != null)
+            string name = "txtFile";
+            if (txtFile != null)
             {
-                int size = (int)txtfile.ContentLength / 1024;
-                var extension = System.IO.Path.GetExtension(txtfile.FileName);
+                int size = (int)txtFile.ContentLength / 1024;
+                var extension = System.IO.Path.GetExtension(txtFile.FileName);
                 if (size <= 1024 && (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png")))
                 {
                     name = code() + "" + extension;
                     string path = Server.MapPath("~/Areas/image/");
-                    txtfile.SaveAs(path + "" + name);
+                    txtFile.SaveAs(path + "" + name);
                 }
             }
             tblDoctor ad = new tblDoctor();
@@ -53,7 +53,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.ContactNo = form["ContactNo"];
             ad.DOB = Convert.ToDateTime(form["DOB"]);
             ad.Address = form["Address"];
-            //ad.CityID = Convert.ToInt32(form["CityId"]);
+            ad.CityID = Convert.ToInt32(form["ddCity"]);
             ad.Degree = form["Degree"];
             ad.YearOfExperience = Convert.ToInt32(form["YearOfExp"]);
             ad.IsActive = true;
@@ -96,6 +96,7 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             tblDoctor ad = dc.tblDoctors.SingleOrDefault(ob => ob.DoctorId == id);
+
             dc.tblDoctors.Remove(ad);
             dc.SaveChanges();
             return RedirectToAction("Index","Doctor");
@@ -136,10 +137,6 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult tmp()
-        //{
-        //    return View();
-        //}
        
     }  
 }

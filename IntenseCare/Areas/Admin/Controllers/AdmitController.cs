@@ -77,7 +77,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             tblAdmitDetail  ad = dc.tblAdmitDetails.SingleOrDefault(ob => ob.AdmitDetailId == id);
             ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
             ViewBag.PatientName = (from ob1 in dc.tblPatients where ob1.PatientId == ad.PatientId select ob1).Take(1).SingleOrDefault().FirstName;
-            ViewBag.NurseName = (from ob2 in dc.tblNurses  where ob2.NurseId  == ad.PatientId select ob2).Take(1).SingleOrDefault().FirstName;
+            ViewBag.NurseName = (from ob2 in dc.tblNurses  where ob2.NurseId  == ad.NurseId select ob2).Take(1).SingleOrDefault().FirstName;
            // ViewBag.AdminName = (from ob23 in dc.tblAdmins  where ob3.AdminId  == ad.CreatedBy  select ob3).Take(1).SingleOrDefault().Name;
             string name = ViewBag.DoctorName;
            // string Aname = ViewBag.AdminName;

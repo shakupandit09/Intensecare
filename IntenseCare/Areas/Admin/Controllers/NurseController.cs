@@ -42,7 +42,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.Gender = form["gen"];
             ad.ContactNo = form["ContactNo"];
             ad.Address = form["Address"];
-            ad.CityId = Convert.ToInt32(form["CityId"]);
+            ad.CityId = Convert.ToInt32(form["ddCity"]);
             ad.IsActive = true;
             ad.IsVerified = true;
             ad.IsMobileVerified = true;
@@ -85,8 +85,8 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);
-            ViewBag.NurseName = (from ob in dc.tblNurses where ob.NurseId  == ad.CreatedBy  select ob).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.NurseName;
+            //ViewBag.NurseName = (from ob in dc.tblNurses where ob.NurseId  == ad.CreatedBy  select ob).Take(1).SingleOrDefault().FirstName;
+            //string name = ViewBag.NurseName;
             return View(ad);
         }
         public ActionResult Edit(int id)

@@ -17,23 +17,17 @@ namespace IntenseCare.Areas.Admin.Controllers
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult Index(string BlogContent)
-        {
-            if (Session["loginid"] != null)
-            {
-            tblCMSPage cms = new tblCMSPage();
+        {           
+           tblCMSPage cms = new tblCMSPage();
             cms.PageTittle = "cms1";
             cms.Description = BlogContent;
             cms.CreatedOn = DateTime.Now;
             cms.IsActive = true;
             dc.tblCMSPages.Add(cms);
             dc.SaveChanges();
-            ViewBag.Description = BlogContent;
+            ViewBag.Content = BlogContent;
             return RedirectToAction("ViewCMS", new { Title = "cms1" });
-            }
-            else
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+         
         }
         public ActionResult ViewCMS(String Title)
         {

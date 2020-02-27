@@ -106,7 +106,7 @@
         <h6 class="m-0 font-weight-bold text-dark">Add New Doctor</h6>
     </div>
     <div class="card-body">
-        <form class="user" method="post" name="frmCreate">
+        <form class="user" method="post" name="frmCreate" enctype="multipart/form-data">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name">
@@ -138,10 +138,10 @@
                     @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
-                    <select id="ddState" class="form-control"></select>
+                    <select id="ddState" name="ddState" class="form-control"></select>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
-                    <select id="ddCity" class="form-control"></select>
+                    <select id="ddCity" name="ddCity" class="form-control"></select>
                 </div>
 
             </div>
