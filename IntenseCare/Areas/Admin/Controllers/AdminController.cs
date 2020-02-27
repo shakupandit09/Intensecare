@@ -61,7 +61,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.Emailid = form["Email"];
             ad.ContactNo = form["ContactNo"];
             
-            ad.CreatedBy = Convert.ToInt32(form["CreatedBy"]);
+            ad.CreatedBy = Convert.ToInt32(Session["loginId"]);
             ad.IsActive = true;
             ad.IsSuper = true;
             ad.IsInsert = true;
