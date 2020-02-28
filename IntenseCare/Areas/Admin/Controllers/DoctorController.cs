@@ -40,7 +40,7 @@ namespace IntenseCare.Areas.Admin.Controllers
                 if (size <= 1024 && (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png")))
                 {
                     name = code() + "" + extension;
-                    string path = Server.MapPath("~/profile/");
+                    string path = Server.MapPath("~/Areas/image");
                     txtfile.SaveAs(path + "" + name);
                 }
             }
@@ -53,13 +53,13 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.ContactNo = form["ContactNo"];
             ad.DOB = Convert.ToDateTime(form["DOB"]);
             ad.Address = form["Address"];
-            ad.CityID = Convert.ToInt32(form["CityId"]);
+            ad.CityID = Convert.ToInt32(form["ddCity"]);
             ad.Degree = form["Degree"];
             ad.YearOfExperience = Convert.ToInt32(form["YearOfExp"]);
             ad.IsActive = true;
             ad.IsVerified = true;
             ad.IsMobileVerified = true;
-            ad.ApprovedBy = Convert.ToInt32(form["ApprovedBy"]);
+            ad.ApprovedBy = Convert.ToInt32(form["loginId"]);
             ad.ApprovedOn = DateTime.Now;
             ad.Specialization = form["Specialization"];
             ad.ProfileImageUrl= name.ToString();

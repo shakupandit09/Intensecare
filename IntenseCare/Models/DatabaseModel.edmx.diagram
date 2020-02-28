@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="AppointmentModel.tblAdminIquiry" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentModel.tblAdmitDetail" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentModel.tblAppoinment" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AppointmentModel.tblCMSPage" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentModel.tblDiagnoseDetail" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentModel.tblDoctor" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentModel.tblDoctorAbsence" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
@@ -31,6 +30,7 @@
         <EntityTypeShape EntityType="AppointmentModel.tblReview" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
         <AssociationConnector Association="AppointmentModel.FK_CityMaster_StateMaster" ManuallyRouted="false" />
         <AssociationConnector Association="AppointmentModel.FK_StateMaster_CountryMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AppointmentModel.tblCMSPage" Width="1.5" PointX="0.75" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

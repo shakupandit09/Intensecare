@@ -41,7 +41,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.Gender = form["gen"];
             ad.ContactNo = form["ContactNo"];
             ad.Address = form["Address"];
-            ad.CityId = Convert.ToInt32(form["CityId"]);
+            ad.CityId = Convert.ToInt32(form["ddCity"]);
             ad.IsActive = true;
             ad.IsVerified = true;
             ad.IsMobileVerified = true;

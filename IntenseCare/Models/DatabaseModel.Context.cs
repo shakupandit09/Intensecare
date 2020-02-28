@@ -33,7 +33,6 @@ namespace IntenseCare.Models
         public DbSet<tblAdminIquiry> tblAdminIquiries { get; set; }
         public DbSet<tblAdmitDetail> tblAdmitDetails { get; set; }
         public DbSet<tblAppoinment> tblAppoinments { get; set; }
-        public DbSet<tblCMSPage> tblCMSPages { get; set; }
         public DbSet<tblDiagnoseDetail> tblDiagnoseDetails { get; set; }
         public DbSet<tblDoctor> tblDoctors { get; set; }
         public DbSet<tblDoctorAbsence> tblDoctorAbsences { get; set; }
@@ -49,5 +48,6 @@ namespace IntenseCare.Models
         public DbSet<tblPrescription> tblPrescriptions { get; set; }
         public DbSet<tblPrescriptionDetail> tblPrescriptionDetails { get; set; }
         public DbSet<tblReview> tblReviews { get; set; }
+        public DbSet<tblCMSPage> tblCMSPages { get; set; }
     }
 }

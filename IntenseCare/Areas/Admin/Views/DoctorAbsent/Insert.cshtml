@@ -3,78 +3,37 @@
     ViewBag.Title = "Insert";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@*<html>
-<head>
-    @section scripts{
-        <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
-    }   
-    @*<meta name="viewport" content="width=device-width" />
-    <title>Insert</title>
-    <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-     Custom styles for this template
-    <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
 
-</head>*@
-    <div class="container">
-        <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Add Doctor Absent </div>
-            <div class="card-body">
-                <form method="post" name="frmCreate">
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="DoctorId" name="DoctorId" class="form-control" placeholder="Enter DoctorId" required="required" autofocus="autofocus">
-                                    <label for="DoctorId">DoctorId</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="FromDate" name="FromDate" class="form-control" placeholder="Enter FromDate" required="required">
-                                    <label for="FromDate">FromDate</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="ToDate" name="ToDate" class="form-control" placeholder="Enter ToDate" required="required">
-                                    <label for="ToDate">ToDate</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="FromTime" name="FromTime" class="form-control" placeholder="Email FromTime" required="required">
-                                    <label for="FromTime">FromTime</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="Submit" value="Submit" class="btn btn-primary btn-block" onclick="return Validate()" />
-                </form>
-                <div class="text-center">
-                    <a class="d-block small mt-3" href="@Url.Action("Index")">Login Page</a>
-                    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Add Doctor Absent Details</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="DoctorId" name="DoctorId" placeholder="DoctorId">
+                </div>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="FromDate">
                 </div>
             </div>
-        </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="ToDate">
+                </div>
+                <div class="col-sm-6">
+                    <input type="time" class="form-control" id="FromTime" name="FromTime" placeholder="FromTime">
+                </div>
+
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Add Doctor Absent" class="btn btn-success"/>
+                <a class="d-block small mt-3" href="@Url.Action("Index","DoctorAbsent")">Back To List</a>
+            </div>
+        </form>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    @*<script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>
-    <script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-     Core plugin JavaScript
-    <script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>*@
-
-
-@*</html>*@
-
+    </div>      
+       
+           

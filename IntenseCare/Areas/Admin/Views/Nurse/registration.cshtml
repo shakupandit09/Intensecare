@@ -10,7 +10,7 @@
         var firstname = document.frmCreate.FirstName;
         var lastname = document.frmCreate.LastName;
         var pin = document.frmCreate.Pin;
-        //var cpassword = document.frmCreate.CPassword;
+        var cpin = document.frmCreate.Cpin;
         var email = document.frmCreate.Email;
         var contact_no = document.frmCreate.ContactNo;
         var Address = document.frmCreate.Address;
@@ -20,7 +20,7 @@
         }
         else {
             alert("FirstName is not Proper");
-            name.focus();
+            firstname.focus();
             return false;
         }
         var name_pat = /^[A-Za-z]+$/;
@@ -28,7 +28,7 @@
         }
         else {
             alert("LastName is not Proper");
-            name.focus();
+            lastname.focus();
             return false;
         }
         var pin_pat = /^[0-9]+$/;
@@ -37,6 +37,12 @@
         else {
             alert("Wrong Pin Number");
             pin.focus();
+            return false;
+        }
+        if (pin.value == cpin.value) { }
+        else {
+            alert("Pin does not match");
+            cpin.focus();
             return false;
         }
 
@@ -57,7 +63,7 @@
             contact_no.focus();
             return false;
         }
-        var add_pat = /^[A-Za-z0-9]+$/;
+        var add_pat = /^[A-Za-z]+$/;
         if (Address.value != "" && Address.value.match(add_pat)) {
         }
         else {
@@ -68,159 +74,117 @@
         return true;
     }
 </script>
-@*<meta name="viewport" content="width=device-width" />
-    <title>Add</title>
-    <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-     Custom styles for this template
-    <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">*@
-
-<div class="card-header text-center">
-    <b>Add New Nurse's</b>
-</div>
-<iv class="card-body">
-    <form method="post" name="frmCreate">
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-6">
-                    <div class="form-label-group">
-                        <input type="text" id="FirstName" name="FirstName" class="form-control" placeholder="Enter First name" required="required" autofocus="autofocus">
-                        <label for="FirstName">FirstName</label>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-label-group">
-                        <input type="text" id="LastName" name="LastName" class="form-control" placeholder="Enter Last name" required="required" autofocus="autofocus">
-                        <label for="LastName">LastName</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-12">
-                    <div class="form-label-group">
-                        <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required="required">
-                        <label for="Email">Email Address</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-6">
-                    <div class="form-label-group">
-                        <input type="text" id="ContactNo" name="ContactNo" class="form-control" placeholder="Contact No" required="required">
-                        <label for="ContactNo">Contact No</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-label-group">
-                        <input type="text" id="Pin" name="Pin" class="form-control" placeholder="Enter Pin" required="required">
-                        <label for="Pin">Pin</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-6">
-                    <div class="form-label-group">
-                        <input type="text" id="Address" name="Address" class="form-control" placeholder="Enter Address" required="required">
-                        <label for="Address">Address</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-label-group">
-                        <input type="text" id="CreatedBy" name="CreatedBy" class="form-control" placeholder="CreatedBy" required="required">
-                        <label for="CreatedBy">CreatedBy</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-4">
-                    <div class="form-label-group">
-                        @Html.DropDownList("ddcountry", ViewBag.country as SelectList, "select country", new { @class = "form-control" })
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-label-group">
-                        <select id="ddstate" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-label-group">
-                        <select id="ddcity" class="form-control"></select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-12">
-                    <div class="form-label-group">
-                        <input type="radio" id="gen" name="gen" value="Female" required="required">Female
-                        <input type="radio" id="gen" name="gen" value="Male" required="required">Male
-                    </div>
-                </div>
-            </div>
-        </div>
-     <div class="text-center">
-            <input type="Submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
-        </div>
-    </form>
-    <div class="text-center">
-        <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Login Page</a>
-        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Add New Nurse</h6>
     </div>
-    <a href="@Url.Action("Index","Nurse")" class="btn btn-dark">
-        Back To List
-    </a>
-    <!-- Bootstrap core JavaScript-->
-    @*<script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>*@
-    @*<script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
-    <!-- Core plugin JavaScript-->
-    @*<script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>*@
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript">
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password"  class="form-control" id="Pin" name="Pin" placeholder="Enter Pin">
+                </div>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="Cpin" name="Cpin" placeholder="Enter Cpin ">
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address">
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number">
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
+                    <select id="ddState" name="ddState" class="form-control"></select>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
+                    <select id="ddCity" name="ddCity" class="form-control"></select>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="radio" id="Gen" name="Gen" value="Female" required>Female
+                    <input type="radio" id="Gen" name="Gen" value="Male" required>Male
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" id="CreatedBy" name="CreatedBy" placeholder="Enter CreatedBy" required >
+                </div>
+            </div>
+            
+            <input type="submit" value="Add Nurse" class="btn btn-success" onclick="return Validate()" align="Center" />
+        </form>
+        <div class="text-center">
+            <a class="d-block small mt-3" href="@Url.Action("Index","Nurse")">Back To List</a>
+            <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Login Page</a>
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
     $(document).ready(function () {
-        $('#ddcountry').change(function () {
-            alert("data get");
-            @*$.ajax({
-                type: "post"
-                Url: "@Url.Action("GetState","Doctor")",
-                data: { cid: $('#ddcountry').val() },
-                datatype: "Json",
-                traditional: true,
-                success: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        $('#ddstate').append('<option value=' + data[i].value + '>' + data[i].Text + '</option>');
-                    }
-                    $('#ddstate').focus();
-                }
-            });*@
-        });
-         $('#ddstate').change(function () {
+        $('#ddCountry').change(function () {
+           // alert("Aavi Gayu");
             $.ajax({
-                type: "post"
-                Url: "@Url.Action("GetCity","Doctor")",
-                data: { cid: $('#ddstate').val() },
-                datatype: "Json",
+                type: "post",
+                url: "@Url.Action("GetState","Nurse")",
+                data: { cid: $('#ddCountry').val() },
+                datatype: "json",
                 traditional: true,
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
-                        $('#ddcity').append('<option value=' + data[i].value + '>' + data[i].Text + '</option>');
+                        $('#ddState').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
                     }
-                    $('#ddcity').focus();
+                    $('#ddState').focus();
+                }
+            });
+        });
+
+        $('#ddState').change(function () {
+           //alert("Aavi Gayu");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("getCity", "Nurse")",
+                data: { sid: $('#ddState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ddCity').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                    }
+                    $('#ddCity').focus();
                 }
             });
         });
 
     });
 
-    </script>
+</script>
 
 
 

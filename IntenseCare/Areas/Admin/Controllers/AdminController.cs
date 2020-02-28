@@ -61,7 +61,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.Emailid = form["Email"];
             ad.ContactNo = form["ContactNo"];
             
-            ad.CreatedBy = Convert.ToInt32(form["CreatedBy"]);
+            ad.CreatedBy = Convert.ToInt32(Session["loginId"]);
             ad.IsActive = true;
             ad.IsSuper = true;
             ad.IsInsert = true;
@@ -138,7 +138,28 @@ namespace IntenseCare.Areas.Admin.Controllers
         //    }
         //    return Json(response, JsonRequestBehavior.AllowGet);
         //}
-
-
+        public ActionResult Dashboard()
+        {
+            ViewBag.DoctorCount = (from ob in dc.tblDoctors where ob.IsActive == true select ob).ToList().Count().ToString();
+            ViewBag.PatientCount = (from ob in dc.tblPatients select ob).ToList().Count().ToString();
+            ViewBag.AppointmentCount = (from ob in dc.tblAppoinments select ob).ToList().Count().ToString();
+            return View();
+        }
+        public ActionResult Schart()
+        {
+            var doctor = from ob in dc.tblDoctors where ob.IsActive == true select ob;
+            string[] x = new string[doctor.ToList().Count];
+            int[] y = new int[doctor.ToList().Count];
+            int i = 0;
+            foreach(tblDoctor d in doctor)
+            {
+                x[i] = d.DoctorId.ToString();
+                y[i] = (from ob in dc.tblAppoinments where ob.DoctorID == d.DoctorId select ob).ToList().Count;
+                i++;
+            }
+            ViewBag.x = x;
+            ViewBag.y = y;
+            return View();
+        }
     }
 }
