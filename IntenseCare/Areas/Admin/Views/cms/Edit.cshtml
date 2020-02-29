@@ -1,0 +1,37 @@
+﻿@model IntenseCare.Models.tblCMSPage
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid ">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Update CMS Page </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <input type="text" id="PageTittle" name="PageTittle" class="form-control" value="@Model.PageTittle" required="required" autofocus="autofocus">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <input type="text" id="Description" name="Description" class="form-control" value="@Model.Description" required="required" autofocus="autofocus">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","cms")">Back To List</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

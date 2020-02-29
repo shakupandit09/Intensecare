@@ -9,7 +9,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 {
     public class AppointmentController : Controller
     {
-        AppointmentEntities9 dc = new AppointmentEntities9();
+        AppointmentEntities10 dc = new AppointmentEntities10();
         // GET: Admin/Appointment
         public ActionResult Index()
         {
@@ -18,7 +18,7 @@ namespace IntenseCare.Areas.Admin.Controllers
                 var AppointDoctor = from ob in dc.tblAppoinments 
                                    join ob2 in dc.tblDoctors on ob.DoctorID equals ob2.DoctorId
                                    join ob3 in dc.tblPatients on ob.PatientID equals ob3.PatientId
-                                    join ob4 in dc.tblDoctorSlots  on ob.SlotID   equals ob4.DoctorSlotId 
+                                    join ob4 in dc.tblDoctorSlots  on ob.DoctorSlotId  equals ob4.DoctorSlotId 
                                     select new Datamodel
                                    {
                                       Appoint = ob,
@@ -52,8 +52,9 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             tblAppoinment  ad = dc.tblAppoinments .SingleOrDefault(ob => ob.AppointmentID  == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorID select ob).Take(1).SingleOrDefault().FirstName;
-            ViewBag.PatientName = (from ob1 in dc.tblPatients where ob1.PatientId == ad.PatientID select ob1).Take(1).SingleOrDefault().FirstName;
+            ViewBag.PatientName = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientID select ob2).Take(1).SingleOrDefault().FirstName;
+            ViewBag.DoctorName = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorID select ob1).Take(1).SingleOrDefault().FirstName;
+
             string name = ViewBag.DoctorName;
             string pname = ViewBag.patientName;
             return View(ad);

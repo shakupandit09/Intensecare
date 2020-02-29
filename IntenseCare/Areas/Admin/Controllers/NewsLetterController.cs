@@ -9,7 +9,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 {
     public class NewsLetterController : Controller
     {
-        AppointmentEntities9 dc = new AppointmentEntities9();
+        AppointmentEntities10 dc = new AppointmentEntities10();
         // GET: Admin/NewsLetter
         public ActionResult Index()
         {

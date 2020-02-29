@@ -15,27 +15,27 @@
         var contact_no = document.frmCreate.ContactNo;
         var Address = document.frmCreate.Address;
 
-        var name_pat = /^[A-Za-z]+$/;
+        var name_pat = /^[A-Za-z]{5,20}+$/;
         if (firstname.value != "" && firstname.value.match(name_pat)) {
         }
         else {
-            alert("FirstName is not Proper");
+            alert("FirstName is Minimum 5 Characters and Maximum 20 Contain");
             firstname.focus();
             return false;
         }
-        var name_pat = /^[A-Za-z]+$/;
+        var name_pat = /^[A-Za-z]{3,10}+$/;
         if (lastname.value != "" && lastname.value.match(name_pat)) {
         }
         else {
-            alert("LastName is not Proper");
+            alert("LastName is Minimum 3 Characters and Maximum 10 Contain");
             lastname.focus();
             return false;
         }
-        var pin_pat = /^[0-9]+$/;
+        var pin_pat = /^[0-9]{4}$/;
         if (pin != "" && pin.value.match(pin_pat)) {
         }
         else {
-            alert("Wrong Pin Number");
+            alert(" Pin Number must be 4 digit");
             pin.focus();
             return false;
         }
@@ -55,11 +55,11 @@
             return false;
 
         }
-        var contact_no_pat = /^[0-9]+$/;
+        var contact_no_pat = /^[0-9]{10}$/;
         if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
         }
         else {
-            alert("contact number is not Proper");
+            alert("contact number Should be 10 digit");
             contact_no.focus();
             return false;
         }
@@ -82,65 +82,69 @@
         <form class="user" method="post" name="frmCreate">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>FirstName</label>
                     <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name">
                 </div>
                 <div class="col-sm-6">
+                    <label>lastName</label>
                     <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password"  class="form-control" id="Pin" name="Pin" placeholder="Enter Pin">
+                    <label>Pin</label>
+                    <input type="password" class="form-control" id="Pin" name="Pin" placeholder="Enter Pin">
                 </div>
                 <div class="col-sm-6">
+                    <label>Confirm pin</label>
                     <input type="password" class="form-control" id="Cpin" name="Cpin" placeholder="Enter Cpin ">
                 </div>
 
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Email-Id</label>
                     <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address">
                 </div>
                 <div class="col-sm-6">
+                    <label>ContactNo</label>
                     <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number">
                 </div>
 
             </div>
             <div class="form-group row">
                 <div class="col-sm-4 mb-3 mb-sm-0">
+                    <label>Select country</label>
                     @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
-                    <select id="ddState" name="ddState" class="form-control"></select>
+                    <label>Select state</label>
+                    <select id="ddState" name="ddState" class="form-control" required></select>
                 </div>
                 <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
-                    <select id="ddCity" name="ddCity" class="form-control"></select>
+                    <label>Select city</label>
+                    <select id="ddCity" name="ddCity" class="form-control" required></select>
                 </div>
 
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Gender</label>
                     <input type="radio" id="Gen" name="Gen" value="Female" required>Female
                     <input type="radio" id="Gen" name="Gen" value="Male" required>Male
                 </div>
                 <div class="col-sm-6">
+                    <label>Address</label>
                     <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address" required>
                 </div>
             </div>
-            <div class="form-group row">
-                
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="CreatedBy" name="CreatedBy" placeholder="Enter CreatedBy" required >
-                </div>
+            <div class="text-center">
+
+                <input type="submit" value="Add Nurse" class="btn btn-success" onclick="return Validate()" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","Nurse")">Back To List</a>
             </div>
-            
-            <input type="submit" value="Add Nurse" class="btn btn-success" onclick="return Validate()" align="Center" />
         </form>
-        <div class="text-center">
-            <a class="d-block small mt-3" href="@Url.Action("Index","Nurse")">Back To List</a>
-            <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Login Page</a>
-            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-        </div>
+       
     </div>
 </div>
 

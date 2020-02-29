@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CityMaster">
           <Key>
             <PropertyRef Name="ID" />
@@ -103,7 +103,7 @@
           <Property Name="IsNew" Type="bit" Nullable="false" />
           <Property Name="BookedOn" Type="datetime" Nullable="false" />
           <Property Name="Reason" Type="varchar(max)" />
-          <Property Name="SlotID" Type="int" Nullable="false" />
+          <Property Name="DoctorSlotId" Type="int" Nullable="false" />
           <Property Name="IsConfirmed" Type="bit" Nullable="false" />
           <Property Name="IsFinished" Type="bit" Nullable="false" />
           <Property Name="sCancelled" Type="bit" Nullable="false" />
@@ -391,7 +391,8 @@
             <End Role="StateMaster" EntitySet="StateMaster" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AppointmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -497,10 +498,21 @@
           <Property Name="IsNew" Type="Boolean" Nullable="false" />
           <Property Name="BookedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SlotID" Type="Int32" Nullable="false" />
+          <Property Name="DoctorSlotId" Type="Int32" Nullable="false" />
           <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="IsFinished" Type="Boolean" Nullable="false" />
           <Property Name="sCancelled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCMSPage">
+          <Key>
+            <PropertyRef Name="CMSPageId" />
+          </Key>
+          <Property Name="CMSPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageTittle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDiagnoseDetail">
           <Key>
@@ -740,7 +752,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AppointmentEntities9" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AppointmentEntities10" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
           <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
           <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
@@ -749,6 +761,7 @@
           <EntitySet Name="tblAdminIquiries" EntityType="Self.tblAdminIquiry" />
           <EntitySet Name="tblAdmitDetails" EntityType="Self.tblAdmitDetail" />
           <EntitySet Name="tblAppoinments" EntityType="Self.tblAppoinment" />
+          <EntitySet Name="tblCMSPages" EntityType="Self.tblCMSPage" />
           <EntitySet Name="tblDiagnoseDetails" EntityType="Self.tblDiagnoseDetail" />
           <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
           <EntitySet Name="tblDoctorAbsences" EntityType="Self.tblDoctorAbsence" />
@@ -772,25 +785,13 @@
             <End Role="CountryMaster" EntitySet="CountryMasters" />
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
-          <EntitySet Name="tblCMSPages" EntityType="AppointmentModel.tblCMSPage" />
         </EntityContainer>
-        <EntityType Name="tblCMSPage">
-          <Key>
-            <PropertyRef Name="CMSPageId" />
-          </Key>
-          <Property Name="CMSPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PageTittle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AppointmentModelStoreContainer" CdmEntityContainer="AppointmentEntities9">
+        <EntityContainerMapping StorageEntityContainer="AppointmentModelStoreContainer" CdmEntityContainer="AppointmentEntities10">
           <EntitySetMapping Name="CityMasters">
             <EntityTypeMapping TypeName="AppointmentModel.CityMaster">
               <MappingFragment StoreEntitySet="CityMaster">
@@ -895,10 +896,22 @@
                 <ScalarProperty Name="IsNew" ColumnName="IsNew" />
                 <ScalarProperty Name="BookedOn" ColumnName="BookedOn" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="DoctorSlotId" ColumnName="DoctorSlotId" />
                 <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
                 <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
                 <ScalarProperty Name="sCancelled" ColumnName="sCancelled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCMSPages">
+            <EntityTypeMapping TypeName="AppointmentModel.tblCMSPage">
+              <MappingFragment StoreEntitySet="tblCMSPage">
+                <ScalarProperty Name="CMSPageId" ColumnName="CMSPageId" />
+                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1128,18 +1141,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ReviewedOn" ColumnName="ReviewedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblCMSPages">
-            <EntityTypeMapping TypeName="AppointmentModel.tblCMSPage">
-              <MappingFragment StoreEntitySet="tblCMSPage">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PageTittle" ColumnName="PageTittle" />
-                <ScalarProperty Name="CMSPageId" ColumnName="CMSPageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

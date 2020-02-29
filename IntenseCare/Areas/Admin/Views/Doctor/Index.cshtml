@@ -25,7 +25,7 @@
                 <tr>
 
                     <th>FirstName</th>
-                    <th>LastName</th>
+               
                     <th>Email</th>                  
                     <th>ContactNo</th>
                     <th>IsActive</th>
@@ -40,8 +40,7 @@
                 {
                 <tr>
 
-                    <td><a href="@Url.Action("Detail","Doctor",new { id = item.DoctorId })">@item.FirstName </a></td>
-                    <td>@item.LastName</td>
+                    <td><a href="@Url.Action("Detail","Doctor",new { id = item.DoctorId })">@item.FirstName @item.LastName</a></td>
                     <td>@item.Email</td>
                     <td>@item.ContactNo</td>
                     <td id="ActiveContent">

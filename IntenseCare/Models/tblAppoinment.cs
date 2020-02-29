@@ -24,7 +24,7 @@ namespace IntenseCare.Models
         public bool IsNew { get; set; }
         public System.DateTime BookedOn { get; set; }
         public string Reason { get; set; }
-        public int SlotID { get; set; }
+        public int DoctorSlotId { get; set; }
         public bool IsConfirmed { get; set; }
         public bool IsFinished { get; set; }
         public bool sCancelled { get; set; }

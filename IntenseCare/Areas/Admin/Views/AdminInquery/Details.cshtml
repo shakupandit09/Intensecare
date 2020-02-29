@@ -5,70 +5,32 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","AdminInquery")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","AdminInquery")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
 
-        </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @Html.DisplayFor(model => model.FirtsName)'s profile</h3>
-                        </div>
-
-                        <div class="row">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="mailto: @Html.DisplayFor(model => model.EmailID)">
-                                <h6> @Html.DisplayFor(model => model.EmailID)</h6>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-1x fa-phone"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
-                                <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
-                            </a>
-                        </div>
-                        AdminInquiry Id <b>@Model.AdminInquiryID</b><br />
-                        Subject: <b>@Model.Subject</b><br />
-                        Inquiry :<b>@Model.Inquiry</b><br />
-                        InquiryOn: <b>@Model.InquiryOn</b><br />
-                        Reply : <b>@Model.Reply</b><br />
-                        ReplyBy  :<b>@Model.ReplyBy  </b><br />
-                        ReplyOn  : <b>@Model.ReplyOn  </b><br />
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsReply &nbsp; &nbsp; :@if (Model.IsReply == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Reply_@Model.AdminInquiryID" onchange="return activate(@Model.AdminInquiryID)">
-                                        <label class="custom-control-label" for="Reply_@Model.AdminInquiryID"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Reply_@Model.AdminInquiryID" onchange="return activate(@Model.AdminInquiryID)">
-                                        <label class="custom-control-label" for="Reply_@Model.AdminInquiryID"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    <h2>
+        @Model.Subject
+    </h2>
+    <br />
+    <p>
+        @Model.Inquiry
+    </p>
+    <br />
+    <br />
+    <form method="post" action="@Url.Action("Details","AdminInquery", new { id = Model.AdminInquiryID })">
+<textarea name="txtReply">
+    
+</textarea>
+        <br />
+        <br />
+        <input type="submit" class="btn btn-primary" value="Reply" />
+    </form>
     </div>
 
 

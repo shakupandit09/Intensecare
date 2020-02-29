@@ -9,7 +9,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 {
     public class NurseController : Controller
     {
-        AppointmentEntities9 dc = new AppointmentEntities9();
+        AppointmentEntities10 dc = new AppointmentEntities10();
         // GET: Admin/Nurse
         public ActionResult Index()
         {
@@ -45,7 +45,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.IsActive = true;
             ad.IsVerified = true;
             ad.IsMobileVerified = true;
-            ad.CreatedBy = Convert.ToInt32(form["CreatedBy"]);
+            ad.CreatedBy = Convert.ToInt32(Session["loginId"]);
             ad.CreatedOn = DateTime.Now;           
             dc.tblNurses .Add(ad);
             dc.SaveChanges();
@@ -83,9 +83,7 @@ namespace IntenseCare.Areas.Admin.Controllers
         }
         public ActionResult Detail(int id)
         {
-            tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);
-            ViewBag.NurseName = (from ob in dc.tblNurses where ob.NurseId  == ad.CreatedBy  select ob).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.NurseName;
+            tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);           
             return View(ad);
         }
         public ActionResult Edit(int id)

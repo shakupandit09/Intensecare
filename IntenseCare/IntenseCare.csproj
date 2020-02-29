@@ -153,98 +153,98 @@
     <Compile Include="Areas\Admin\Controllers\PrescriptionController.cs" />
     <Compile Include="Areas\Admin\Controllers\PrescriptionDetailController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReviewController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TempController.cs" />
+    <Compile Include="Controllers\AdInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CityMaster.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CountryMaster.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseModel.Context.cs">
+    <Compile Include="Models\databasemodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
+      <DependentUpon>databasemodel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseModel.cs">
+    <Compile Include="Models\databasemodel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseModel.Designer.cs">
+    <Compile Include="Models\databasemodel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <DependentUpon>databasemodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Datamodel.cs" />
     <Compile Include="Models\StateMaster.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAchievement.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAdmin.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAdminIquiry.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAdmitDetail.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAppoinment.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCMSPage.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDiagnoseDetail.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDoctor.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDoctorAbsence.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDoctorInquiry.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDoctorSlot.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblFeedback.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TblInHouseTreatement.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblNewsLetter.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblNurse.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPatient.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPatientDetail.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPayment.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPrescription.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPrescriptionDetail.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblReview.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>databasemodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1852,6 +1852,158 @@
     <Content Include="App_Data\Appointment_log.ldf" />
     <Content Include="Areas\image1\house.jpg" />
     <Content Include="Areas\image\user2.png" />
+    <Content Include="ClientContent\css\ajax-loader.gif" />
+    <Content Include="ClientContent\css\animate.css" />
+    <Content Include="ClientContent\css\aos.css" />
+    <Content Include="ClientContent\css\bootstrap-datepicker.css" />
+    <Content Include="ClientContent\css\bootstrap.min.css" />
+    <Content Include="ClientContent\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="ClientContent\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="ClientContent\css\css\bootstrap-reboot.css" />
+    <Content Include="ClientContent\css\css\mixins\_text-hide.css" />
+    <Content Include="ClientContent\css\flaticon.css" />
+    <Content Include="ClientContent\css\icomoon.css" />
+    <Content Include="ClientContent\css\ionicons.min.css" />
+    <Content Include="ClientContent\css\jquery.timepicker.css" />
+    <Content Include="ClientContent\css\magnific-popup.css" />
+    <Content Include="ClientContent\css\open-iconic-bootstrap.min.css" />
+    <Content Include="ClientContent\css\owl.carousel.min.css" />
+    <Content Include="ClientContent\css\owl.theme.default.min.css" />
+    <Content Include="ClientContent\css\style.css" />
+    <Content Include="ClientContent\fonts\flaticon\backup.txt" />
+    <Content Include="ClientContent\fonts\flaticon\font\flaticon.css" />
+    <Content Include="ClientContent\fonts\flaticon\font\flaticon.html" />
+    <Content Include="ClientContent\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="ClientContent\fonts\icomoon\icomoon.svg" />
+    <Content Include="ClientContent\fonts\ionicons\css\ionicons.min.css" />
+    <Content Include="ClientContent\fonts\ionicons\fonts\ionicons.svg" />
+    <Content Include="ClientContent\fonts\open-iconic\open-iconic.svg" />
+    <Content Include="ClientContent\images\about.jpg" />
+    <Content Include="ClientContent\images\bg_1.jpg" />
+    <Content Include="ClientContent\images\bg_2.jpg" />
+    <Content Include="ClientContent\images\bg_3.jpg" />
+    <Content Include="ClientContent\images\dept-1.jpg" />
+    <Content Include="ClientContent\images\dept-2.jpg" />
+    <Content Include="ClientContent\images\dept-3.jpg" />
+    <Content Include="ClientContent\images\dept-4.jpg" />
+    <Content Include="ClientContent\images\dept-5.jpg" />
+    <Content Include="ClientContent\images\doc-1.jpg" />
+    <Content Include="ClientContent\images\doc-2.jpg" />
+    <Content Include="ClientContent\images\doc-3.jpg" />
+    <Content Include="ClientContent\images\doc-4.jpg" />
+    <Content Include="ClientContent\images\doc-5.jpg" />
+    <Content Include="ClientContent\images\doc-6.jpg" />
+    <Content Include="ClientContent\images\doc-7.jpg" />
+    <Content Include="ClientContent\images\doc-8.jpg" />
+    <Content Include="ClientContent\images\image_1.jpg" />
+    <Content Include="ClientContent\images\image_2.jpg" />
+    <Content Include="ClientContent\images\image_3.jpg" />
+    <Content Include="ClientContent\images\image_4.jpg" />
+    <Content Include="ClientContent\images\image_5.jpg" />
+    <Content Include="ClientContent\images\image_6.jpg" />
+    <Content Include="ClientContent\images\loc.png" />
+    <Content Include="ClientContent\images\person_1.jpg" />
+    <Content Include="ClientContent\images\person_2.jpg" />
+    <Content Include="ClientContent\images\person_3.jpg" />
+    <Content Include="ClientContent\images\person_4.jpg" />
+    <Content Include="ClientContent\images\staff-1.jpg" />
+    <Content Include="ClientContent\images\staff-2.jpg" />
+    <Content Include="ClientContent\images\staff-3.jpg" />
+    <Content Include="ClientContent\images\staff-4.jpg" />
+    <Content Include="ClientContent\js\aos.js" />
+    <Content Include="ClientContent\js\bootstrap-datepicker.js" />
+    <Content Include="ClientContent\js\bootstrap.min.js" />
+    <Content Include="ClientContent\js\google-map.js" />
+    <Content Include="ClientContent\js\jquery-3.2.1.min.js" />
+    <Content Include="ClientContent\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="ClientContent\js\jquery.animateNumber.min.js" />
+    <Content Include="ClientContent\js\jquery.easing.1.3.js" />
+    <Content Include="ClientContent\js\jquery.magnific-popup.min.js" />
+    <Content Include="ClientContent\js\jquery.min.js" />
+    <Content Include="ClientContent\js\jquery.stellar.min.js" />
+    <Content Include="ClientContent\js\jquery.timepicker.min.js" />
+    <Content Include="ClientContent\js\jquery.waypoints.min.js" />
+    <Content Include="ClientContent\js\main.js" />
+    <Content Include="ClientContent\js\owl.carousel.min.js" />
+    <Content Include="ClientContent\js\popper.min.js" />
+    <Content Include="ClientContent\js\range.js" />
+    <Content Include="ClientContent\js\scrollax.min.js" />
+    <Content Include="Content\css\ajax-loader.gif" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\aos.css" />
+    <Content Include="Content\css\bootstrap-datepicker.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\css\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\css\mixins\_text-hide.css" />
+    <Content Include="Content\css\flaticon.css" />
+    <Content Include="Content\css\icomoon.css" />
+    <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\jquery.timepicker.css" />
+    <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\open-iconic-bootstrap.min.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\flaticon\backup.txt" />
+    <Content Include="Content\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Content\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\fonts\icomoon\icomoon.svg" />
+    <Content Include="Content\fonts\ionicons\css\ionicons.min.css" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.svg" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.svg" />
+    <Content Include="Content\images\about.jpg" />
+    <Content Include="Content\images\bg_1.jpg" />
+    <Content Include="Content\images\bg_2.jpg" />
+    <Content Include="Content\images\bg_3.jpg" />
+    <Content Include="Content\images\dept-1.jpg" />
+    <Content Include="Content\images\dept-2.jpg" />
+    <Content Include="Content\images\dept-3.jpg" />
+    <Content Include="Content\images\dept-4.jpg" />
+    <Content Include="Content\images\dept-5.jpg" />
+    <Content Include="Content\images\doc-1.jpg" />
+    <Content Include="Content\images\doc-2.jpg" />
+    <Content Include="Content\images\doc-3.jpg" />
+    <Content Include="Content\images\doc-4.jpg" />
+    <Content Include="Content\images\doc-5.jpg" />
+    <Content Include="Content\images\doc-6.jpg" />
+    <Content Include="Content\images\doc-7.jpg" />
+    <Content Include="Content\images\doc-8.jpg" />
+    <Content Include="Content\images\image_1.jpg" />
+    <Content Include="Content\images\image_2.jpg" />
+    <Content Include="Content\images\image_3.jpg" />
+    <Content Include="Content\images\image_4.jpg" />
+    <Content Include="Content\images\image_5.jpg" />
+    <Content Include="Content\images\image_6.jpg" />
+    <Content Include="Content\images\loc.png" />
+    <Content Include="Content\images\person_1.jpg" />
+    <Content Include="Content\images\person_2.jpg" />
+    <Content Include="Content\images\person_3.jpg" />
+    <Content Include="Content\images\person_4.jpg" />
+    <Content Include="Content\images\staff-1.jpg" />
+    <Content Include="Content\images\staff-2.jpg" />
+    <Content Include="Content\images\staff-3.jpg" />
+    <Content Include="Content\images\staff-4.jpg" />
+    <Content Include="Content\js\aos.js" />
+    <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\google-map.js" />
+    <Content Include="Content\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Content\js\jquery.animateNumber.min.js" />
+    <Content Include="Content\js\jquery.easing.1.3.js" />
+    <Content Include="Content\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.stellar.min.js" />
+    <Content Include="Content\js\jquery.timepicker.min.js" />
+    <Content Include="Content\js\jquery.waypoints.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\range.js" />
+    <Content Include="Content\js\scrollax.min.js" />
     <Content Include="DataTables\AutoFill-2.3.4\css\autoFill.bootstrap.css" />
     <Content Include="DataTables\AutoFill-2.3.4\css\autoFill.bootstrap.min.css" />
     <Content Include="DataTables\AutoFill-2.3.4\css\autoFill.bootstrap4.css" />
@@ -2021,15 +2173,15 @@
     <Content Include="DataTables\Buttons-1.6.1\css\common.scss" />
     <Content Include="DataTables\Buttons-1.6.1\css\mixins.scss" />
     <Content Include="logo.png" />
-    <Content Include="Models\DatabaseModel.Context.tt">
+    <Content Include="Models\databasemodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>databasemodel.edmx</DependentUpon>
+      <LastGenOutput>databasemodel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DatabaseModel.tt">
+    <Content Include="Models\databasemodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+      <DependentUpon>databasemodel.edmx</DependentUpon>
+      <LastGenOutput>databasemodel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2251,13 +2403,6 @@
     <Content Include="Areas\Admin\Views\DoctorInquery\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DoctorInquery\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Admit\registration.cshtml" />
-    <EntityDeploy Include="Models\DatabaseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DatabaseModel.edmx.diagram">
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Admit\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Nurse\registration.cshtml" />
     <Content Include="Areas\Admin\Views\Nurse\Edit.cshtml" />
@@ -2265,10 +2410,252 @@
     <Content Include="Areas\Admin\Views\DoctorAbsent\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DoctorSlot\Insert.cshtml" />
     <Content Include="Areas\Admin\Views\DoctorSlot\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\cms\Index.cshtml" />
     <Content Include="Areas\Admin\Views\cms\ViewCMS.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Schart.cshtml" />
+    <Content Include="Content\css\.DS_Store" />
+    <Content Include="Content\css\bootstrap\.DS_Store" />
+    <Content Include="Content\css\css\.DS_Store" />
+    <Content Include="Content\fonts\.DS_Store" />
+    <Content Include="Content\fonts\flaticon\.DS_Store" />
+    <Content Include="Content\fonts\flaticon\font\.DS_Store" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Content\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Content\fonts\flaticon\license\license.pdf" />
+    <Content Include="Content\fonts\icomoon\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon\icomoon.woff" />
+    <Content Include="Content\fonts\ionicons\css\_ionicons.scss" />
+    <Content Include="Content\fonts\ionicons\fonts\.DS_Store" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.eot" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.woff" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.woff2" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.eot" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.otf" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.ttf" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.woff" />
+    <Content Include="Content\images\.DS_Store" />
+    <Content Include="Content\js\.DS_Store" />
+    <Content Include="Content\scss\.DS_Store" />
+    <Content Include="Content\scss\bootstrap\.DS_Store" />
+    <Content Include="Content\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Content\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Content\scss\bootstrap\_alert.scss" />
+    <Content Include="Content\scss\bootstrap\_badge.scss" />
+    <Content Include="Content\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\scss\bootstrap\_button-group.scss" />
+    <Content Include="Content\scss\bootstrap\_buttons.scss" />
+    <Content Include="Content\scss\bootstrap\_card.scss" />
+    <Content Include="Content\scss\bootstrap\_carousel.scss" />
+    <Content Include="Content\scss\bootstrap\_close.scss" />
+    <Content Include="Content\scss\bootstrap\_code.scss" />
+    <Content Include="Content\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Content\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Content\scss\bootstrap\_forms.scss" />
+    <Content Include="Content\scss\bootstrap\_functions.scss" />
+    <Content Include="Content\scss\bootstrap\_grid.scss" />
+    <Content Include="Content\scss\bootstrap\_images.scss" />
+    <Content Include="Content\scss\bootstrap\_input-group.scss" />
+    <Content Include="Content\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\scss\bootstrap\_list-group.scss" />
+    <Content Include="Content\scss\bootstrap\_media.scss" />
+    <Content Include="Content\scss\bootstrap\_mixins.scss" />
+    <Content Include="Content\scss\bootstrap\_modal.scss" />
+    <Content Include="Content\scss\bootstrap\_nav.scss" />
+    <Content Include="Content\scss\bootstrap\_navbar.scss" />
+    <Content Include="Content\scss\bootstrap\_pagination.scss" />
+    <Content Include="Content\scss\bootstrap\_popover.scss" />
+    <Content Include="Content\scss\bootstrap\_print.scss" />
+    <Content Include="Content\scss\bootstrap\_progress.scss" />
+    <Content Include="Content\scss\bootstrap\_reboot.scss" />
+    <Content Include="Content\scss\bootstrap\_root.scss" />
+    <Content Include="Content\scss\bootstrap\_spinners.scss" />
+    <Content Include="Content\scss\bootstrap\_tables.scss" />
+    <Content Include="Content\scss\bootstrap\_toasts.scss" />
+    <Content Include="Content\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Content\scss\bootstrap\_transitions.scss" />
+    <Content Include="Content\scss\bootstrap\_type.scss" />
+    <Content Include="Content\scss\bootstrap\_utilities.scss" />
+    <Content Include="Content\scss\bootstrap\_variables.scss" />
+    <Content Include="Content\scss\style.scss" />
+    <EntityDeploy Include="Models\databasemodel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>databasemodel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\databasemodel.edmx.diagram">
+      <DependentUpon>databasemodel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\cms\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\cms\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\cms\Edit.cshtml" />
+    <Content Include="ClientContent\css\.DS_Store" />
+    <Content Include="ClientContent\css\bootstrap\.DS_Store" />
+    <Content Include="ClientContent\css\css\.DS_Store" />
+    <Content Include="ClientContent\fonts\.DS_Store" />
+    <Content Include="ClientContent\fonts\flaticon\.DS_Store" />
+    <Content Include="ClientContent\fonts\flaticon\font\.DS_Store" />
+    <Content Include="ClientContent\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="ClientContent\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="ClientContent\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="ClientContent\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="ClientContent\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="ClientContent\fonts\flaticon\license\license.pdf" />
+    <Content Include="ClientContent\fonts\icomoon\icomoon.eot" />
+    <Content Include="ClientContent\fonts\icomoon\icomoon.ttf" />
+    <Content Include="ClientContent\fonts\icomoon\icomoon.woff" />
+    <Content Include="ClientContent\fonts\ionicons\css\_ionicons.scss" />
+    <Content Include="ClientContent\fonts\ionicons\fonts\.DS_Store" />
+    <Content Include="ClientContent\fonts\ionicons\fonts\ionicons.eot" />
+    <Content Include="ClientContent\fonts\ionicons\fonts\ionicons.ttf" />
+    <Content Include="ClientContent\fonts\ionicons\fonts\ionicons.woff" />
+    <Content Include="ClientContent\fonts\ionicons\fonts\ionicons.woff2" />
+    <Content Include="ClientContent\fonts\open-iconic\open-iconic.eot" />
+    <Content Include="ClientContent\fonts\open-iconic\open-iconic.otf" />
+    <Content Include="ClientContent\fonts\open-iconic\open-iconic.ttf" />
+    <Content Include="ClientContent\fonts\open-iconic\open-iconic.woff" />
+    <Content Include="ClientContent\images\.DS_Store" />
+    <Content Include="ClientContent\js\.DS_Store" />
+    <Content Include="ClientContent\scss\.DS_Store" />
+    <Content Include="ClientContent\scss\bootstrap\.DS_Store" />
+    <Content Include="ClientContent\scss\bootstrap\_alert.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_badge.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_button-group.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_buttons.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_card.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_carousel.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_close.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_code.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_dropdown.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_forms.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_functions.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_grid.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_images.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_input-group.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_list-group.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_media.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_mixins.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_modal.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_nav.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_navbar.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_pagination.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_popover.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_print.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_progress.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_reboot.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_root.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_spinners.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_tables.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_toasts.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_tooltip.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_transitions.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_type.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_utilities.scss" />
+    <Content Include="ClientContent\scss\bootstrap\_variables.scss" />
+    <Content Include="ClientContent\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="ClientContent\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="ClientContent\scss\bootstrap\bootstrap.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="ClientContent\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="ClientContent\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="ClientContent\scss\style.scss" />
+    <Content Include="ClientContent\.DS_Store" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2488,9 +2875,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -2501,14 +2885,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\login.cshtml" />
     <Content Include="Scripts\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Home\Blank.cshtml" />
+    <Content Include="Views\AdInquery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Temp\" />
+    <Folder Include="Views\AdminInquery\" />
     <Folder Include="Views\data\" />
   </ItemGroup>
   <ItemGroup>

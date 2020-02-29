@@ -3,33 +3,30 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<html>
+<body class="sticky-header">
+    @section scripts{
 
-@section scripts{
+        <link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+        <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+        <script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" class="init">
+            $(document).ready(function () {
+                $("#example").DataTable();
+            });
+        </script>
 
-    <link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
-    <script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" class="init">
-        $(document).ready(function () {
-            $("#example").DataTable();
-        });
-    </script>
-
-}
-<p>
-    @Html.ActionLink("Add New Nurse's", "registration", new { })
-</p>
-<h2>List of Nurse Details</h2>
-<div class="col-md-12">
-    
-
-        <table class=" table table-hover" id="example">
+    }
+    <p>
+        @Html.ActionLink("Add New Nurse's", "registration", new { })
+    </p>
+    <h2>List of Nurse Details</h2>
+    <div class="col-md-12">
+        <table class=" table table-hover table-bordered" id="example">
             <thead class="thead-dark">
                 <tr>
-                    
                     <th>FirstName</th>
-                    <th>LastName</th>
                     <th>Email</th>
                     <th>Address</th>
                     <th>Gender</th>
@@ -43,45 +40,46 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
+                    <tr>
 
-                    <td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName </a></td>
-                    <td>@item.LastName</td>
-                    <td>@item.EmailId</td>
-                    <td>@item.Address</td>
-                    <td>@item.Gender</td>
-                    <td>@item.ContactNo</td>
-                    <td id="ActiveContent">
-                        @if (item.IsActive == true)
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" checked class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
-                                <label class="custom-control-label" for="Active_@item.NurseId"></label>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
-                                <label class="custom-control-label" for="Active_@item.NurseId"></label>
-                            </div>
-                        }
-                    </td>
-                    <td>@item.CreatedOn</td>
-                    <td>
-                        <a href="@Url.Action("Edit",new { Id= item.NurseId })" class=" btn btn-sm btn-circle btn btn-primary">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a href="@Url.Action("Delete",new { Id= item.NurseId})" class="btn btn-sm btn-circle btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
+                        <td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName @item.LastName</a></td>
+                        @*<td>@item.LastName</td>*@
+                        <td>@item.EmailId</td>
+                        <td>@item.Address</td>
+                        <td>@item.Gender</td>
+                        <td>@item.ContactNo</td>
+                        <td id="ActiveContent">
+                            @if (item.IsActive == true)
+                            {
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" checked class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
+                                    <label class="custom-control-label" for="Active_@item.NurseId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
+                                    <label class="custom-control-label" for="Active_@item.NurseId"></label>
+                                </div>
+                            }
+                        </td>
+                        <td>@item.CreatedOn</td>
+                        <td>
+                            <a href="@Url.Action("Edit",new { Id= item.NurseId })" class=" btn btn-sm btn-circle btn btn-primary">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="@Url.Action("Delete",new { Id= item.NurseId})" class="btn btn-sm btn-circle btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
-
+</body>
+</html>
 
 @* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 
@@ -90,7 +88,7 @@
                 $.ajax(
                     {
                         type: "POST",
-                        url: "@Url.Action("Active", "Nusre")" + "/" + id,
+                        url: "@Url.Action("Active", "Nurse")" + "/" + id,
                         success: function (response) {
                             if (response == true) {
                                 alert('Account Activated');

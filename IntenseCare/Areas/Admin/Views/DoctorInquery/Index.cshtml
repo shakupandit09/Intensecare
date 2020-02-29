@@ -37,15 +37,15 @@
                     @if (item.DoctorInquiry.IsReply  == true)
                     {
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" checked class="custom-control-input" id="Active_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
-                            <label class="custom-control-label" for="Active_@item.DoctorInquiry.DoctorInquiryID"></label>
+                            <input type="checkbox" checked class="custom-control-input" id="Reply_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
+                            <label class="custom-control-label" for="Reply_@item.DoctorInquiry.DoctorInquiryID"></label>
                         </div>
                     }
                     else
                     {
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="Active_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
-                            <label class="custom-control-label" for="Active_@item.DoctorInquiry.DoctorInquiryID"></label>
+                            <input type="checkbox" class="custom-control-input" id="Reply_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
+                            <label class="custom-control-label" for="Reply_@item.DoctorInquiry.DoctorInquiryID"></label>
                         </div>
                     }
                 </td>
@@ -54,6 +54,30 @@
         </tbody>
     </table>
 </div>
+<script>
+            function activate(id) {
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "@Url.Action("Active", "Admit")" + "/" + id,
+                            success: function (response) {
+                                if (response == true) {
+                                    alert('Account Activated');
+                                }
+                                else {
+                                    alert('Account Deactivated');
+                                }
+                            },
+                            failure: function (response) {
+                                    alert('Fail -' + response.responseText);
+                                },
+                            error: function (response) {
+                                    alert('Error -' + response.responseText);
+                                }
+                            }
+                    );
+                }
+</script>
 
 
 

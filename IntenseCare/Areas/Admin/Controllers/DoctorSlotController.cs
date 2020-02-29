@@ -9,7 +9,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 {
     public class DoctorSlotController : Controller
     {
-        AppointmentEntities9 dc = new AppointmentEntities9();
+        AppointmentEntities10 dc = new AppointmentEntities10();
         // GET: Admin/DoctorSlot
         public ActionResult Index()
         {
