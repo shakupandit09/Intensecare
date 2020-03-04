@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Payadd";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function Validate() {
+        var pid = document.frmCreate.patientid;
+        var did = document.frmCreate.doctorid;
+        var payamt = document.frmCreate.payamt;
+        var tranid = document.frmCreate.tranid;
+        var cardtype = document.frmCreate.Cardtype;
+        var trantype = document.frmCreate.trantype;
+        var chno = document.frmCreate.chno;
+        var aid = document.frmCreate.admitId;
+        //var contact_no = document.frmCreate.trantype;
+        //var Address = document.frmCreate.Address;
+
+        var pid_pat = /^[0-9]+$/;
+        if (pid.value != "" && pid.value.match(pid_pat)) {
+        }
+        else {
+            alert("Enter only digit");
+
+            pid.focus();
+            return false;
+        }
+        var did_pat = /^[0-9]+$/;
+        if (did.value != "" && did.value.match(did_pat)) {
+        }
+        else {
+            alert("Doctor id digit only");
+            did.focus();
+            return false;
+        }
+        var payamt_pat = /^[0-9]+$/;
+        if (payamt.value != "" && payamt.value.match(payamt_pat)) {
+        }
+        else {
+            alert(" payment is not proper");
+            payamt.focus();
+            return false;
+        }
+        var tranid_pat = /^[0-9]+$/;
+        if (tranid.value != "" && tranid.value.match(tranid_pat)) {
+        }
+        else {
+            alert("Transaction id is not proper");
+            tranid.focus();
+            return false;
+        }
+        var cardtype_pat = /^[A-Za-z]+$/;
+        if (cardtype.value != "" && cardtype.value.match(cardtype_pat)) {
+        }
+        else {
+            alert("Card type is not Proper");
+            Address.focus();
+            return false;
+        }
+        var trantype_pat = /^[a-zA-Z]+$/;
+        if (trantype.value != "" && trantype.value.match(trantype_pat)) {
+        }
+        else {
+            alert("Transaction type is not proper");
+            trantype.focus();
+            return false;
+        }
+        var chno_pat = /^[0-9]+$/;
+        if (chno.value != "" && chno.value.match(chno_pat)) {
+        }
+        else {
+            alert("Cheque number is not Proper");
+            chno.focus();
+            return false;
+        }
+        var aid_pat = /^[0-9]+$/;
+        if (aid.value != "" && aid.value.match(aid_pat)) {
+        }
+        else {
+            alert("Admit id is not Proper");
+            aid.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Add Payment Details</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>PatientId</label>
+                    <input type="text" class="form-control" id="patientid" name="patientid" placeholder="patientId">
+                </div>
+                <div class="col-sm-6">
+                    <label>DoctorId</label>
+                    <input type="text" class="form-control" id="doctorid" name="doctorid" placeholder="doctorid">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Payment Amount</label>
+                    <input type="text" class="form-control" id="payamt" name="payamt" placeholder="Enter payment amt">
+                </div>
+                <div class="col-sm-6">
+                    <label>Transaction Id</label>
+                    <input type="text" class="form-control" id="tranid" name="tranid" placeholder="Enter transaction id ">
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Card Type</label>
+                    <input type="text" class="form-control" id="Cardtype" name="Cardtype" placeholder="Cardtype">
+                </div>
+                <div class="col-sm-6">
+                    <label>Transaction type</label>
+                    <input type="text" class="form-control" id="trantype" name="trantype" placeholder="transaction type">
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
+                    <label>Cheque No</label>
+                    <input type="number" class="form-control" id="chno" name="chno" placeholder="cheque no">
+
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
+                    <label>Admit Id</label>
+                    <input type="number" class="form-control" id="admitId" name="admitId" placeholder="Admit Id ">
+                </div>
+
+            </div>
+            <div class="text-center">
+
+                <input type="submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","Payment")">Back To List</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+

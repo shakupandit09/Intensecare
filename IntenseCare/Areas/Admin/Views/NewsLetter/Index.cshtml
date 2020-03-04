@@ -19,58 +19,62 @@
 <p>
     @Html.ActionLink("Add", "add", new { })
 </p>
-<h2>List of Newsletter </h2>
-<div class="col-md-12">
-  
-
-        <table class=" table table-hover" id="example">
-            <thead class="thead-dark">
-                <tr>
-                    <th>EmailID</th>
-                    <th>SubscribedOn</th>
-                    <th>UnSubscribedOn</th>
-                    <th>IsSubscribed</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">List of Newsletter</h6>
+    </div>
+    <div class="card-body">
+        <div class="col-md-12">
+            <table class=" table table-hover" border="1" id="example">
+                <thead class="thead-dark">
                     <tr>
-
-                        @*<td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName </a></td>*@
-
-                        <td>@item.EmailId</td>
-                        <td>@item.SubscribedOn</td>
-                        <td>@item.UnSubscribedOn</td>
-
-                        <td id="ActiveContent">
-                            @if (item.IsSubscribed == true)
-                            {
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" checked class="custom-control-input" id="Subscribed_@item.NewsLetterId" onchange="return activate(@item.NewsLetterId)">
-                                    <label class="custom-control-label" for="Subscribed_@item.NewsLetterId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="Subscribed_@item.NewsLetterId" onchange="return activate(@item.NewsLetterId)">
-                                    <label class="custom-control-label" for="Subscribed_@item.NewsLetterId"></label>
-                                </div>
-                            }
-                        </td>
-
+                        <th>EmailID</th>
+                        <th>SubscribedOn</th>
+                        <th>UnSubscribedOn</th>
+                        <th>IsSubscribed</th>
 
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            @*<td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName </a></td>*@
+
+                            <td>@item.EmailId</td>
+                            <td>@item.SubscribedOn</td>
+                            <td>@item.UnSubscribedOn</td>
+
+                            <td id="ActiveContent">
+                                @if (item.IsSubscribed == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="Subscribed_@item.NewsLetterId" onchange="return activate(@item.NewsLetterId)">
+                                        <label class="custom-control-label" for="Subscribed_@item.NewsLetterId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="Subscribed_@item.NewsLetterId" onchange="return activate(@item.NewsLetterId)">
+                                        <label class="custom-control-label" for="Subscribed_@item.NewsLetterId"></label>
+                                    </div>
+                                }
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 
 
- <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-<script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+        <script>
             function activate(id) {
                     $.ajax(
                         {
@@ -93,7 +97,7 @@
                             }
                     );
                 }
-</script>
+        </script>
 
 
 

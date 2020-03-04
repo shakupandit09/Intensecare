@@ -21,11 +21,24 @@
 
         </div>
         <div class="card-body">
-            <input type="text" name="PageTitle" />
+            <select name="s1">
+                <option value=""></option>
+                <option value="AboutUs">AboutUs</option>
+                <option value="www">www</option>
+                <option value="uuu">uuu</option>
+                <option value="cms1">cms1</option>
+                <option value="PageTitle">PageTitle</option>
+                <option value="PageTitle">demo</option>
+                <option value="PageTitle">demo2</option>
+                <option value="eee">eee</option>        
+
+            </select>
             <textarea name="BlogContent" style=" height:100px">
             </textarea>
         </div>
         <input type="submit" value="Save" class="btn btn-success btn-lg" />
+        <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
+        @*<a class="d-block small mt-3" href="@Url.Action("Index","cms")">Back To List</a>*@
         <a class="d-block small mt-3" href="@Url.Action("Index","cms")">Back To List</a>
     </form>
 </div>

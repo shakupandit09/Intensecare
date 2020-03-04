@@ -8,6 +8,7 @@ using IntenseCare.Models;
 namespace IntenseCare.Areas.Admin.Controllers
 {
     public class DoctorSlotController : Controller
+
     {
         AppointmentEntities10 dc = new AppointmentEntities10();
         // GET: Admin/DoctorSlot

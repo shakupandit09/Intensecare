@@ -4,103 +4,105 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<head>
+    @section scripts{
+        <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+    }
+    <script type="text/javascript">
+        function Validate() {
+            // alert('THAY CHEX');
+            var name = document.frmCreate.Name;
+            var email = document.frmCreate.Email;
+            var contact_no = document.frmCreate.ContactNo;
+            // alert('Done');
+            var name_pat = /^[a-zA-Z]{3,15}$/;
+            if (name.value != "" && name.value.match(name_pat)) {
+                // alert(name.value);
+            }
+            else {
+                alert("Name should be contain atleast 3 to 15 characters ");
+                name.focus();
+                return false;
+            }
+            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})/;
+            if (email.value != "" && email.value.match(email_pat)) {
+            }
+            else {
+                alert("Email is not Proper");
+                email.focus();
+                return false;
 
-<div class="container">
-<div class="card card-register mx-auto mt-5">
-    <div class="card-header">Update Admin's Record</div>
+            }
+            var contact_no_pat = /^[0-9]{10}$/;
+            if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
+            }
+            else {
+                alert("contact number is not Proper");
+                contact_no.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Update Doctor Record</h6>
+    </div>
     <div class="card-body">
-        <form method="post">
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required="required" autofocus="autofocus">
-                            @*<label for="Name">Enter name</label>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="email" id="Email" name="Email" class="form-control" value="@Model.Emailid" required="required" autofocus="autofocus">
-                            @*<label for="Name">Enter name</label>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="ContactNo" name="ContactNo" class="form-control" value="@Model.ContactNo" required="required" autofocus="autofocus">
-                            @*<label for="Name">Enter name</label>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @*<div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsActive" name="IsActive" class="form-control" value="@Model.IsActive" required="required" autofocus="autofocus">
-                           
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Name" value="@Model.Name">
 
-                        </div>
-                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value="@Model.Emailid" onblur="return CheckEmail(this.value)" />
+
                 </div>
             </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsInsert" name="IsInsert" class="form-control" value="@Model.IsInsert" required="required" autofocus="autofocus">
-                            
-
-                        </div>
-                    </div>
+            <div class="form-group row">
+                <div class="col-sm-8">
+                    <label>ContactNo</label>
+                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="WardNo" value="@Model.ContactNo">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsEdit" name="IsEdit" class="form-control" value="@Model.IsEdit" required="required" autofocus="autofocus">
-                            
-
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center">
+                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" onclick="return Validate()" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Back To List</a>
             </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsDelete" name="IsDelete" class="form-control" value="@Model.IsDelete" required="required" autofocus="autofocus">
-                          
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsSuper" name="IsSuper" class="form-control" value="@Model.IsSuper" required="required" autofocus="autofocus">
-                            
-
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-            @*<p>Name<input type="text" class="form-control" value="@Model.Name" name="Name" required /></p>
-                <p>Email<input type="text" class="form-control" value="@Model.EmailId" name="Email" required></p>
-                <p>ContactNo<input type="text" class="form-control" value="@Model.ContactNo" name="ContactNo" required></p>*@
-            <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
         </form>
     </div>
 </div>
-</div>
+<script>
+    function CheckEmail(val) {
+        if (val != "") {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("CheckEmail", "Admin")",
+                data: { id: val },
+                    success: function (response) {
+                        if (response == "false") {
+                        }
+                        else {
+                            alert('E-Mail Already Exist');
+                            $('#Email').val("");
 
+                            $('#Email').focus();
+                        }
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+            }
+    }
+</script>

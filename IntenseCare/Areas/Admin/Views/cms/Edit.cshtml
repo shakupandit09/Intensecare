@@ -3,6 +3,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container-fluid ">
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Update CMS Page </div>
@@ -12,13 +13,12 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="text" id="PageTittle" name="PageTittle" class="form-control" value="@Model.PageTittle" required="required" autofocus="autofocus">
-
+                                <input type="text" id="PageTittle" name="PageTittle" class="form-control" value="@Model.PageTittle" required="required">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="text" id="Description" name="Description" class="form-control" value="@Model.Description" required="required" autofocus="autofocus">
+                                <input type="text" id="Description" name="Description" class="form-control" value="@Model.Description" required="required">
                             </div>
                         </div>
                     </div>

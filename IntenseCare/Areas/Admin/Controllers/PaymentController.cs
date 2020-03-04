@@ -33,6 +33,27 @@ namespace IntenseCare.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Admin");
             }
         }
+        public ActionResult Payadd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Payadd(FormCollection form)
+        {
+            tblPayment ad = new tblPayment();
+            ad.PatientId = Convert.ToInt32(form["patientid"]);
+            ad.DoctorId = Convert.ToInt32(form["doctorid"]);
+            ad.AdmitDetailId = Convert.ToInt32(form["admitId"]);
+            ad.PaymentAmt = Convert.ToInt32(form["payamt"]);
+            ad.TransactionId = Convert.ToInt32(form["tranid"]);
+            ad.TransactionType = form["Trantype"];
+            ad.ChequeNo = Convert.ToInt32(form["chno"]);
+            ad.CardType = form["Cardtype"];
+            ad.PaidOn = DateTime.Now;
+            dc.tblPayments.Add(ad);
+            dc.SaveChanges();
+            return RedirectToAction("Index", "Payment");
+        }
         public ActionResult Details(int id)
         {
             tblPayment  ad = dc.tblPayments.SingleOrDefault(ob => ob.PaymentId == id);

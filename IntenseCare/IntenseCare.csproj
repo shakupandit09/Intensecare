@@ -2656,6 +2656,11 @@
     <Content Include="ClientContent\scss\bootstrap\utilities\_visibility.scss" />
     <Content Include="ClientContent\scss\style.scss" />
     <Content Include="ClientContent\.DS_Store" />
+    <Content Include="Areas\Admin\Views\Payment\Payadd.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Schart2.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Schart3.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Schart4.cshtml" />
+    <Content Include="Areas\Admin\Views\Achievement\Add.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

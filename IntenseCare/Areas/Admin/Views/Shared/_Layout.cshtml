@@ -83,153 +83,176 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            @*<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>List Of All Table </span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header"> Tables :</h6>
-            <a class="dropdown-item" href="@Url.Action("Index","Doctor")">Doctor</a>
-            <a class="dropdown-item" href="@Url.Action("Index","DoctorAbsent")">DoctorAbsent</a>
-            <a class="dropdown-item" href="@Url.Action("Index","DoctorSlot")">DoctorSlot</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Achievement")">Achievement</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Nurse")">Nurse</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Patient")">Patient</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Appointment")">Appointment</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Admit")">Admit</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Prescription")">Prescription</a>
-            <a class="dropdown-item" href="@Url.Action("Index","PrescriptionDetail")">PrescriptionDetail</a>
-            <a class="dropdown-item" href="@Url.Action("Index","InHouseTreatement")">InHouseTreatement</a>
-            <a class="dropdown-item" href="@Url.Action("Index","PatientDetails")">PatientDetails</a>
-            <a class="dropdown-item" href="@Url.Action("Index","DiagnoseDetails")">DiagnoseDetails</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Review")">Review</a>
-            <a class="dropdown-item" href="@Url.Action("Index","FeedBack")">FeedBack</a>
-            <a class="dropdown-item" href="@Url.Action("Index","DoctorInquery")">DoctorInquery</a>
-            <a class="dropdown-item" href="@Url.Action("Index","AdminInquery")">AdminInquery</a>
-            <a class="dropdown-item" href="@Url.Action("Index","Payment")">Payment</a>
-            <a class="dropdown-item" href="@Url.Action("Index","NewsLetter")">NewsLetter</a>
-        </div>*@
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Doctor")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Doctor List </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","DoctorAbsent")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Doctor Absent </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","DoctorSlot")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Doctor Slot </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Achievement")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Dcotor's Achievement </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Nurse")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Nurse List </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Patient")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Patient List </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Appointment")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Appointment List </span>
-                </a>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Admit")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> AdmitDetail List </span>
+
+            @*<li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Doctor")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Doctor List </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","DoctorAbsent")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Doctor Absent </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","DoctorSlot")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Doctor Slot </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Achievement")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Dcotor's Achievement </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Nurse")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Nurse List </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Patient")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Patient List </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Appointment")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Appointment List </span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Admit")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> AdmitDetail List </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Prescription")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Prescription List </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","PrescriptionDetail")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Prescription Details </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","InHouseTreatement")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> In House Treatement </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","PatientDetails")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Patient Details </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Review")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Reviewed list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","FeedBack")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Feedback list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","DiagnoseDetails")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> DiagnoseDetails list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","DoctorInquery")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> DoctorInquery list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","AdminInquery")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> AdminInquery list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","Payment")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> Payment list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","NewsLetter")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> NewsLetter list </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index","cms")">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span> CMSPage </span>
+            </a>
+        </li>*@
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>User Mananagement</span>
                 </a>
+
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <a class="dropdown-item" href="@Url.Action("list","Admin")">Admin</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Doctor")">Doctor</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Nurse")">Nurse</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Admit")">Admit</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","AdminInquery")">AdminInquery</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Prescription")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Prescription List </span>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Doctor Mananagement</span>
                 </a>
+
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <a class="dropdown-item" href="@Url.Action("Index","DoctorSlot")">DoctorSlot</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","DoctorAbsent")">DoctorAbsent</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Achievement")">Achievement</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","PrescriptionDetail")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Prescription Details </span>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Other</span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","InHouseTreatement")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> In House Treatement </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","PatientDetails")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Patient Details </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Review")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Reviewed list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","FeedBack")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Feedback list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","DiagnoseDetails")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> DiagnoseDetails list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","DoctorInquery")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> DoctorInquery list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","AdminInquery")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> AdminInquery list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Payment")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> Payment list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","NewsLetter")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> NewsLetter list </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","cms")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span> CMSPage </span>
-                </a>
+
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <a class="dropdown-item" href="@Url.Action("Index","Patient")">Patient</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Appointment")">Appointment</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","InHouseTreatement")">InHouseTreatement</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Prescription")">Prescription</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","PrescriptionDetail")">PrescriptionDetail</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","PatientDetails")">PatientDetails</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","DiagnoseDetails")">DiagnoseDetails</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Review")">Review</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","FeedBack")">FeedBack</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","DoctorInquery")">DoctorInquery</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Payment")">Payment</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","cms")">CMSPage</a>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

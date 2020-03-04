@@ -11,15 +11,69 @@
     @section scripts{
         <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
     }
-             <meta name="viewport" content="width=device-width" />
-            <title>registration</title>
-            <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-            <!-- Custom styles for this template-->
-            <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <title>registration</title>
+    <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
+    <script>
+        function Validate() {
+            var DocId = document.frmCreate.DoctorId;
+            var pid = document.frmCreate.PatientId;
+            var nid = document.frmCreate.NurseId;
+            var wtype = document.frmCreate.WardType;
+            var wno = document.frmCreate.WardNo;
+            //var contact_no = document.frmCreate.ContactNo;
+            //var Address = document.frmCreate.Address;
 
-        </head>
+            var did_pat = /^[0-9]+$/;
+            if (DocId.value != "" && DocId.value.match(did_pat)) {
+            }
+            else {
+                alert("Doctor id should be digit");
+                DocId.focus();
+                return false;
+            }
+            var pid_pat = /^[0-9]+$/;
+            if (pid.value != "" && pid.value.match(pid_pat)) {
+            }
+            else {
+                alert("patient id should be digit");
+                pid.focus();
+                return false;
+            }
+            var nid_pat = /^[0-9]+$/;
+            if (nid.value != "" && pid.value.match(nid_pat)) {
+            }
+            else {
+                alert("Nurse id should be digit");
+                nid.focus();
+                return false;
+            }
+            var wtype_pat = /^[a-zA-Z]+$/;
+            if (wtype.value != "" && wtype.value.match(wtype_pat)) {
+            }
+            else {
+                alert("Ward type is not proper");
+                wtype.focus();
+                return false;
+            }
+            var wno_pat = /^[0-9]+$/;
+            if (wno.value != "" && wno.value.match(wno_pat)) {
+            }
+            else {
+                alert("ward no should be digit only");
+                wno.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 
-        <body class="bg-dark">
+
+</head>
+
+        <body class="">
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header">Add Admit details</div>

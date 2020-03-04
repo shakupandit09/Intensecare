@@ -3,6 +3,99 @@
     ViewBag.Title = "Insert";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function Validate() {
+        var firstname = document.frmCreate.FirstName;
+        var lastname = document.frmCreate.LastName;
+        var password = document.frmCreate.Password;
+        var cpassword = document.frmCreate.cpassword;
+        var email = document.frmCreate.Email;
+        var contact_no = document.frmCreate.ContactNo;
+        var Address = document.frmCreate.Address;
+        var Degree = document.frmCreate.Degree;
+        var Special = document.frmCreate.Specialization;
+        var YearOfExp = document.frmCreate.YearOfExp;
+
+        var name_pat = /^[A-Za-z]{3,15}$/;
+        if (firstname.value != "" && firstname.value.match(name_pat)) {
+        }
+        else {
+            alert("FirstName is Minimum 3 Characters and Maximum 15 Contain");
+            firstname.focus();
+            return false;
+        }
+        var name_pat = /^[A-Za-z]{3,10}$/;
+        if (lastname.value != "" && lastname.value.match(name_pat)) {
+        }
+        else {
+            alert("LastName is Minimum 3 Characters and Maximum 10 Contain");
+            lastname.focus();
+            return false;
+        }
+        var pass_pat = /^[A-Za-z0-9]{8,16}$/;
+        if (password != "" && password.value.match(pass_pat)) {
+        }
+        else {
+            alert(" Password lenght should be 8 digit Minimum ");
+            password.focus();
+            return false;
+        }
+        if (password.value == cpassword.value) { }
+        else {
+            alert("Password does not match");
+            cpassword.focus();
+            return false;
+        }
+
+        var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (email.value != "" && email.value.match(email_pat)) {
+        }
+        else {
+            alert("Email is not Proper");
+            email.focus();
+            return false;
+
+        }
+        var contact_no_pat = /^[0-9]{10}$/;
+        if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
+        }
+        else {
+            alert("contact number is not Proper");
+            contact_no.focus();
+            return false;
+        }
+        var add_pat = /^[A-Za-z]+$/;
+        if (Address.value != "" && Address.value.match(add_pat)) {
+        }
+        else {
+            alert("Address is not Proper");
+            Address.focus();
+            return false;
+        }
+        if (Degree.value == "") {
+            //If the "Please Select" option is selected display error.
+            alert("Please select an option!");
+            return false;
+        }
+        var Spe_pat = /^[A-Za-z]+$/;
+        if (Special.value != "" && Special.value.match(Spe_pat)) {
+        }
+        else {
+            alert("Specialization is not Proper");
+            Special.focus();
+            return false;
+        }
+        var YOE_pat = /^[0-9]{1,2}$/;
+        if (YearOfExp.value != "" && YearOfExp.value.match(YOE_pat)) {
+        }
+        else {
+            alert("Year Of Exp is not Proper");
+            YearOfExp.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -29,11 +122,10 @@
             </div>
 
             <div class="text-center">
-                <input type="submit" value="Add Doctor Absent" class="btn btn-success"/>
+                <input type="submit" value="Add Doctor Absent" class="btn btn-success" />
                 <a class="d-block small mt-3" href="@Url.Action("Index","DoctorAbsent")">Back To List</a>
             </div>
         </form>
     </div>
-    </div>      
-       
-           
+</div>
+

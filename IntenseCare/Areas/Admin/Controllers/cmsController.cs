@@ -39,7 +39,6 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             ViewBag.Content = BlogContent;
             return RedirectToAction("ViewCMS", new { Title = "PageTitle" });
-
         }
         [HttpPost]
         public JsonResult Active(int id)

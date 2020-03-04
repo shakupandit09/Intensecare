@@ -8,27 +8,26 @@
     @section scripts{
         <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
     }
-    <script>
+    <script type="text/javascript">
         function Validate() {
             var name = document.frmCreate.Name;
             var password = document.frmCreate.Password;
             var cpassword = document.frmCreate.CPassword;
             var email = document.frmCreate.Email;
             var contact_no = document.frmCreate.ContactNo;
-
-            var name_pat = /^[A-Za-z]+$/;
+            var name_pat = /^[a-zA-Z]{3,15}$/;
             if (name.value != "" && name.value.match(name_pat)) {
             }
             else {
-                alert("Name is not Proper");
+                alert("Name should be contain atleast 3 to 15 characters ");
                 name.focus();
                 return false;
             }
-            var pass_pat = /^[A-Za-z0-9]+$/;
+            var pass_pat = /^[A-Za-z0-9]{8,16}$/;
             if (password != "" && password.value.match(pass_pat)) {
             }
             else {
-                alert("Wrong Password or Password does not match");
+                alert("Password must be 8 digits");
                 password.focus();
                 return false;
             }
@@ -39,7 +38,7 @@
                 return false;
             }
 
-            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})/;
             if (email.value != "" && email.value.match(email_pat)) {
             }
             else {
@@ -48,7 +47,7 @@
                 return false;
 
             }
-            var contact_no_pat = /^[0-9]+$/;
+            var contact_no_pat = /^[0-9]{10}$/;
             if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
             }
             else {
@@ -63,7 +62,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>registration</title>
     <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template-->
     <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
 
 </head>
@@ -78,7 +76,7 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter name" required="required" autofocus="autofocus">
+                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter name" required="required">
                                     <label for="Name">Enter name</label>
                                 </div>
                             </div>
@@ -104,7 +102,7 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required="required">
+                                    <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required="required" onblur="return CheckEmail(this.value)" />
                                     <label for="Email">Email Address</label>
                                 </div>
                             </div>
@@ -114,22 +112,12 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="ContactNo" name="ContactNo" class="form-control" placeholder="Contact No" required="required">
+                                    <input type="text" id="ContactNo" name="ContactNo" class="form-control" placeholder="Contact No" required="required" onblur="return CheckCno(this.value)"/>
                                     <label for="ContactNo">Contact No</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @*<div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="CreatedBy" name="CreatedBy" class="form-control" placeholder="CreatedBy" required="required">
-                                    <label for="CreatedBy">CreatedBy</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
                     <input type="Submit" value="Submit" class="btn btn-primary btn-block" onclick="return Validate()" />
                 </form>
                 <div class="text-center">
@@ -147,3 +135,63 @@
 
 </body>
 </html>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script>
+    function CheckEmail(val) {
+        if (val != "") {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("CheckEmail", "Admin")",
+                data: { id: val },
+                    success: function (response) {
+                        if (response == "false") {
+                        }
+                        else {
+                            alert('E-Mail Already Exist');
+                            $('#Email').val("");
+
+                            $('#Email').focus();
+                        }
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+            }
+    }
+</script>
+@*<script>
+    function CheckCno(val) {
+        if (val != "") {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("CheckCNo", "Admin")",
+                data: { id: val },
+                    success: function (response) {
+                        if (response == "false") {
+                        }
+                        else {
+                            alert('Contact No Already Exist');
+                            $('#ContactNo').val("");
+
+                            $('#ContactNo').focus();
+                        }
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+            }
+    }
+</script>*@
+

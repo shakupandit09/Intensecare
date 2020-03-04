@@ -81,6 +81,21 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+            tblNurse user = dc.tblNurses.SingleOrDefault(ob => ob.EmailId == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Detail(int id)
         {
             tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);           

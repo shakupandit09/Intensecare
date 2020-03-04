@@ -21,37 +21,44 @@
 <p>
     @Html.ActionLink("Add", "add", new { })
 </p>
-<h2>List of Prescription </h2>
-<div class="col-md-12">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">List of Prescription</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="col-md-12">
 
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
-                <th>DoctorId</th>
-                <th>PatientId</th>
-                <th>CreatedOn</th>
-                <th>AdmitId</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
+            <table class=" table table-hover" border="1" id="example">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>DoctorId</th>
+                        <th>PatientId</th>
+                        <th>CreatedOn</th>
+                        <th>AdmitId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
-                    @*<td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName </a></td>*@
-                    <td>@item.Doctor.FirstName</td>
-                    <td>@item.Patient.FirstName</td>
-                    <td>@item.Prescription.CreatedOn</td>
-                    <td>@item.Admit.AdmitDetailId  </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                            @*<td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName </a></td>*@
+                            <td>@item.Doctor.FirstName</td>
+                            <td>@item.Patient.FirstName</td>
+                            <td>@item.Prescription.CreatedOn</td>
+                            <td>@item.Admit.AdmitDetailId  </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 
-@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+        @* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 
 
 

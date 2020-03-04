@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    @section scripts{
+        <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+    }
+    <script type="text/javascript">
+        function Validate() {
+            var did = document.frmCreate.did;
+            var achieve = document.frmCreate.achieve;
+            var achievedes = document.frmCreate.achievedes;
+            var did_pat = /^[0-9]$/;
+            if (did.value != "" && did.value.match(did_pat)) {
+            }
+            else {
+                alert("Doctor id is not proper");
+                did.focus();
+                return false;
+            }
+            var achieve_pat = /^[A-Za-z]+$/;
+            if (achieve.value != "" && achieve.value.match(achieve_pat)) {
+            }
+            else {
+                alert("Achievement is not proper");
+                password.focus();
+                return false;
+            }
+            var achievedes_pat = /^[a-zA-Z]+$/;
+            if (achievedes.value != "" && achievedes.value.match(achievedes_pat)) {
+            }
+            else {
+                alert("Achievement description is not proper");
+                contact_no.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>registration</title>
+    <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
+
+</head>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Add Doctor Achievement</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Doctor Id</label>
+                    <input type="text" class="form-control" id="did" name="did" placeholder=" Doctor id">
+
+                </div>
+                <div class="col-sm-6">
+                    <label>Achieve</label>
+                    <input type="text" class="form-control" id="achieve" name="achieve" placeholder="Achieve">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Achieve description</label>
+                    <input type="text" class="form-control" id="achievedes" name="achievedes" placeholder="Enter achievement description">
+
+                </div>
+                <div class="col-sm-6">
+                    <label>Achievement date</label>
+                    <input type="date" class="form-control" id="adate" name="adate" placeholder="Enter achievement date ">
+
+                </div>
+
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
+
+                <a class="d-block small mt-3" href="@Url.Action("Index","Achievemnt")">Back To List</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

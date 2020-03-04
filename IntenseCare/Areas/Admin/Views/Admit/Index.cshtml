@@ -7,64 +7,71 @@
 <p>
     @Html.ActionLink("Add Admit Details", "registration", new { })
 </p>
-<h2>List of Admit Details</h2>
-<div class="col-md-12">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark"> List of Admit Details</h6>
+    </div>
+    <div class="card-body">
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
+        <div class="col-md-12">
+
+            <table class=" table table-hover" id="example">
+                <thead class="thead-dark">
+                    <tr>
 
 
-                <th>PatientId</th>
-                <th>WardType</th>
-                <th>WardNo</th>
-                <th>IsDischarge</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
+                        <th>PatientId</th>
+                        <th>WardType</th>
+                        <th>WardNo</th>
+                        <th>IsDischarge</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
-                    <td><a href="@Url.Action("Details","Admit",new { id = item.Admit.AdmitDetailId  })">@item.Patient.FirstName </a></td>
-                    @*<td>@item.Doctor.FirstName</td>
-                        <td>@item.Patient.FirstName</td>
-                        <td>@item.Nurse.FirstName</td>*@
-                    <td>@item.Admit.WardType</td>
-                    <td>@item.Admit.WardNo</td>
-                    <td id="ActiveContent">
-                        @if (item.Admit.IsDischarge == true)
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" checked class="custom-control-input" id="Discharge_@item.Admit.AdmitDetailId" onchange="return activate(@item.Admit.AdmitDetailId)">
-                                <label class="custom-control-label" for="Discharge_@item.Admit.AdmitDetailId"></label>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="Discharge_@item.Admit.AdmitDetailId" onchange="return activate(@item.Admit.AdmitDetailId)">
-                                <label class="custom-control-label" for="Discharge_@item.Admit.AdmitDetailId"></label>
-                            </div>
-                        }
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Edit",new { Id= item.Admit.AdmitDetailId})" class=" btn btn-sm btn-circle btn btn-primary">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a href="@Url.Action("Delete",new { Id= item.Admit.AdmitDetailId})" class="btn btn-sm btn-circle btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                            <td><a href="@Url.Action("Details","Admit",new { id = item.Admit.AdmitDetailId  })">@item.Patient.FirstName </a></td>
+                            @*<td>@item.Doctor.FirstName</td>
+                                <td>@item.Patient.FirstName</td>
+                                <td>@item.Nurse.FirstName</td>*@
+                            <td>@item.Admit.WardType</td>
+                            <td>@item.Admit.WardNo</td>
+                            <td id="ActiveContent">
+                                @if (item.Admit.IsDischarge == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="Discharge_@item.Admit.AdmitDetailId" onchange="return activate(@item.Admit.AdmitDetailId)">
+                                        <label class="custom-control-label" for="Discharge_@item.Admit.AdmitDetailId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="Discharge_@item.Admit.AdmitDetailId" onchange="return activate(@item.Admit.AdmitDetailId)">
+                                        <label class="custom-control-label" for="Discharge_@item.Admit.AdmitDetailId"></label>
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit",new { Id= item.Admit.AdmitDetailId})" class=" btn btn-sm btn-circle btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("Delete",new { Id= item.Admit.AdmitDetailId})" class="btn btn-sm btn-circle btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
-@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
-<script>
+        @* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+        <script>
             function activate(id) {
                     $.ajax(
                         {
@@ -87,7 +94,7 @@
                             }
                     );
                 }
-</script>
+        </script>
 
 
 

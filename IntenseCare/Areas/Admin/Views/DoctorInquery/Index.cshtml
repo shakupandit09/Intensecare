@@ -4,57 +4,60 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<p>
-    @Html.ActionLink("Add", "add", new { })
-</p>
-<h2>List of Doctor Inquery </h2>
-<div class="col-md-12">
 
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">List of Doctor Inquery</h6>
+    </div>
+    <div class="card-body">
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
-                <th>PatientId</th>
+        <div class="col-md-12">
+            <table class=" table table-hover" border="1" id="example">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>PatientId</th>
 
-                <th>EmailId</th>
+                        <th>EmailId</th>
 
-                <th>Subject</th>
-                <th>Inquery</th>
+                        <th>Subject</th>
+                        <th>Inquery</th>
 
-                <th>IsReply</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td><a href="@Url.Action("Details","DoctorInquery",new { id = item.DoctorInquiry.DoctorInquiryID })">@item.Patient.FirstName </a></td>
-                <td>@item.DoctorInquiry.EmailID</td>
-                <td>@item.DoctorInquiry.Subject</td>
-                <td>@item.DoctorInquiry.Inquiry</td>
-                <td id="ActiveContent">
-                    @if (item.DoctorInquiry.IsReply  == true)
+                        <th>IsReply</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
                     {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" checked class="custom-control-input" id="Reply_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
-                            <label class="custom-control-label" for="Reply_@item.DoctorInquiry.DoctorInquiryID"></label>
-                        </div>
+                        <tr>
+                            <td><a href="@Url.Action("Details","DoctorInquery",new { id = item.DoctorInquiry.DoctorInquiryID })">@item.Patient.FirstName </a></td>
+                            <td>@item.DoctorInquiry.EmailID</td>
+                            <td>@item.DoctorInquiry.Subject</td>
+                            <td>@item.DoctorInquiry.Inquiry</td>
+                            <td id="ActiveContent">
+                                @if (item.DoctorInquiry.IsReply == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="Reply_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
+                                        <label class="custom-control-label" for="Reply_@item.DoctorInquiry.DoctorInquiryID"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="Reply_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
+                                        <label class="custom-control-label" for="Reply_@item.DoctorInquiry.DoctorInquiryID"></label>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
                     }
-                    else
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="Reply_@item.DoctorInquiry.DoctorInquiryID" onchange="return activate(@item.DoctorInquiry.DoctorInquiryID)">
-                            <label class="custom-control-label" for="Reply_@item.DoctorInquiry.DoctorInquiryID"></label>
-                        </div>
-                    }
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-<script>
+        <script>
             function activate(id) {
                     $.ajax(
                         {
@@ -77,7 +80,7 @@
                             }
                     );
                 }
-</script>
+        </script>
 
 
 
