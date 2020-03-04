@@ -30,23 +30,23 @@ namespace IntenseCare.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Admin");
             }          
         }
-        public ActionResult Add()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Add(FormCollection form)
-        {
-            tblAchievement ad = new tblAchievement();
-            ad.DoctorId= Convert.ToInt32(form["did"]);
-            ad.Achievement = form["achieve"];
-            ad.AchievementDescription = form["achievedes"];
+        //public ActionResult Add()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Add(FormCollection form)
+        //{
+        //    tblAchievement ad = new tblAchievement();
+        //    ad.DoctorId= Convert.ToInt32(form["did"]);
+        //    ad.Achievement = form["achieve"];
+        //    ad.AchievementDescription = form["achievedes"];
      
-            ad.AchievedDate =Convert.ToDateTime(form["adate"]);
-            dc.tblAchievements.Add(ad);
-            dc.SaveChanges();
-            return RedirectToAction("Index", "Achievement");
-        }
+        //    ad.AchievedDate =Convert.ToDateTime(form["adate"]);
+        //    dc.tblAchievements.Add(ad);
+        //    dc.SaveChanges();
+        //    return RedirectToAction("Index", "Achievement");
+        //}
 
         public ActionResult Detail(int id)
         {

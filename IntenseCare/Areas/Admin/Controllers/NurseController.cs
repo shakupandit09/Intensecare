@@ -96,6 +96,21 @@ namespace IntenseCare.Areas.Admin.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult CheckCno(string id)
+        {
+            string response;
+            tblNurse user = dc.tblNurses.SingleOrDefault(ob => ob.ContactNo == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Detail(int id)
         {
             tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);           
@@ -116,7 +131,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             tblNurse  ad = dc.tblNurses .SingleOrDefault(ob => ob.NurseId  == id);
             ad.FirstName = form["FirstName"];
             ad.LastName = form["LastName"];
-            ad.EmailId  = form["Email"];
+            //ad.EmailId  = form["Email"];
             ad.ContactNo = form["ContactNo"];
             ad.Address = form["Address"];
             dc.SaveChanges();

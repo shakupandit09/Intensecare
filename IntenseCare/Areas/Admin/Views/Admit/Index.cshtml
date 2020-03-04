@@ -15,7 +15,7 @@
 
         <div class="col-md-12">
 
-            <table class=" table table-hover" id="example">
+            <table class=" table table-hover ta" id="example">
                 <thead class="thead-dark">
                     <tr>
 
@@ -59,7 +59,7 @@
                                     <i class="fa fa-edit"></i>
                                 </a>
                                 <a href="@Url.Action("Delete",new { Id= item.Admit.AdmitDetailId})" class="btn btn-sm btn-circle btn btn-danger">
-                                    <i class="fa fa-trash"></i>
+                                    <i class="fa fa-trash" onclick="return confirm('Are you sure to delete')"></i>
                                 </a>
                             </td>
                         </tr>

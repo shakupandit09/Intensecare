@@ -165,13 +165,13 @@
             }
     }
 </script>
-@*<script>
+<script>
     function CheckCno(val) {
         if (val != "") {
         $.ajax(
             {
                 type: "POST",
-                url: "@Url.Action("CheckCNo", "Admin")",
+                url: "@Url.Action("CheckCno", "Admin")",
                 data: { id: val },
                     success: function (response) {
                         if (response == "false") {
@@ -193,5 +193,5 @@
             );
             }
     }
-</script>*@
+</script>
 

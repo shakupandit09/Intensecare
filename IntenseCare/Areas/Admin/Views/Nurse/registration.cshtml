@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-sm-6">
                     <label>ContactNo</label>
-                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number">
+                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number" onblur=" return CheckCno(this.value)" />
                 </div>
 
             </div>
@@ -204,6 +204,35 @@
                             $('#Email').val("");
 
                             $('#Email').focus();
+                        }
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+            }
+    }
+</script>
+<script>
+    function CheckCno(val) {
+        if (val != "") {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("CheckCno", "Nurse")",
+                data: { id: val },
+                    success: function (response) {
+                        if (response == "false") {
+                        }
+                        else {
+                            alert('Contact No Already Exist');
+                            $('#ContactNo').val("");
+
+                            $('#ContactNo').focus();
                         }
                     },
                     failure: function (response) {
