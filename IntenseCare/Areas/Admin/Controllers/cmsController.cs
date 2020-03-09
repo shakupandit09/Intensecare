@@ -13,22 +13,12 @@ namespace IntenseCare.Areas.Admin.Controllers
         // GET: Admin/cms
         public ActionResult Index()
         {
-            if (Session["loginid"] != null)
-            {
-                var ad = dc.tblCMSPages.ToList();
-                return View(ad);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Admin");
-            }
-        }
-        public ActionResult Add()
-        {
+            var TitleList = from ob in dc.tblCMSPages select ob.PageTittle;
+            ViewBag.PageTittle = TitleList;
             return View();
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult Add(string BlogContent, string PageTitle)
+        public ActionResult Index(string BlogContent, string PageTitle)
         {
             tblCMSPage cms = new tblCMSPage();
             cms.PageTittle = PageTitle;
@@ -39,6 +29,22 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             ViewBag.Content = BlogContent;
             return RedirectToAction("ViewCMS", new { Title = "PageTitle" });
+        }
+        public ActionResult ViewCMS(int id = 1)
+        {
+            var TitleList = from ob in dc.tblCMSPages select ob;
+            ViewBag.cms = TitleList;
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
+            return View(cms);
+
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult ViewCMS(string BlogContent, int id)
+        {
+            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
+            cms.Description = BlogContent;
+            dc.SaveChanges();
+            return RedirectToAction("ViewCMS", "cms");
         }
         [HttpPost]
         public JsonResult Active(int id)
@@ -54,28 +60,6 @@ namespace IntenseCare.Areas.Admin.Controllers
             }
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
-        }
-        public ActionResult ViewCMS(string Title)
-        {
-            tblCMSPage cms = dc.tblCMSPages.SingleOrDefault(ob => ob.PageTittle == Title);
-            return View(cms);
-        }
-        public ActionResult Edit(int id)
-        {
-            TempData["UpdateId"] = id;
-            tblCMSPage ad = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
-            return View(ad);
-        }
-        [HttpPost]
-        public ActionResult Edit(FormCollection form)
-        {
-            int id = Convert.ToInt32(TempData["UpdateId"]);
-
-           tblCMSPage ad = dc.tblCMSPages.SingleOrDefault(ob => ob.CMSPageId == id);
-            ad.PageTittle = form["PageTittle"];
-            ad.Description = form["Description"];
-            dc.SaveChanges();
-            return RedirectToAction("Index", "cms");
         }
     }
 }

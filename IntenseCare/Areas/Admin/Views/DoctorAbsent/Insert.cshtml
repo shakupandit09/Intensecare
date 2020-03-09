@@ -5,92 +5,13 @@
 }
 <script>
     function Validate() {
-        var firstname = document.frmCreate.FirstName;
-        var lastname = document.frmCreate.LastName;
-        var password = document.frmCreate.Password;
-        var cpassword = document.frmCreate.cpassword;
-        var email = document.frmCreate.Email;
-        var contact_no = document.frmCreate.ContactNo;
-        var Address = document.frmCreate.Address;
-        var Degree = document.frmCreate.Degree;
-        var Special = document.frmCreate.Specialization;
-        var YearOfExp = document.frmCreate.YearOfExp;
-
-        var name_pat = /^[A-Za-z]{3,15}$/;
-        if (firstname.value != "" && firstname.value.match(name_pat)) {
+        var DoctorId = document.frmCreate.DoctorId;
+        var DoctorId_pat = /^[0-9]{1,2}$/;
+        if (DoctorId.value != "" && DoctorId.value.match(DoctorId_pat)) {
         }
         else {
-            alert("FirstName is Minimum 3 Characters and Maximum 15 Contain");
-            firstname.focus();
-            return false;
-        }
-        var name_pat = /^[A-Za-z]{3,10}$/;
-        if (lastname.value != "" && lastname.value.match(name_pat)) {
-        }
-        else {
-            alert("LastName is Minimum 3 Characters and Maximum 10 Contain");
-            lastname.focus();
-            return false;
-        }
-        var pass_pat = /^[A-Za-z0-9]{8,16}$/;
-        if (password != "" && password.value.match(pass_pat)) {
-        }
-        else {
-            alert(" Password lenght should be 8 digit Minimum ");
-            password.focus();
-            return false;
-        }
-        if (password.value == cpassword.value) { }
-        else {
-            alert("Password does not match");
-            cpassword.focus();
-            return false;
-        }
-
-        var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (email.value != "" && email.value.match(email_pat)) {
-        }
-        else {
-            alert("Email is not Proper");
-            email.focus();
-            return false;
-
-        }
-        var contact_no_pat = /^[0-9]{10}$/;
-        if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
-        }
-        else {
-            alert("contact number is not Proper");
-            contact_no.focus();
-            return false;
-        }
-        var add_pat = /^[A-Za-z]+$/;
-        if (Address.value != "" && Address.value.match(add_pat)) {
-        }
-        else {
-            alert("Address is not Proper");
-            Address.focus();
-            return false;
-        }
-        if (Degree.value == "") {
-            //If the "Please Select" option is selected display error.
-            alert("Please select an option!");
-            return false;
-        }
-        var Spe_pat = /^[A-Za-z]+$/;
-        if (Special.value != "" && Special.value.match(Spe_pat)) {
-        }
-        else {
-            alert("Specialization is not Proper");
-            Special.focus();
-            return false;
-        }
-        var YOE_pat = /^[0-9]{1,2}$/;
-        if (YearOfExp.value != "" && YearOfExp.value.match(YOE_pat)) {
-        }
-        else {
-            alert("Year Of Exp is not Proper");
-            YearOfExp.focus();
+            alert("DoctorId is  digit only");
+            DoctorId.focus();
             return false;
         }
         return true;
@@ -108,21 +29,21 @@
                     <input type="text" class="form-control" id="DoctorId" name="DoctorId" placeholder="DoctorId">
                 </div>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="FromDate">
+                    <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="FromDate" required>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="ToDate">
+                    <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="ToDate" required>
                 </div>
                 <div class="col-sm-6">
-                    <input type="time" class="form-control" id="FromTime" name="FromTime" placeholder="FromTime">
+                    <input type="time" class="form-control" id="FromTime" name="FromTime" placeholder="FromTime" required>
                 </div>
 
             </div>
 
             <div class="text-center">
-                <input type="submit" value="Add Doctor Absent" class="btn btn-success" />
+                <input type="submit" value="Add Doctor Absent" class="btn btn-success"  onclick="return Validate()"/>
                 <a class="d-block small mt-3" href="@Url.Action("Index","DoctorAbsent")">Back To List</a>
             </div>
         </form>

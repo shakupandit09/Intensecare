@@ -7,6 +7,7 @@ namespace IntenseCare.Models
 {
     public class Datamodel
     {
+        public tblAdmin admin { get; set; }
         public tblDoctor Doctor { get; set; }
         public tblDoctorAbsence Absence { get; set; }
         public tblAchievement Achieve { get; set; }

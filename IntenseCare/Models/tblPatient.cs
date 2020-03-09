@@ -32,6 +32,6 @@ namespace IntenseCare.Models
         public Nullable<int> ReferencedBy { get; set; }
         public string NomineeName { get; set; }
         public string NomineeContactNo { get; set; }
-        public byte[] NomineeAddress { get; set; }
+        public string NomineeAddress { get; set; }
     }
 }

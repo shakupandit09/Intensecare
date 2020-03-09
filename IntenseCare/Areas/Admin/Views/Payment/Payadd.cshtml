@@ -9,14 +9,12 @@
         var did = document.frmCreate.doctorid;
         var payamt = document.frmCreate.payamt;
         var tranid = document.frmCreate.tranid;
-        var cardtype = document.frmCreate.Cardtype;
-        var trantype = document.frmCreate.trantype;
+        //var cardtype = document.frmCreate.Cardtype;
+        //var trantype = document.frmCreate.trantype;
         var chno = document.frmCreate.chno;
-        var aid = document.frmCreate.admitId;
-        //var contact_no = document.frmCreate.trantype;
-        //var Address = document.frmCreate.Address;
-
-        var pid_pat = /^[0-9]+$/;
+        //var aid = document.frmCreate.admitId;
+        
+        var pid_pat = /^[0-9]{1,3}$/;
         if (pid.value != "" && pid.value.match(pid_pat)) {
         }
         else {
@@ -25,7 +23,7 @@
             pid.focus();
             return false;
         }
-        var did_pat = /^[0-9]+$/;
+        var did_pat = /^[0-9]{1,3}$/;
         if (did.value != "" && did.value.match(did_pat)) {
         }
         else {
@@ -33,54 +31,30 @@
             did.focus();
             return false;
         }
-        var payamt_pat = /^[0-9]+$/;
+        var payamt_pat = /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;   /*/^[-+]?[0-9]+\.[0-9]$/*/;
         if (payamt.value != "" && payamt.value.match(payamt_pat)) {
         }
         else {
             alert(" payment is not proper");
-            payamt.focus();
+          payamt.focus();
             return false;
         }
-        var tranid_pat = /^[0-9]+$/;
-        if (tranid.value != "" && tranid.value.match(tranid_pat)) {
-        }
-        else {
+        
+        var tranid_pat = /^[0-9]{12}$/;
+        if (tranid.value.match(tranid_pat)) {
             alert("Transaction id is not proper");
             tranid.focus();
             return false;
         }
-        var cardtype_pat = /^[A-Za-z]+$/;
-        if (cardtype.value != "" && cardtype.value.match(cardtype_pat)) {
-        }
-        else {
-            alert("Card type is not Proper");
-            Address.focus();
-            return false;
-        }
-        var trantype_pat = /^[a-zA-Z]+$/;
-        if (trantype.value != "" && trantype.value.match(trantype_pat)) {
-        }
-        else {
-            alert("Transaction type is not proper");
-            trantype.focus();
-            return false;
-        }
-        var chno_pat = /^[0-9]+$/;
-        if (chno.value != "" && chno.value.match(chno_pat)) {
-        }
-        else {
+       
+
+        var chno_pat = /^[0-9]{6}$/;
+        if (chno.value.match(chno_pat)) {
             alert("Cheque number is not Proper");
             chno.focus();
             return false;
         }
-        var aid_pat = /^[0-9]+$/;
-        if (aid.value != "" && aid.value.match(aid_pat)) {
-        }
-        else {
-            alert("Admit id is not Proper");
-            aid.focus();
-            return false;
-        }
+    
         return true;
     }
 </script>
@@ -113,22 +87,36 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Card Type</label>
-                    <input type="text" class="form-control" id="Cardtype" name="Cardtype" placeholder="Cardtype">
+                    <label>CardType</label>
+                    <select name="Cardtype" id="Cardtype" value="select">
+                        <option value=""></option>
+                        
+                        <option value="Debit Card">Debit Card</option>
+                        <option value="Credit Card">Credit Card</option>
+                        
+                    </select>
                 </div>
                 <div class="col-sm-6">
                     <label>Transaction type</label>
-                    <input type="text" class="form-control" id="trantype" name="trantype" placeholder="transaction type">
+                    <select name="trantype" id="trantype" value="select">
+                        <option value=""></option>
+                        <option value="Cash">cash</option>
+                        <option value="Debit Card">Debit Card</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="NetBanking">NetBanking</option>
+                        <option value="Wallet">Wallet</option>
+                        <option value="UPI">UPI</option>
+                    </select>
                 </div>
 
             </div>
             <div class="form-group row">
-                <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
+                <div class="col-sm-4 mb-3 mb-sm-0">
                     <label>Cheque No</label>
                     <input type="number" class="form-control" id="chno" name="chno" placeholder="cheque no">
 
                 </div>
-                <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
+                <div class="col-sm-4 mb-3 mb-sm-0">
                     <label>Admit Id</label>
                     <input type="number" class="form-control" id="admitId" name="admitId" placeholder="Admit Id ">
                 </div>

@@ -30,7 +30,7 @@
         <table class=" table table-hover table-bordered" border="0" id="example">
             <thead class="thead-dark">
                 <tr>
-                    <th>PatientId</th>
+                    <th>Patient</th>
                     <th>Diagnosis</th>
                     <th>Remark</th>
                     <th>IsFromReport</th>
@@ -78,10 +78,10 @@
                         url: "@Url.Action("Active", "DiagnoseDetails")" + "/" + id,
                         success: function (response) {
                             if (response == true) {
-                                alert('Account Activated');
+                                alert('Report Generated');
                             }
                             else {
-                                alert('Account Deactivated');
+                                alert('Report Not Generated');
                             }
                         },
                         failure: function (response) {

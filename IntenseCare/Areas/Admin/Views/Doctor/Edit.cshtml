@@ -12,8 +12,8 @@
         var contact_no = document.frmCreate.ContactNo;
         var Address = document.frmCreate.Address;
         //var Degree = document.frmCreate.Degree;
-        //var Special = document.frmCreate.Specialization;
-        //var YearOfExp = document.frmCreate.YearOfExp;
+        var Special = document.frmCreate.Specialization;
+        var YearOfExp = document.frmCreate.YearOfExp;
 
         var name_pat = /^[A-Za-z]{3,15}$/;
         if (firstname.value != "" && firstname.value.match(name_pat)) {
@@ -112,7 +112,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-label-group">
-                    <input type="file" accept="~/Areas/image/*" onchange=" return loadFile(event)" class="form-control-file" placeholder="Choose your Profile Image" id="txtfile" name="txtfile" />
+                    <input type="file" accept="~/Areas/image/*" value= "@Model.ProfileImageUrl" onchange=" return loadFile(event)" class="form-control-file" placeholder="Choose your Profile Image" id="txtfile" name="txtfile" />
                     <label><b>Image Upload</b></label>
                 </div>
             </div>

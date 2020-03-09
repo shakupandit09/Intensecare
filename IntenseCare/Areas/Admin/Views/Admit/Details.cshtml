@@ -4,34 +4,96 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div>
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","Admit")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","Admit")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text text-dark"><b>Admit Detail</b></h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4" style="width:100%; height:400px; margin:20px;">
+            <div class="card-body">
+                @*<h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">AdmitId : <b>@Model.AdmitDetailId</b></h5><br />*@
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                        Doctor : <b>@ViewBag.DoctorName</b>
+                    </a>
+                    <br />
+                    <br />
+                    <a href="@Url.Action("Detail","Patient", new { id = Model.PatientId})">
+                        Patient : <b>@ViewBag.PatientName</b>
+                    </a>
+                    <br />
+                    <br />
+                    NurseId : <b>@ViewBag.NurseName</b>
+                </h5><br />
+                     <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                         CreatedBy : <b>@ViewBag.AdminName</b>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ModifiedBy : <b>@ViewBag.MName</b>
+                     </h5><br />
+                          <div class="row">
+                              <div class="col-6">
+                                  <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                      Discharge :
+                                  </h5>
+                              </div>
+                              <div class="col-4">
+                                  @if (Model.IsDischarge == true)
+                                  {
+                                      <div class="alert-success" style="padding:5px; margin:5px; border:1px solid #808080">
+                                          Yes
+                                      </div>
+                                  }
+                                  else
+                                  {
+                                      <div class="alert-success" style="padding:5px; margin:5px; border:1px solid #808080">
+                                          No
+                                      </div>
+                                  }
+                              </div>
+                              <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                  &nbsp;&nbsp;&nbsp; Ward Type : <b>@Model.WardType</b>
 
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ward No : <b>@Model.WardNo</b>
+                              </h5><br />
+                              <br />
+                              <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                  &nbsp;&nbsp;&nbsp;  CreatedOn : <b>@Model.CreatedOn.ToShortDateString()</b>
+
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ModifiedOn : <b>@Model.ModifiedOn</b>
+
+                              </h5><br />
+
+                          </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
+    </div>
+</div>
+
+
+    @*<div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-4" style="text-align:center">
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
                     </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
-                        </div>
-                        Admin Id :<b>@Model.AdmitDetailId</b><br />
-                        Doctor Id :<b>@ViewBag.DoctorName</b><br />
-                        @*Patient Id :<b>@Model.PatientId</b><br />*@
-                        Nurse Id: <b>@ViewBag.NurseName</b><br />
+                    Admin Id :<b>@Model.AdmitDetailId</b><br />
+                    Doctor Id :<b>@ViewBag.DoctorName</b><br />
+                    @*Patient Id :<b>@Model.PatientId</b><br />*@
+    @*Nurse Id: <b>@ViewBag.NurseName</b><br />
                         WardType :<b>@Model.WardType</b><br />
                         Ward No : <b>@Model.WardNo</b><br />
                         CreatedBy :<b>@Model.CreatedBy</b><br />
-                        @*CreatedBy :<b>@ViewBag.AdminName</b><br />*@
+
                         Modified By:<b>@Model.ModifiedBy</b><br />
                         Modified On : <b>@Model.ModifiedOn</b><br />
                         Created On : <b>@Model.CreatedOn</b><br />
@@ -61,7 +123,7 @@
                     </div>
                 </div>
             </div>
-        </div>
- 
+        </div>*@
+
 
 

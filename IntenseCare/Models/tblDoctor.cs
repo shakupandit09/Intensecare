@@ -26,7 +26,7 @@ namespace IntenseCare.Models
         public int CityID { get; set; }
         public string ProfileImageUrl { get; set; }
         public string Degree { get; set; }
-        public Nullable<int> YearOfExperience { get; set; }
+        public string YearOfExperience { get; set; }
         public bool IsActive { get; set; }
         public bool IsVerified { get; set; }
         public bool IsMobileVerified { get; set; }

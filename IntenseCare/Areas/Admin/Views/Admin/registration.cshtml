@@ -1,9 +1,8 @@
-﻿@{
-    Layout = null;
+﻿
+@{
+    ViewBag.Title = "registration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
-
-<html>
 <head>
     @section scripts{
         <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
@@ -12,7 +11,7 @@
         function Validate() {
             var name = document.frmCreate.Name;
             var password = document.frmCreate.Password;
-            var cpassword = document.frmCreate.CPassword;
+            var cpassword = document.frmCreate.cpassword;
             var email = document.frmCreate.Email;
             var contact_no = document.frmCreate.ContactNo;
             var name_pat = /^[a-zA-Z]{3,15}$/;
@@ -65,76 +64,118 @@
     <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
 
 </head>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Add New Admin</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Name">
 
-<body class="bg-dark">
-    <div class="container">
-        <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Register an Account</div>
-            <div class="card-body">
-                <form method="post" name="frmCreate">
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter name" required="required">
-                                    <label for="Name">Enter name</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter Password" required="required">
-                                    <label for="Password">Password</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-label-group">
-                            <input type="password" id="CPassword" name="CPassword" class="form-control" placeholder="Enter CPassword" required="required">
-                            <label for="Cpassword">Conform Password</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required="required" onblur="return CheckEmail(this.value)" />
-                                    <label for="Email">Email Address</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="ContactNo" name="ContactNo" class="form-control" placeholder="Contact No" required="required" onblur="return CheckCno(this.value)"/>
-                                    <label for="ContactNo">Contact No</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="Submit" value="Submit" class="btn btn-primary btn-block" onclick="return Validate()" />
-                </form>
-                <div class="text-center">
-                    <a class="d-block small mt-3" href="@Url.Action("Index")">Login Page</a>
-                    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                </div>
+                <div class="col-sm-6">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address">
+
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>
-    <script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Password</label>
+                    <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password">
 
-</body>
-</html>
+                </div>
+                <div class="col-sm-6">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Enter Confirm password ">
+
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label>ContactNo</label>
+                    <input type="text" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number" onblur=" return CheckCno(this.value)">
+
+                </div>
+
+            </div>                   
+            <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","Admin")">Back To List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div class="card card-register mx-auto mt-5">
+        <div class="card-header">Register an Account</div>
+        <div class="card-body">
+            <form method="post" name="frmCreate">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter name" required="required">
+                                <label for="Name">Enter name</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter Password" required="required">
+                                <label for="Password">Password</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <input type="password" id="CPassword" name="CPassword" class="form-control" placeholder="Enter CPassword" required="required">
+                        <label for="Cpassword">Conform Password</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required="required" onblur="return CheckEmail(this.value)" />
+                                <label for="Email">Email Address</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-label-group">
+                                <input type="text" id="ContactNo" name="ContactNo" class="form-control" placeholder="Contact No" required="required" onblur="return CheckCno(this.value)" />
+                                <label for="ContactNo">Contact No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="Submit" value="Submit" class="btn btn-primary btn-block" onclick="return Validate()" />
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="@Url.Action("list")">Back to list</a>
+                @*<a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+            </div>
+        </div>
+    </div>*@
+
+<!-- Bootstrap core JavaScript-->
+<script src="~/AdminContent/vendor/jquery/jquery.min.js"></script>
+<script src="~/AdminContent/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/AdminContent/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <script>
     function CheckEmail(val) {
@@ -194,4 +235,5 @@
             }
     }
 </script>
+
 

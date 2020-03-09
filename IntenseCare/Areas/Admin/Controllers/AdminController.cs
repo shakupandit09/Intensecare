@@ -29,6 +29,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 
             else
             {
+                ViewBag.message = "Invalid Email or password";
                 return View();
             }
         }
@@ -105,6 +106,8 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
+            tblAdmin admin = (from ob2 in dc.tblAdmins where ob2.AdminId == ad.CreatedBy select ob2).Take(1).SingleOrDefault();
+            ViewBag.AdminName = admin.Name;
             return View(ad);
         }
         public ActionResult Delete(int id)
@@ -128,7 +131,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
             ad.Name = form["Name"];
-            //ad.Emailid = form["Email"];
+            ad.Emailid = form["Email"];
             ad.ContactNo = form["ContactNo"];
             dc.SaveChanges();
             return RedirectToAction("list");
@@ -156,6 +159,8 @@ namespace IntenseCare.Areas.Admin.Controllers
             ViewBag.AppointmentCount = (from ob in dc.tblAppoinments select ob).ToList().Count().ToString();
             ViewBag.AdmitCount = (from ob in dc.tblAdmitDetails select ob).ToList().Count().ToString();
             ViewBag.NurseCount = (from ob in dc.tblNurses select ob).ToList().Count().ToString();
+            ViewBag.TodayAppointmentCount = (from ob in dc.tblAppoinments where ob.Appointment_date == DateTime.Today orderby ob.Appointment_time descending select ob).ToList().Count().ToString();
+           
             return View();
         }
         public ActionResult Schart()

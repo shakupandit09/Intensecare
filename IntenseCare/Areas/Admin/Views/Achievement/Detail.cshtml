@@ -12,30 +12,56 @@
                     <i class="fa fa-backward fa-1x"></i>
                 </a>
             </h6>
-
+            @*<h3 class="text-dark"> @ViewBag.DoctorName's profile</h3>*@
         </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.DoctorName's profile</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow mb-10" style="width:96%; margin:20px">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12" style="align-content:center">
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                                    Doctor : <b>@ViewBag.DoctorName</b>
+                                </a>
+                            </h5><br />
                         </div>
-                        Achievement Id :<b>@Model.AchievementId</b><br />
-
-                       Achievement :<b>@Model.Achievement</b><br />
-                        Achievement Descripation: <b>@Model.AchievementDescription</b><br />
-                        Achievement Date :<b>@Model.AchievedDate</b>
-
-
                     </div>
+                    <h6 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                        &nbsp;&nbsp; &nbsp;&nbsp;  Achievement : <b>@Model.Achievement</b><br /><br />
+                        &nbsp;&nbsp; &nbsp;&nbsp; Achievement Description : <b>@Model.AchievementDescription</b>
+                    </h6>
+                    &nbsp;&nbsp; &nbsp; Achieved Date : <b>@Model.AchievedDate.Value.ToShortDateString()</b>
                 </div>
+                
+
             </div>
         </div>
     </div>
-</div>
+    
+    @*<div class="card-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4" style="text-align:center; margin:20px;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <h3 class="text-dark"> @ViewBag.DoctorName's profile</h3>
+                                </div>
+                                Achievement Id :<b>@Model.AchievementId</b><br />
+
+                               Achievement :<b>@Model.Achievement</b><br />
+                                Achievement Descripation: <b>@Model.AchievementDescription</b><br />
+                                Achievement Date :<b>@Model.AchievedDate</b>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
 
 

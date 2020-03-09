@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CityMaster">
           <Key>
             <PropertyRef Name="ID" />
@@ -147,7 +147,7 @@
           <Property Name="CityID" Type="int" Nullable="false" />
           <Property Name="ProfileImageUrl" Type="varchar" MaxLength="50" />
           <Property Name="Degree" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="YearOfExperience" Type="int" />
+          <Property Name="YearOfExperience" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IsVerified" Type="bit" Nullable="false" />
           <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
@@ -272,7 +272,7 @@
           <Property Name="ReferencedBy" Type="int" />
           <Property Name="NomineeName" Type="varchar" MaxLength="50" />
           <Property Name="NomineeContactNo" Type="varchar" MaxLength="10" />
-          <Property Name="NomineeAddress" Type="varbinary(max)" />
+          <Property Name="NomineeAddress" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tblPatientDetail">
           <Key>
@@ -294,7 +294,7 @@
           <Property Name="PaymentAmt" Type="int" Nullable="false" />
           <Property Name="TransactionType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CardType" Type="varchar" MaxLength="50" />
-          <Property Name="TransactionId" Type="int" />
+          <Property Name="TransactionId" Type="varchar" MaxLength="20" />
           <Property Name="ChequeNo" Type="int" />
           <Property Name="PaidOn" Type="datetime" Nullable="false" />
           <Property Name="AdmitDetailId" Type="int" />
@@ -391,8 +391,7 @@
             <End Role="StateMaster" EntitySet="StateMaster" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AppointmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -526,30 +525,6 @@
           <Property Name="IsFormReport" Type="Boolean" />
           <Property Name="AdmitDetailId" Type="Int32" />
         </EntityType>
-        <EntityType Name="tblDoctor">
-          <Key>
-            <PropertyRef Name="DoctorId" />
-          </Key>
-          <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CityID" Type="Int32" Nullable="false" />
-          <Property Name="ProfileImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="YearOfExperience" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
-          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
-          <Property Name="ApprovedBy" Type="Int32" />
-          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
-          <Property Name="Specialization" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblDoctorAbsence">
           <Key>
             <PropertyRef Name="DoctorAbsenceId" />
@@ -645,30 +620,6 @@
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="tblPatient">
-          <Key>
-            <PropertyRef Name="PatientId" />
-          </Key>
-          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Pin" Type="Int32" Nullable="false" />
-          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
-          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateOFBirth" Type="DateTime" Precision="0" />
-          <Property Name="History" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ReferencedBy" Type="Int32" />
-          <Property Name="NomineeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NomineeContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NomineeAddress" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="tblPatientDetail">
           <Key>
             <PropertyRef Name="PatientDetailId" />
@@ -677,21 +628,6 @@
           <Property Name="PatientId" Type="Int32" Nullable="false" />
           <Property Name="Symptoms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="AdmitDetailId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="tblPayment">
-          <Key>
-            <PropertyRef Name="PaymentId" />
-          </Key>
-          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientId" Type="Int32" Nullable="false" />
-          <Property Name="DoctorId" Type="Int32" Nullable="false" />
-          <Property Name="PaymentAmt" Type="Int32" Nullable="false" />
-          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TransactionId" Type="Int32" />
-          <Property Name="ChequeNo" Type="Int32" />
-          <Property Name="PaidOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AdmitDetailId" Type="Int32" />
         </EntityType>
         <EntityType Name="tblPrescription">
@@ -763,7 +699,6 @@
           <EntitySet Name="tblAppoinments" EntityType="Self.tblAppoinment" />
           <EntitySet Name="tblCMSPages" EntityType="Self.tblCMSPage" />
           <EntitySet Name="tblDiagnoseDetails" EntityType="Self.tblDiagnoseDetail" />
-          <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
           <EntitySet Name="tblDoctorAbsences" EntityType="Self.tblDoctorAbsence" />
           <EntitySet Name="tblDoctorInquiries" EntityType="Self.tblDoctorInquiry" />
           <EntitySet Name="tblDoctorSlots" EntityType="Self.tblDoctorSlot" />
@@ -771,9 +706,7 @@
           <EntitySet Name="TblInHouseTreatements" EntityType="Self.TblInHouseTreatement" />
           <EntitySet Name="tblNewsLetters" EntityType="Self.tblNewsLetter" />
           <EntitySet Name="tblNurses" EntityType="Self.tblNurse" />
-          <EntitySet Name="tblPatients" EntityType="Self.tblPatient" />
           <EntitySet Name="tblPatientDetails" EntityType="Self.tblPatientDetail" />
-          <EntitySet Name="tblPayments" EntityType="Self.tblPayment" />
           <EntitySet Name="tblPrescriptions" EntityType="Self.tblPrescription" />
           <EntitySet Name="tblPrescriptionDetails" EntityType="Self.tblPrescriptionDetail" />
           <EntitySet Name="tblReviews" EntityType="Self.tblReview" />
@@ -785,7 +718,73 @@
             <End Role="CountryMaster" EntitySet="CountryMasters" />
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
+          <EntitySet Name="tblDoctors" EntityType="AppointmentModel.tblDoctor" />
+          <EntitySet Name="tblPatients" EntityType="AppointmentModel.tblPatient" />
+          <EntitySet Name="tblPayments" EntityType="AppointmentModel.tblPayment" />
         </EntityContainer>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="ProfileImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Degree" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YearOfExperience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="Specialization" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pin" Type="Int32" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOFBirth" Type="DateTime" Precision="0" />
+          <Property Name="History" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferencedBy" Type="Int32" />
+          <Property Name="NomineeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NomineeContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NomineeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentAmt" Type="Int32" Nullable="false" />
+          <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeNo" Type="Int32" />
+          <Property Name="PaidOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdmitDetailId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -928,31 +927,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblDoctors">
-            <EntityTypeMapping TypeName="AppointmentModel.tblDoctor">
-              <MappingFragment StoreEntitySet="tblDoctor">
-                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
-                <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
-                <ScalarProperty Name="Degree" ColumnName="Degree" />
-                <ScalarProperty Name="YearOfExperience" ColumnName="YearOfExperience" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
-                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
-                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
-                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblDoctorAbsences">
             <EntityTypeMapping TypeName="AppointmentModel.tblDoctorAbsence">
               <MappingFragment StoreEntitySet="tblDoctorAbsence">
@@ -1055,31 +1029,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblPatients">
-            <EntityTypeMapping TypeName="AppointmentModel.tblPatient">
-              <MappingFragment StoreEntitySet="tblPatient">
-                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Pin" ColumnName="Pin" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
-                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="DateOFBirth" ColumnName="DateOFBirth" />
-                <ScalarProperty Name="History" ColumnName="History" />
-                <ScalarProperty Name="ReferencedBy" ColumnName="ReferencedBy" />
-                <ScalarProperty Name="NomineeName" ColumnName="NomineeName" />
-                <ScalarProperty Name="NomineeContactNo" ColumnName="NomineeContactNo" />
-                <ScalarProperty Name="NomineeAddress" ColumnName="NomineeAddress" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblPatientDetails">
             <EntityTypeMapping TypeName="AppointmentModel.tblPatientDetail">
               <MappingFragment StoreEntitySet="tblPatientDetail">
@@ -1087,22 +1036,6 @@
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPayments">
-            <EntityTypeMapping TypeName="AppointmentModel.tblPayment">
-              <MappingFragment StoreEntitySet="tblPayment">
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
-                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
-                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
-                <ScalarProperty Name="PaymentAmt" ColumnName="PaymentAmt" />
-                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
-                <ScalarProperty Name="CardType" ColumnName="CardType" />
-                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="PaidOn" ColumnName="PaidOn" />
                 <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1141,6 +1074,72 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ReviewedOn" ColumnName="ReviewedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctors">
+            <EntityTypeMapping TypeName="AppointmentModel.tblDoctor">
+              <MappingFragment StoreEntitySet="tblDoctor">
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="YearOfExperience" ColumnName="YearOfExperience" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPatients">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPatient">
+              <MappingFragment StoreEntitySet="tblPatient">
+                <ScalarProperty Name="NomineeAddress" ColumnName="NomineeAddress" />
+                <ScalarProperty Name="NomineeContactNo" ColumnName="NomineeContactNo" />
+                <ScalarProperty Name="NomineeName" ColumnName="NomineeName" />
+                <ScalarProperty Name="ReferencedBy" ColumnName="ReferencedBy" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="DateOFBirth" ColumnName="DateOFBirth" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="AppointmentModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayment">
+                <ScalarProperty Name="AdmitDetailId" ColumnName="AdmitDetailId" />
+                <ScalarProperty Name="PaidOn" ColumnName="PaidOn" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="PaymentAmt" ColumnName="PaymentAmt" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

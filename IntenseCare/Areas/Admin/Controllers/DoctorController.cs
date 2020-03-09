@@ -57,11 +57,11 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.Degree = form["Degree"];
             if (form["YearOfExp"] == "")
             {
-                ad.YearOfExperience = 0;
+                ad.YearOfExperience = "";
             }
             else {
             
-            ad.YearOfExperience = Convert.ToInt32(form["YearOfExp"]);
+            ad.YearOfExperience = form["YearOfExp"];
             }
             ad.IsActive = true;
             ad.IsVerified = true;
@@ -91,6 +91,10 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblDoctor ad = dc.tblDoctors.SingleOrDefault(ob => ob.DoctorId == id);
+            tblAdmin admin = (from ob2 in dc.tblAdmins where ob2.AdminId == ad.ApprovedBy select ob2).Take(1).SingleOrDefault();
+            ViewBag.AdminName = admin.Name;
+            CityMaster city = (from ob3 in dc.CityMasters where ob3.ID == ad.CityID select ob3).Take(1).SingleOrDefault();
+            ViewBag.CityName = city.Name;
             return View(ad);
         }
         public string code()
@@ -132,18 +136,19 @@ namespace IntenseCare.Areas.Admin.Controllers
             tblDoctor ad = dc.tblDoctors.SingleOrDefault(ob => ob.DoctorId == id);
             ad.FirstName = form["FirstName"];
             ad.LastName = form["LastName"];
-            //ad.Email = form["Email"];
+            ad.Email = form["Email"];
             if (form["YearOfExp"] == "")
             {
-                ad.YearOfExperience = 0;
+                ad.YearOfExperience = "";
             }
             else
             {
 
-                ad.YearOfExperience = Convert.ToInt32(form["YearOfExp"]);
+                ad.YearOfExperience = form["YearOfExp"];
             }
             ad.ContactNo = form["ContactNo"];
             ad.Address = form["Address"];
+            ad.ProfileImageUrl = name.ToString();
             dc.SaveChanges();
             return RedirectToAction("Index","Doctor");
         }

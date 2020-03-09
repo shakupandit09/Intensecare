@@ -1,122 +1,111 @@
-﻿@model IntenseCare.Models.tblNurse 
+﻿@model IntenseCare.Models.tblNurse
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","Nurse")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
-
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","Nurse")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark">Nurse Details</h3>
+    </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+    <div class="card shadow mb-10" style="width:500px; height:310px;padding:20px;margin:20px">
+        <div class="row">
+            <h3 class="text-dark"> @Html.DisplayFor(model => model.FirstName)'s profile</h3>
         </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @Html.DisplayFor(model => model.FirstName)'s profile</h3>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="mailto: @Html.DisplayFor(model => model.EmailId)">
-                                <h6> @Html.DisplayFor(model => model.EmailId)</h6>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-1x fa-phone"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
-                                <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
-                            </a>
-                        </div>
-                        Nurse Id : <b>@Model.NurseId</b><br />
-
-                        Gender : <b>@Model.Gender</b><br />
-                        Address :<b>@Model.Address  </b><br />
-                        CityId : <b>@Model.CityId</b><br />
-                        Created By :<b>@Model.CreatedBy</b><br />
-                        CreatedOn :<b>@Model.CreatedOn</b>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsActive  &nbsp; &nbsp; :@if (Model.IsActive == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Active_@Model.NurseId" onchange="return activate(@Model.NurseId)">
-                                        <label class="custom-control-label" for="Active_@Model.NurseId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Active_@Model.NurseId" onchange="return activate(@Model.NurseId)">
-                                        <label class="custom-control-label" for="Active_@Model.NurseId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsVerified  &nbsp; &nbsp; :@if (Model.IsVerified == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Verified_@Model.NurseId" onchange="return activate(@Model.NurseId)">
-                                        <label class="custom-control-label" for="Verified_@Model.NurseId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Verified_@Model.NurseId" onchange="return activate(@Model.NurseId)">
-                                        <label class="custom-control-label" for="Verified_@Model.NurseId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsMobileVerified &nbsp; &nbsp; :@if (Model.IsMobileVerified == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="MobileVerified_@Model.NurseId" onchange="return activate(@Model.NurseId)">
-                                        <label class="custom-control-label" for="MobileVerified_@Model.NurseId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="MobileVerified_@Model.NurseId" onchange="return activate(@Model.NurseId)">
-                                        <label class="custom-control-label" for="MobileVerified_@Model.NurseId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <br />  <br />
-                            <div class="alert-danger" style="margin-top:40px; margin-left:10px">
-                                @{
-                                    if (Model.IsActive == true)
-                                    {
-                                        <a href="@Url.Action("Activate","Doctor")" class="btn btn-danger">Deativate Account</a>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-1">
+                <i class="fa fa-1x fa-mail-bulk"></i>
             </div>
+            <div class="col-4">
+                <a href="mailto: @Html.DisplayFor(model => model.EmailId)">
+                    <h6> @Html.DisplayFor(model => model.EmailId)</h6>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <i class="fa fa-1x fa-phone"></i>
+            </div>
+            <div class="col-4">
+                <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
+                    <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <i class="fa fa-1x fa-address-card"></i>
+            </div>
+            <div class="col-4">
+                @*<a href=" @Html.DisplayFor(model => model.Address)">*@
+                <h6> @Html.DisplayFor(model => model.Address)</h6>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <i class="fa fa-1x fa-user"></i>
+            </div>
+            <div class="col-4">
+                @*<a href=" @Html.DisplayFor(model => model.Address)">*@
+                <h6> @Html.DisplayFor(model => model.Gender)</h6>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card shadow mb-10" style="width:130%;margin:20px;padding:20px; ">
+        <div class="card-body">
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Created : <b>@ViewBag.AdminName</b></h5><br />
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">CreatedOn: <b>@Model.CreatedOn.ToShortDateString()</b></h5><br />
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                City : <b>@ViewBag.CityName</b>
+
+            </h5><br />
+            <div class="row">
+                <div class="col-5">
+                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                        Nurse Status :
+                    </h5>
+                </div>
+                <div class="col-4">
+                    @if (Model.IsActive == true)
+                    {
+                    <div class="alert-success" style="padding:5px; margin:5px; border:1px solid #808080">
+                        Yes
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="alert-success" style="padding:5px; margin:5px; border:1px solid #808080">
+                        No
+                    </div>
+                    }
+                </div>
+                
+                
+            </div>
+            
         </div>
     </div>
 </div>
+ </div>
+    
+
+
+
+
+
+
 
 

@@ -18,9 +18,9 @@
     </script>
 
 }
-<p>
+@*<p>
     @Html.ActionLink("Add", "add", new { })
-</p>
+</p>*@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-dark">List of Prescription</h6>
@@ -33,8 +33,8 @@
             <table class=" table table-hover" border="1" id="example">
                 <thead class="thead-dark">
                     <tr>
-                        <th>DoctorId</th>
-                        <th>PatientId</th>
+                        <th>Doctor</th>
+                        <th>Patient</th>
                         <th>CreatedOn</th>
                         <th>AdmitId</th>
                     </tr>
@@ -44,8 +44,8 @@
                     {
                         <tr>
 
-                            @*<td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName </a></td>*@
-                            <td>@item.Doctor.FirstName</td>
+                            <td><a href="@Url.Action("Details","Prescription",new { id = item.Prescription.PrescriptionId })">@item.Doctor.FirstName @item.Doctor.LastName </a></td>
+                            @*<td>@item.Doctor.FirstName</td>*@
                             <td>@item.Patient.FirstName</td>
                             <td>@item.Prescription.CreatedOn</td>
                             <td>@item.Admit.AdmitDetailId  </td>

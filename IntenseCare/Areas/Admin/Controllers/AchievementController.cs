@@ -51,8 +51,11 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblAchievement ad = dc.tblAchievements.SingleOrDefault(ob => ob.AchievementId == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
+
+            //ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
+            //string name = ViewBag.DoctorName;
             return View(ad);
         }
     }

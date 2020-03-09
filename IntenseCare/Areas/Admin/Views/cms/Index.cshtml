@@ -6,101 +6,41 @@
 }
 
 @section scripts{
-    <link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
-    <script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" class="init">
-        $(document).ready(function () {
-            $("#example").DataTable();
-        });
-    </script>
 }
-<p>
-    @Html.ActionLink("Add New CMS", "Add", new { })
-</p>
-<h2>List of Doctor Details</h2>
-<div class="col-md-12">
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
+<script src="~/Scripts/tinymce/tinymce.js"></script>
 
-                <th>CMSId</th>
-                <th>PageTitle</th>
-                <th>Description</th>
-                <th>CreatedOn</th>
-                <th>CreatedBy</th>
-                <th>IsActive</th>
-                <th>Action</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-
-                @*<td><a href="@Url.Action("Detail","Doctor",new { id = item.DoctorId })">@item.FirstName @item.LastName</a></td>*@
-                <td>@item.CMSPageId</td>
-                <td>@item.PageTittle</td>
-                <td>@item.Description</td>
-                <td>@item.CreatedOn</td>
-                <td>@item.CreatedBy</td>
-                <td id="ActiveContent">
-                    @if (item.IsActive == true)
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" checked class="custom-control-input" id="Active_@item.CMSPageId" onchange="return activate(@item.CMSPageId)">
-                            <label class="custom-control-label" for="Active_@item.CMSPageId"></label>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="Active_@item.CMSPageId" onchange="return activate(@item.CMSPageId)">
-                            <label class="custom-control-label" for="Active_@item.CMSPageId"></label>
-                        </div>
-                    }
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit",new { Id= item.CMSPageId})" class=" btn btn-sm btn-circle btn btn-primary">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    @*<a href="@Url.Action("Delete",new { Id= item.CMSPageId})" class="btn btn-sm btn-circle btn btn-danger">
-                        <i class="fa fa-trash"></i>
-                    </a>*@
-                </td>
-            </tr>
-            }
-
-        </tbody>
-    </table>
-</div>
-@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 <script>
-            function activate(id) {
-                $.ajax(
-                    {
-                        type: "POST",
-                        url: "@Url.Action("Active", "cms")" + "/" + id,
-                        success: function (response) {
-                            if (response == true) {
-                                alert('Account Activated');
-                            }
-                            else {
-                                alert('Account Deactivated');
-                            }
-                        },
-                        failure: function (response) {
-                            alert('Fail -' + response.responseText);
-                        },
-                        error: function (response) {
-                            alert('Error -' + response.responseText);
-                        }
-                    }
-                    );
-                }
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "image media link",
+    });
 </script>
+<div class="card shadow mb-4">
+    <form method="post">
+        <div class="card-header py-3 ">
+            <h6 class="m-0 font-weight-bold text-dark">CMS Creation Page</h6>
+
+        </div>
+            <div class="card-body">
+                Page Title :
+                <input type="text" name="PageTitle" list="PageTittle" class="form-control" />
+                <datalist id="Titles">
+                    @foreach (string item in ViewBag.PageTittle)
+                    {
+                        <option value="@item" />
+                    }
+                </datalist>
+            </div>
+            <div class="card-body">
+                <textarea name="BlogContent" style=" height:100px">
+            </textarea>
+            </div>
+            <div class="card-body">
+
+                <input type="submit" value="Save" class="btn btn-success col-lg-3 offset-4" />
+            </div>
+</form>
+</div>
 
 
 

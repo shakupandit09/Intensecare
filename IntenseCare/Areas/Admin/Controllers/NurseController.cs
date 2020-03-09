@@ -113,7 +113,11 @@ namespace IntenseCare.Areas.Admin.Controllers
         }
         public ActionResult Detail(int id)
         {
-            tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);           
+            tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);
+            tblAdmin admin = (from ob2 in dc.tblAdmins where ob2.AdminId == ad.CreatedBy select ob2).Take(1).SingleOrDefault();
+            ViewBag.AdminName = admin.Name;
+            CityMaster city = (from ob3 in dc.CityMasters where ob3.ID == ad.CityId select ob3).Take(1).SingleOrDefault();
+            ViewBag.CityName = city.Name;
             return View(ad);
         }
         public ActionResult Edit(int id)

@@ -1,40 +1,74 @@
-﻿@model IntenseCare.Models.tblDoctorAbsence 
+﻿@model IntenseCare.Models.tblDoctorAbsence
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
-
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","DoctorAbsent")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
-
-        </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.DoctorName's profile</h3>
-                        </div>
-                        DoctorAbsence Id :<b>@Model.DoctorAbsenceId</b><br />
-                        FromDate :<b>@Model.FromDate</b><br />
-                        FromTime :<b>@Model.FromTime</b><br />
-                        ToDate  : <b>@Model.ToDate</b><br />
-                        CreatedOn :<b>@Model.CreatedOn</b>
-
-                    </div>
-                </div>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","DoctorAbsent")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark">Doctor Absent Details</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-10" style="width:96%; margin:20px;">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a  style="align-content:center;" href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                        Doctor : <b>@ViewBag.DoctorName</b>
+                    </a></h5><br />
+                             <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                 ToDate : <b>@Model.ToDate.ToShortDateString()</b>                                 &nbsp;&nbsp; FromDate : <b>@Model.FromDate.ToShortDateString()</b>
+                             </h5>
             </div>
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                &nbsp;&nbsp; FromTime : <b>@Model.FromTime</b>
+                &nbsp;&nbsp;   Created Date: <b>@Model.CreatedOn.Value.ToShortDateString()</b>
+            </h5>
+
         </div>
     </div>
 </div>
+
+
+
+
+    @*<div>
+
+            <div class="card shadow md-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 fornt fa-weight-bold text-dark">
+                        <a href="@Url.Action("Index","DoctorAbsent")" class="btn btn-dark">
+                            <i class="fa fa-backward fa-1x"></i>
+                        </a>
+                    </h6>
+
+                </div>
+                <div class="card-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4" style="text-align:center">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <h3 class="text-dark"> @ViewBag.DoctorName's profile</h3>
+                                </div>
+                                DoctorAbsence Id :<b>@Model.DoctorAbsenceId</b><br />
+                                FromDate :<b>@Model.FromDate</b><br />
+                                FromTime :<b>@Model.FromTime</b><br />
+                                ToDate  : <b>@Model.ToDate</b><br />
+                                CreatedOn :<b>@Model.CreatedOn</b>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
 
 

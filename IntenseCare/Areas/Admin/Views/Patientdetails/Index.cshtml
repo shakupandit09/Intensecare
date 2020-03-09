@@ -18,7 +18,7 @@
             <table class=" table table-hover" border="1" id="example">
                 <thead class="thead-dark">
                     <tr>
-                        <th>PatientId</th>
+                        <th>Patient</th>
                         <th>Symptoms</th>
                         <th>IsActive</th>
 
@@ -29,7 +29,7 @@
                     {
                         <tr>
 
-                            <td><a href="@Url.Action("Detail","Patient",new { id = item.Patient.PatientId})">@item.Patient.FirstName </a></td>
+                            <td><a href="@Url.Action("Details","Patientdetails",new { id = item.Patient.PatientId})">@item.Patient.FirstName</a></td>
                             <td>@item.patientDetail.Symptoms</td>
                             <td id="ActiveContent">
                                 @if (item.patientDetail.IsActive == true)

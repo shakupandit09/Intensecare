@@ -4,131 +4,154 @@
     ViewBag.Title = "Detail";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("list","Admin")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
-
-        </div>
-        <div class="card-body">
-            <div>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("list","Admin")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text text-dark"><b>Admin Detail</b></h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4" style="width:96%; height:800px; margin:20px; height:320px">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Name : <b>@Model.Name</b></h5><br />
                 <div class="row">
-                    <div class="col-md-4" style="text-align:center">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-mail-bulk"></i>
                     </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @Html.DisplayFor(model => model.Name)'s profile</h3>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="mailto: @Html.DisplayFor(model => model.Emailid)">
-                                <h6> @Html.DisplayFor(model => model.Emailid)</h6>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-1x fa-phone"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
-                                <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
-                            </a>
-                        </div>
-                        Admin Id :<b>@Model.AdminId</b><br />
-                        Created By :<b>@Model.CreatedBy</b><br />
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsInsert &nbsp; &nbsp; :@if (Model.IsInsert == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Insert_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Insert_@Model.AdminId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Insert_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Insert_@Model.AdminId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
+                    <div class="col-4">
+                        <a href="mailto: @Html.DisplayFor(model => model.Emailid)">
+                            <h6> @Html.DisplayFor(model => model.Emailid)</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa fa-1x fa-phone"></i>
+                    </div>
+                    <div class="col-4">
+                        <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
+                            <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
+                        </a>
+                    </div>
+                </div>
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    CreatedBy: <b>@ViewBag.AdminName</b>
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    Created On : <b>@Model.CreatedOn.Value.ToShortDateString()</b>
 
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsEdit &nbsp; &nbsp; :@if (Model.IsEdit == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Edit_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Edit_@Model.AdminId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Edit_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Edit_@Model.AdminId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsDelete &nbsp; &nbsp; :@if (Model.IsDelete == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Delete_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Delete_@Model.AdminId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Delete_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Delete_@Model.AdminId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsSuper &nbsp; &nbsp; :@if (Model.IsSuper == true)
-                                {
-                                    <div class="custom-control custom-switch"  style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Super_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Super_@Model.AdminId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch"  style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Super_@Model.AdminId" onchange="return activate(@Model.AdminId)">
-                                        <label class="custom-control-label" for="Super_@Model.AdminId"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <br />  <br />
-                            <div class="alert-danger" style="margin-top:40px; margin-left:10px">
-                                @{
-                                    if (Model.IsActive == true)
-                                    {
-                                        <a href="@Url.Action("Activate","Doctor")" class="btn btn-danger">Deativate Account</a>
-                                    }
-                                }
+                </h5><br />
+                     <div class="row">
+                         <div class="col-2">
+                             <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                 Active :
+                             </h5>
+                         </div>
+                         <div class="col-1">
+                             @if (Model.IsActive == true)
+                             {
+                                 <div class="alert-success" style="padding:3px; margin:2px;">
+                                     Yes
+                                 </div>
+                             }
+                             else
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px;">
+                                     No
+                                 </div>
+                             }
+                         </div>
+                         &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<div class="col-3">
+                             <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                 Insert permission :
+                             </h5>
+                         </div>
+                         <div class="col-1">
+                             @if (Model.IsInsert == true)
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px;">
+                                     Yes
+                                 </div>
+                             }
+                             else
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px;">
+                                     No
+                                 </div>
+                             }
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="col-3">
+                             <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                 Edit permission :
+                             </h5>
+                         </div>
+                         <div class="col-1">
+                             @if (Model.IsEdit == true)
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px; ">
+                                     Yes
+                                 </div>
+                             }
+                             else
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px;">
+                                     No
+                                 </div>
+                             }
+                         </div>
+                         &nbsp;&nbsp; &nbsp;&nbsp;<div class="col-3">
+                             <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                 Delete permission :
+                             </h5>
+                         </div>
+                         <div class="col-1">
+                             @if (Model.IsDelete == true)
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px;">
+                                     Yes
+                                 </div>
+                             }
+                             else
+                             {
+                                 <div class="alert-success" style="padding:5px; margin:5px;">
+                                     No
+                                 </div>
+                             }
+                         </div>
+                     </div>
+                <div class="row">
+                    
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                            Super :
+                        </h5>
+                    </div>
+                    <div class="col-1">
+                        @if (Model.IsSuper == true)
+                        {
+                            <div class="alert-success" style="padding:5px; margin:5px; ">
+                                Yes
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="alert-success" style="padding:5px; margin:5px; ">
+                                No
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

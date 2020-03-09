@@ -51,10 +51,14 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             tblDiagnoseDetail ad = dc.tblDiagnoseDetails .SingleOrDefault(ob => ob.DiagnosisId == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            ViewBag.PatientName = (from ob1 in dc.tblPatients  where ob1.PatientId  == ad.PatientId  select ob1).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
-            string pname = ViewBag.patientName;
+            tblPatient patient = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientId select ob2).Take(1).SingleOrDefault();
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            ViewBag.PatientName = patient.FirstName + " " + patient.LastName;
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
+            //var patient = from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientId select ob2;
+            //var doctor = from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1;
+            //ViewBag.PatientName = patient;
+            //ViewBag.DoctorName = doctor;
             return View(ad);
         }
 

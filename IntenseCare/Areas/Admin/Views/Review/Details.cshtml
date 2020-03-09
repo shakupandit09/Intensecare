@@ -1,43 +1,82 @@
-﻿@model IntenseCare.Models.tblReview 
+﻿@model IntenseCare.Models.tblReview
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
-
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","Review")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
-
-        </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
-                        </div>
 
 
-                        Review Id : <b>@Model.ReviewId</b><br />
-                        Doctor Id : <b>@ViewBag.DoctorName</b><br />
-                        Subject :<b>@Model.Subject</b><br />
-                        Description :<b>@Model.Description</b><br />
-                        Rating :<b>@Model.Rating</b><br />
-                        ReviewedOn : <b>@Model.ReviewedOn  </b><br />
-
-
-                    </div>
-                </div>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","Review")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark">Review Details</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-12" style="width:100%;">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a href="@Url.Action("Detail","Patient", new { id = Model.PatientId})">
+                        Patient : <b>@ViewBag.PatientName</b>
+                    </a>
+                    <br />
+                    <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                        Doctor : <b>@ViewBag.DoctorName</b>
+                    </a>
+                </h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    Rating : <b>@Model.Rating</b>
+                    &nbsp;&nbsp; ReviewedOn : <b>@Model.ReviewedOn.ToShortDateString()</b>
+                </h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    Subject : <b>@Model.Subject</b>
+                    &nbsp;&nbsp; Description : <b>@Model.Description</b>
+                </h5><br />
             </div>
         </div>
     </div>
+</div>
+
+
+    @*<div>
+
+        <div class="card shadow md-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 fornt fa-weight-bold text-dark">
+                    <a href="@Url.Action("Index","Review")" class="btn btn-dark">
+                        <i class="fa fa-backward fa-1x"></i>
+                    </a>
+                </h6>
+
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align:center">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
+                            </div>
+
+
+                            Review Id : <b>@Model.ReviewId</b><br />
+                            Doctor Id : <b>@ViewBag.DoctorName</b><br />
+                            Subject :<b>@Model.Subject</b><br />
+                            Description :<b>@Model.Description</b><br />
+                            Rating :<b>@Model.Rating</b><br />
+                            ReviewedOn : <b>@Model.ReviewedOn  </b><br />
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
 
 

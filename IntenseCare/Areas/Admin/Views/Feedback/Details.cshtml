@@ -7,52 +7,70 @@
 
 
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","feedback")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","feedback")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark"> FeedBack Details </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow mb-10" style="text-align:center; margin:20px;">
 
-        </div>
-        <div class="card-body">
-            <div>
+            <div class="col-md-8" style="margin:20px;">
                 <div class="row">
-                    <div class="col-md-4" style="text-align:center">
+                    <h3 class="text-dark"> @Html.DisplayFor(model => model.Name)'s profile</h3>
+                </div>
+
+                <div class="row">
+                    <i class="fa fa-1x fa-mail-bulk"></i>
+
+                    <div class="col-sm-6">
+                        <a href="mailto: @Html.DisplayFor(model => model.EmailId)">
+                            <h6> @Html.DisplayFor(model => model.EmailId)</h6>
+                        </a>
                     </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @Html.DisplayFor(model => model.Name)'s profile</h3>
-                        </div>
+                </div>
+                <div class="row">
+                    <i class="fa fa-1x fa-phone"></i>
 
-                        <div class="row">
-                            <i class="fa fa-1x fa-mail-bulk"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="mailto: @Html.DisplayFor(model => model.EmailId)">
-                                <h6> @Html.DisplayFor(model => model.EmailId)</h6>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-1x fa-phone"></i>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
-                                <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
-                            </a>
-                        </div>
-                        Feedback Id: <b>@Model.FeedbackId  </b><br />
-                        Description :<b>@Model.Description</b><br />
-                        FeedbackOn: <b>@Model.FeedbackOn  </b><br />
+                    <div class="col-sm-6">
+                        <a href="tel: @Html.DisplayFor(model => model.ContactNo)">
+                            <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
 
+                    <div class="col-6" style="margin:10px">
+                        <h6 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> FeedbackId :<b>@Model.FeedbackId</b></h6>
 
                     </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-8" style="margin:10px">
+                        <h6 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> Description :<b>@Model.Description</b></h6>
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-8" style="margin:10px">
+                        <h6 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> FeedbackOn :<b>@Model.FeedbackOn.ToShortDateString()</b></h6>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
 </div>
-
 
 
 

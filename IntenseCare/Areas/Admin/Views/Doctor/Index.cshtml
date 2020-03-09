@@ -34,7 +34,7 @@
                         <th>ContactNo</th>
                         <th>IsActive</th>
                         <th>CreatedOn</th>
-                        <th>ImageUrl</th>
+           @*             <th>ImageUrl</th>*@
                         <th>Action</th>
 
                     </tr>
@@ -64,7 +64,7 @@
                                 }
                             </td>
                             <td>@item.ApprovedOn.Value.ToShortDateString()</td>
-                            <td>@item.ProfileImageUrl</td>
+                            @*<td>@item.ProfileImageUrl</td>*@
                             <td>
                                 <a href="@Url.Action("Edit",new { Id= item.DoctorId})" class=" btn btn-sm btn-circle btn btn-primary">
                                     <i class="fa fa-edit"></i>

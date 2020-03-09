@@ -38,7 +38,7 @@
                             <h6> @Html.DisplayFor(model => model.ContactNo)</h6>
                         </a>
                     </div>
-                    DoctorInquiry Id <b>@Model.DoctorInquiryID  </b><br />
+                    @*DoctorInquiry Id <b>@Model.DoctorInquiryID  </b><br />*@
                     Subject: <b>@Model.Subject</b><br />
                     Inquiry :<b>@Model.Inquiry</b><br />
                     InquiryOn: <b>@Model.InquiryOn</b><br />
@@ -47,7 +47,7 @@
                     ReplyOn  : <b>@Model.ReplyOn  </b><br />
                     <div class="row">
                         <h5 class="fa fa-1x">
-                            IsReply &nbsp; &nbsp; :@if (Model.IsReply == true)
+                            Reply &nbsp; &nbsp; :@if (Model.IsReply == true)
                             {
                                 <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
                                     <input type="checkbox" checked class="custom-control-input" id="Reply_@Model.DoctorInquiryID" onchange="return activate(@Model.DoctorInquiryID)">

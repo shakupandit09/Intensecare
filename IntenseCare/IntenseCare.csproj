@@ -2361,7 +2361,6 @@
     <Content Include="AdminContent\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="AdminContent\vendor\jquery\jquery.min.map" />
     <Content Include="AdminContent\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Areas\Admin\Views\Admin\registration.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Doctor\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Doctor\Edit.cshtml" />
@@ -2386,7 +2385,6 @@
     <Content Include="Areas\Admin\Views\Review\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admit\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Patientdetails\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Patientdetails\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DoctorSlot\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Achievement\Detail.cshtml" />
@@ -2536,9 +2534,7 @@
     <Content Include="Models\databasemodel.edmx.diagram">
       <DependentUpon>databasemodel.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\cms\Add.cshtml" />
     <Content Include="Areas\Admin\Views\cms\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\cms\Edit.cshtml" />
     <Content Include="ClientContent\css\.DS_Store" />
     <Content Include="ClientContent\css\bootstrap\.DS_Store" />
     <Content Include="ClientContent\css\css\.DS_Store" />
@@ -2661,6 +2657,10 @@
     <Content Include="Areas\Admin\Views\Admin\Schart3.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Schart4.cshtml" />
     <Content Include="Areas\Admin\Views\Achievement\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\registration.cshtml" />
+    <Content Include="Areas\Admin\Views\Patientdetails\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Prescription\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Patient\Add.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
