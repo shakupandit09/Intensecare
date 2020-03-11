@@ -1,0 +1,9 @@
+﻿@{
+    var mychart = new Chart(width: 800, height: 400, theme: ChartTheme.Green)
+        .AddTitle("Months Wise Appointments")
+        .AddSeries(
+        name: "Appointments",
+        xValue: ViewBag.x,
+        yValues: ViewBag.y).Write();
+}
+

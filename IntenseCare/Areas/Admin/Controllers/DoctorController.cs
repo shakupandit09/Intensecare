@@ -40,7 +40,7 @@ namespace IntenseCare.Areas.Admin.Controllers
                 if (size <= 1024 && (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png")))
                 {
                     name = code() + "" + extension;
-                    string path = Server.MapPath("~/Areas/image");
+                    string path = Server.MapPath("~/Areas/image/");
                     txtfile.SaveAs(path + "" + name);
                 }
             }
@@ -49,7 +49,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.LastName = form["LastName"];
             ad.Password = form["Password"];
             ad.Email = form["Email"];
-            ad.Gender = form["gen"];
+            ad.Gender = form["Gen"];
             ad.ContactNo = form["ContactNo"];
             ad.DOB = Convert.ToDateTime(form["DOB"]);
             ad.Address = form["Address"];
@@ -59,14 +59,13 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.IsActive = true;
             ad.IsVerified = true;
             ad.IsMobileVerified = true;
-            ad.ApprovedBy = Convert.ToInt32(form["loginId"]);
+            ad.ApprovedBy = Convert.ToInt32(Session["loginId"]);
             ad.ApprovedOn = DateTime.Now;
             ad.Specialization = form["Specialization"];
             ad.ProfileImageUrl= name.ToString();
             dc.tblDoctors.Add(ad);
             dc.SaveChanges();
             return RedirectToAction("Index", "Doctor");
-            //return View();
         }
         [HttpPost]
         public JsonResult getstate(int cid)
@@ -135,10 +134,5 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult tmp()
-        //{
-        //    return View();
-        //}
-       
     }  
 }

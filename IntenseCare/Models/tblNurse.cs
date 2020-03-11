@@ -17,7 +17,7 @@ namespace IntenseCare.Models
         public int NurseId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Pin { get; set; }
+        public Nullable<int> Pin { get; set; }
         public string Gender { get; set; }
         public string EmailId { get; set; }
         public string Address { get; set; }

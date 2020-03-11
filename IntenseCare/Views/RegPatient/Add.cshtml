@@ -1,0 +1,232 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <link href="~/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function () {
+            $("#example").DataTable();
+        });
+    </script>
+}
+<script>
+    function Validate() {
+        var firstname = document.frmCreate.FirstName;
+        var lastname = document.frmCreate.LastName;
+        //var pin = document.frmCreate.Pin;
+        var email = document.frmCreate.EmailId;
+        var contact_no = document.frmCreate.ContactNo;
+        var gender = document.frmCreate.gender; 
+        var Address = document.frmCreate.Address;
+        var dob = document.frmCreate.DateOFBirth;
+        var ref = document.frmCreate.ReferenceBy;
+        var nomname = document.frmCreate.NomineeName;
+        var nomcno = document.frmCreate.NomineeContactNo;
+        var nomAddress = document.frmCreate.NomineeAddress;
+
+        
+        var name_pat = /^[A-Za-z]{5,20}+$/;
+        if (firstname.value != "" && firstname.value.match(name_pat)) {
+        }
+        else {
+            alert("FirstName is Minimum 5 Characters and Maximum 20 Contain");
+            firstname.focus();
+            return false;
+        }
+        var name_pat = /^[A-Za-z]{3,10}+$/;
+        if (lastname.value != "" && lastname.value.match(name_pat)) {
+        }
+        else {
+            alert("LastName is Minimum 3 Characters and Maximum 10 Contain");
+            lastname.focus();
+            return false;
+        }
+        //var pass_pat = /^[0-9]{4,}$/;
+        //if (pin != "" && Pin.value.match(pass_pat)) {
+        //}
+        //else {
+        //    alert(" Please Enter 4 Digit Valid Pin ");
+        //    password.focus();
+        //    return false;
+        //}
+        //if (password.value == cpassword.value) { }
+        //else {
+        //    alert("Pin does not match");
+        //    cpassword.focus();
+        //    return false;
+        //}
+
+        var email_pat = /^\w+([\.-]?\w+)@@*\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (email.value != "" && EmailId.value.match(email_pat)) {
+        }
+        else {
+            alert("Email is not Proper");
+            email.focus();
+            return false;
+
+        }
+        var contact_no_pat = /^[0-9]{10}$/;
+        if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
+        }
+        else {
+            alert("contact number is not Proper");
+            contact_no.focus();
+            return false;
+        }
+        var add_pat = /^[A-Za-z0-9]+$/;
+        if (Address.value != "" && Address.value.match(add_pat)) {
+        }
+        else {
+            alert("Address is not Proper");
+            Address.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Patient Registration</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate" enctype="multipart/form-data">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>FirstName</label>
+                    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name">
+
+                </div>
+                <div class="col-sm-6">
+                    <label>LastName</label>
+                    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name">
+
+                </div>
+            </div>
+            @*<div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>PIN</label>
+                    <input type="password" class="form-control" id="Password" name="Pin" placeholder="Enter Pin">
+
+                </div>
+
+            </div>*@
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Email Id</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address">
+
+                </div>
+                <div class="col-sm-6">
+                    <label>ContactNo</label>
+                    <input type="text" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number">
+
+                </div>
+
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <label>Gender</label>
+                <input type="radio" id="Gen" name="Gen" value="Female" required>Female
+                <input type="radio" id="Gen" name="Gen" value="Male" required>Male
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Address</label>
+                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address">
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <label>Select Country</label>
+                        @Html.DropDownList("ddCountry", ViewBag.country as SelectList, "Select Country", new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
+                        <label>Select State</label>
+                        <select id="ddState" name="ddState" class="form-control" required></select>
+
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
+                        <label>Select City</label>
+                        <select id="ddCity" name="ddCity" class="form-control" required></select>
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-sm-auto">
+                        <label>Enter DOB</label>
+                        <input type="Date" class="form-control" id="DOB" name="DOB" placeholder="Enter Date of birth" required>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
+
+                <a class="d-block small mt-3" href="@Url.Action("Index","Doctor")">Back To List</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#ddCountry').change(function () {
+               // alert("Aavi Gayu");
+                $.ajax({
+                    type: "post",
+                    url: "@Url.Action("GetState","Doctor")",
+                    data: { cid: $('#ddCountry').val() },
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            $('#ddState').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                        }
+                        $('#ddState').focus();
+                    }
+                });
+            });
+
+            $('#ddState').change(function () {
+               //alert("Aavi Gayu");
+                $.ajax({
+                    type: "post",
+                    url: "@Url.Action("getCity", "Doctor")",
+                    data: { sid: $('#ddState').val() },
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            $('#ddCity').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                        }
+                        $('#ddCity').focus();
+                    }
+                });
+            });
+
+        });
+
+</script>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+﻿
+@{
+    var mychart = new Chart(width: 800, height: 400, theme: ChartTheme.Green)
+        .AddTitle("Admitted patients")
+        .AddSeries(
+        name: "Admit",
+        xValue: ViewBag.x,
+        yValues: ViewBag.y).Write();
+}
+

@@ -42,12 +42,12 @@ namespace IntenseCare.Models
         public DbSet<tblFeedback> tblFeedbacks { get; set; }
         public DbSet<TblInHouseTreatement> TblInHouseTreatements { get; set; }
         public DbSet<tblNewsLetter> tblNewsLetters { get; set; }
-        public DbSet<tblNurse> tblNurses { get; set; }
-        public DbSet<tblPatient> tblPatients { get; set; }
         public DbSet<tblPatientDetail> tblPatientDetails { get; set; }
         public DbSet<tblPayment> tblPayments { get; set; }
         public DbSet<tblPrescription> tblPrescriptions { get; set; }
         public DbSet<tblPrescriptionDetail> tblPrescriptionDetails { get; set; }
         public DbSet<tblReview> tblReviews { get; set; }
+        public DbSet<tblPatient> tblPatients { get; set; }
+        public DbSet<tblNurse> tblNurses { get; set; }
     }
 }

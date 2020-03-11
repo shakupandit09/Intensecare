@@ -48,7 +48,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             smtp.EnableSsl = true;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-            NetworkCredential MyCredentials = new NetworkCredential("Intensecare2020@gamil.com", "Ss@12345");
+            NetworkCredential MyCredentials = new NetworkCredential("Intensecare2020@gmail.com", "Ss@12345");
             smtp.Credentials = MyCredentials;
 
             smtp.Send(Msg);

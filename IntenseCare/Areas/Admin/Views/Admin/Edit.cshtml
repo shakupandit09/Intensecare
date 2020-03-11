@@ -4,103 +4,83 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<html>
+<head>
+    <script>
+        function Validate() {
+            var name = document.frmCreate.Name;
+            var email = document.frmCreate.Email;
+            var contact_no = document.frmCreate.ContactNo;
 
-<div class="container">
-<div class="card card-register mx-auto mt-5">
-    <div class="card-header">Update Admin's Record</div>
-    <div class="card-body">
-        <form method="post">
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required="required" autofocus="autofocus">
-                            @*<label for="Name">Enter name</label>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="email" id="Email" name="Email" class="form-control" value="@Model.Emailid" required="required" autofocus="autofocus">
-                            @*<label for="Name">Enter name</label>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="ContactNo" name="ContactNo" class="form-control" value="@Model.ContactNo" required="required" autofocus="autofocus">
-                            @*<label for="Name">Enter name</label>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @*<div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsActive" name="IsActive" class="form-control" value="@Model.IsActive" required="required" autofocus="autofocus">
-                           
+            var name_pat = /^[A-Za-z]{5,20}+$/;
+            if (name.value != "" && name.value.match(name_pat)) {
+            }
+            else {
+                alert("Name is not Proper");
+                name.focus();
+                return false;
+            }
+            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (email.value != "" && email.value.match(email_pat)) {
+            }
+            else {
+                alert("Email is not Proper");
+                email.focus();
+                return false;
 
+            }
+            var contact_no_pat = /^[0-9]{10}$/;
+            if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
+            }
+            else {
+                alert("contact number is not Proper");
+                contact_no.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="card card-register mx-auto mt-5">
+            <div class="card-header">Update Admin's Record</div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required="required" autofocus="autofocus">
+                                    @*<label for="Name">Enter name</label>*@
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-label-group">
+                                    <input type="email" id="Email" name="Email" class="form-control" value="@Model.Emailid" required="required" autofocus="autofocus">
+                                    @*<label for="Name">Enter name</label>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-label-group">
+                                    <input type="text" id="ContactNo" name="ContactNo" class="form-control" value="@Model.ContactNo" required="required" autofocus="autofocus">
+                                    @*<label for="Name">Enter name</label>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" onclick="return Validate()" />
+                </form>
             </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsInsert" name="IsInsert" class="form-control" value="@Model.IsInsert" required="required" autofocus="autofocus">
-                            
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsEdit" name="IsEdit" class="form-control" value="@Model.IsEdit" required="required" autofocus="autofocus">
-                            
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsDelete" name="IsDelete" class="form-control" value="@Model.IsDelete" required="required" autofocus="autofocus">
-                          
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="form-label-group">
-                            <input type="text" id="IsSuper" name="IsSuper" class="form-control" value="@Model.IsSuper" required="required" autofocus="autofocus">
-                            
-
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-            @*<p>Name<input type="text" class="form-control" value="@Model.Name" name="Name" required /></p>
-                <p>Email<input type="text" class="form-control" value="@Model.EmailId" name="Email" required></p>
-                <p>ContactNo<input type="text" class="form-control" value="@Model.ContactNo" name="ContactNo" required></p>*@
-            <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
-        </form>
+        </div>
     </div>
-</div>
-</div>
-
+</body>
+</html>

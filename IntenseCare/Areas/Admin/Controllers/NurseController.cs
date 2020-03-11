@@ -36,7 +36,8 @@ namespace IntenseCare.Areas.Admin.Controllers
             tblNurse  ad = new tblNurse ();
             ad.FirstName = form["FirstName"];
             ad.LastName = form["LastName"];
-            ad.Pin = Convert.ToInt32(form["Pin"]);
+            String myPIN = Services.GeneratePIN();
+            ad.Pin = Convert.ToInt32(myPIN); 
             ad.EmailId  = form["Email"];
             ad.Gender = form["gen"];
             ad.ContactNo = form["ContactNo"];
@@ -49,6 +50,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.CreatedOn = DateTime.Now;           
             dc.tblNurses .Add(ad);
             dc.SaveChanges();
+            
             return RedirectToAction("Index", "Nurse");
             //return View();
         }
@@ -114,5 +116,6 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index", "Nurse");
         }
+
     }
 }

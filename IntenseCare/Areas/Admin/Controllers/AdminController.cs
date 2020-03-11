@@ -141,8 +141,10 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Dashboard()
         {
             ViewBag.DoctorCount = (from ob in dc.tblDoctors where ob.IsActive == true select ob).ToList().Count().ToString();
+            ViewBag.NurseCount = (from ob in dc.tblNurses where ob.IsActive == true select ob).ToList().Count().ToString();
             ViewBag.PatientCount = (from ob in dc.tblPatients select ob).ToList().Count().ToString();
-            ViewBag.AppointmentCount = (from ob in dc.tblAppoinments select ob).ToList().Count().ToString();
+            ViewBag.TodayAppointmentCount = (from ob in dc.tblAppoinments where ob.Appointment_date == DateTime.Today orderby ob.Appointment_time descending select ob).ToList().Count().ToString();
+            ViewBag.AppoitntmentCount = (from ob in dc.tblAppoinments select ob).ToList().Count().ToString();
             return View();
         }
         public ActionResult Schart()
@@ -155,6 +157,54 @@ namespace IntenseCare.Areas.Admin.Controllers
             {
                 x[i] = d.DoctorId.ToString();
                 y[i] = (from ob in dc.tblAppoinments where ob.DoctorID == d.DoctorId select ob).ToList().Count;
+                i++;
+            }
+            ViewBag.x = x;
+            ViewBag.y = y;
+            return View();
+        }
+        public ActionResult Schart2()
+        {
+            var patient = (from ob in dc.tblAppoinments where ob.Appointment_date.Year == DateTime.Now.Year select ob.Appointment_date.Month).Distinct();
+            string[] x = new string[patient.ToList().Count];
+            int[] y = new int[patient.ToList().Count];
+            int i = 0;
+            foreach (int Month in patient)
+            {
+                x[i] = Month.ToString();
+                y[i] = (from ob in dc.tblAppoinments where ob.Appointment_date.Month == Month && ob.Appointment_date.Year == DateTime.Now.Year select ob).ToList().Count;
+                i++;
+            }
+            ViewBag.x = x;
+            ViewBag.y = y;
+            return View();
+        }
+        public ActionResult Schart3()
+        {
+            var patient = from ob in dc.tblPatientDetails where ob.IsActive == true select ob;
+            string[] x = new string[patient.ToList().Count];
+            int[] y = new int[patient.ToList().Count];
+            int i = 0;
+            foreach (tblPatientDetail p  in patient)
+            {
+                x[i] = p.PatientDetailId.ToString();
+                y[i] = (from ob in dc.tblAdmitDetails where ob.AdmitDetailId == p.PatientDetailId select ob).ToList().Count;
+                i++;
+            }
+            ViewBag.x = x;
+            ViewBag.y = y;
+            return View();
+        }
+        public ActionResult Schart4()
+        {
+            var patient = from ob in dc.tblPatientDetails where ob.IsActive == true select ob;
+            string[] x = new string[patient.ToList().Count];
+            int[] y = new int[patient.ToList().Count];
+            int i = 0;
+            foreach (tblPatientDetail p  in patient)
+            {
+                x[i] = p.PatientDetailId.ToString();
+                y[i] = (from ob in dc.TblInHouseTreatements where ob.InHouseTreatementId == p.PatientDetailId select ob).ToList().Count;
                 i++;
             }
             ViewBag.x = x;

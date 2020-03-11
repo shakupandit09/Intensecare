@@ -8,23 +8,27 @@
     @section scripts{
         <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
     }
-    <script>
+    <script type="text/javascript">
         function Validate() {
+            // alert('THAY CHEX');
             var name = document.frmCreate.Name;
+            //alert(name.value);
             var password = document.frmCreate.Password;
             var cpassword = document.frmCreate.CPassword;
             var email = document.frmCreate.Email;
             var contact_no = document.frmCreate.ContactNo;
-
-            var name_pat = /^[A-Za-z]+$/;
+           // alert('Done');
+            var name_pat = /^[a-zA-Z]{3,10}/;
+            //alert(name.value);
             if (name.value != "" && name.value.match(name_pat)) {
+               // alert(name.value);
             }
             else {
                 alert("Name is not Proper");
                 name.focus();
                 return false;
             }
-            var pass_pat = /^[A-Za-z0-9]+$/;
+            var pass_pat = /^[A-Za-z0-9]{8,16}/;
             if (password != "" && password.value.match(pass_pat)) {
             }
             else {
@@ -39,7 +43,7 @@
                 return false;
             }
 
-            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})/;
             if (email.value != "" && email.value.match(email_pat)) {
             }
             else {
@@ -48,7 +52,7 @@
                 return false;
 
             }
-            var contact_no_pat = /^[0-9]+$/;
+            var contact_no_pat = /^[0-9]{10}/;
             if (contact_no.value != "" && contact_no.value.match(contact_no_pat)) {
             }
             else {
@@ -63,7 +67,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>registration</title>
     <link href="~/AdminContent/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template-->
     <link href="~/AdminContent/css/sb-admin.css" rel="stylesheet">
 
 </head>
@@ -78,7 +81,7 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-label-group">
-                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter name" required="required" autofocus="autofocus">
+                                    <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter name" required="required">
                                     <label for="Name">Enter name</label>
                                 </div>
                             </div>
@@ -120,16 +123,6 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <div class="form-label-group">
-                                    <input type="text" id="CreatedBy" name="CreatedBy" class="form-control" placeholder="CreatedBy" required="required">
-                                    <label for="CreatedBy">CreatedBy</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
                     <input type="Submit" value="Submit" class="btn btn-primary btn-block" onclick="return Validate()" />
                 </form>
                 <div class="text-center">

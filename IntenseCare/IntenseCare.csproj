@@ -47,13 +47,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -155,6 +157,8 @@
     <Compile Include="Areas\Admin\Controllers\ReviewController.cs" />
     <Compile Include="Controllers\AdInqueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegPatientController.cs" />
+    <Compile Include="DataTables\Services.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2172,6 +2176,7 @@
     <Content Include="DataTables\Bootstrap-4-4.1.1\css\bootstrap.min.css.map" />
     <Content Include="DataTables\Buttons-1.6.1\css\common.scss" />
     <Content Include="DataTables\Buttons-1.6.1\css\mixins.scss" />
+    <Content Include="intensecare logo.png" />
     <Content Include="logo.png" />
     <Content Include="Models\databasemodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2656,6 +2661,9 @@
     <Content Include="ClientContent\scss\bootstrap\utilities\_visibility.scss" />
     <Content Include="ClientContent\scss\style.scss" />
     <Content Include="ClientContent\.DS_Store" />
+    <Content Include="Areas\Admin\Views\Admin\Schart2.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Schart3.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Schart4.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2890,6 +2898,7 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Home\Blank.cshtml" />
     <Content Include="Views\AdInquery\Index.cshtml" />
+    <Content Include="Views\RegPatient\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
