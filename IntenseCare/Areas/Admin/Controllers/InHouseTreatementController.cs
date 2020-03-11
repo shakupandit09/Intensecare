@@ -38,12 +38,12 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
            TblInHouseTreatement ad = dc.TblInHouseTreatements.SingleOrDefault(ob => ob.InHouseTreatementId== id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            ViewBag.PatientName = (from ob1 in dc.tblPatients where ob1.PatientId == ad.PatientId select ob1).Take(1).SingleOrDefault().FirstName;
-            ViewBag.NurseName = (from ob2 in dc.tblNurses  where ob2.NurseId  == ad.NurseId  select ob2).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
-            string nname = ViewBag.DoctorName;
-            string pname = ViewBag.patientName;
+            tblPatient patient = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientId select ob2).Take(1).SingleOrDefault();
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            tblNurse  Nurse = (from ob3 in dc.tblNurses where ob3.NurseId == ad.NurseId select ob3).Take(1).SingleOrDefault();
+            ViewBag.NurseName = Nurse.FirstName + " " + Nurse.LastName;
+            ViewBag.PatientName = patient.FirstName + " " + patient.LastName;
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
             return View(ad);
         }
     }

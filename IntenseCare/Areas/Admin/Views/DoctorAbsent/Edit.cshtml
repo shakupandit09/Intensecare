@@ -1,60 +1,48 @@
-﻿@model IntenseCare.Models.tblDoctorAbsence 
+﻿@model IntenseCare.Models.tblDoctorAbsence
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<head>
+    @section scripts{
+        <script src="~/DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
+    }
+ 
+</head>
 
-<div class="container">
-    <div class="card card-register mx-auto mt-5">
-        <div class="card-header">Update Doctor Absents Record</div>
-        <div class="card-body">
-            <form method="post">
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="DoctorId" name="DoctorId" class="form-control" value="@Model.DoctorId" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="FromDate" name="FromDate" class="form-control" value="@Model.FromDate" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="ToDate" name="ToDate" class="form-control" value="@Model.ToDate" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="FromTime" name="FromTime" class="form-control" value="@Model.FromTime" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Update Doctor Absent Record</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>DoctorId</label>
+                    <input type="text" class="form-control" id="DoctorId" name="DoctorId" value="@Model.DoctorId" required>
 
-                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
-            </form>
-        </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <label>ToDate</label>
+                    <input type="date" class="form-control" id="ToDate" name="ToDate" value="@Model.ToDate" required>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label>FromDate</label>
+                    <input type="date" class="form-control" id="FromDate" name="FromDate" value="@Model.FromDate"required>
+                </div>
+                <div class="col-sm-6">
+                    <label>FromTime</label>
+                    <input type="time" class="form-control" id="FromTime" name="FromTime" value="@Model.FromTime" required>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" onclick="return Validate()" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","DoctorAbsent")">Back To List</a>
+            </div>
+        </form>
     </div>
 </div>
-
 

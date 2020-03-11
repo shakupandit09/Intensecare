@@ -21,62 +21,68 @@
     <p>
         @Html.ActionLink("Add New Nurse's", "registration", new { })
     </p>
-    <h2>List of Nurse Details</h2>
-    <div class="col-md-12">
-        <table class=" table table-hover table-bordered" id="example">
-            <thead class="thead-dark">
-                <tr>
-                    <th>FirstName</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Gender</th>
-                    <th>ContactNo</th>
-                    <th>IsActive</th>
-                    <th>CreatedOn</th>
-                    <th>Action</th>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-dark">List of Nurse Details</h6>
+        </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <table class=" table table-hover table-bordered" border="0" id="example">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>FirstName</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>ContactNo</th>
+                            <th>IsActive</th>
+                            <th>CreatedOn</th>
+                            <th>Action</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
 
-                        <td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName @item.LastName</a></td>
-                        @*<td>@item.LastName</td>*@
-                        <td>@item.EmailId</td>
-                        <td>@item.Address</td>
-                        <td>@item.Gender</td>
-                        <td>@item.ContactNo</td>
-                        <td id="ActiveContent">
-                            @if (item.IsActive == true)
-                            {
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" checked class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
-                                    <label class="custom-control-label" for="Active_@item.NurseId"></label>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
-                                    <label class="custom-control-label" for="Active_@item.NurseId"></label>
-                                </div>
-                            }
-                        </td>
-                        <td>@item.CreatedOn</td>
-                        <td>
-                            <a href="@Url.Action("Edit",new { Id= item.NurseId })" class=" btn btn-sm btn-circle btn btn-primary">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a href="@Url.Action("Delete",new { Id= item.NurseId})" class="btn btn-sm btn-circle btn btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                                <td><a href="@Url.Action("Detail","Nurse",new { id = item.NurseId })">@item.FirstName @item.LastName</a></td>
+                                @*<td>@item.LastName</td>*@
+                                <td>@item.EmailId</td>
+                                <td>@item.Address</td>
+                                <td>@item.Gender</td>
+                                <td>@item.ContactNo</td>
+                                <td id="ActiveContent">
+                                    @if (item.IsActive == true)
+                                    {
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" checked class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
+                                            <label class="custom-control-label" for="Active_@item.NurseId"></label>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="Active_@item.NurseId" onchange="return activate(@item.NurseId)">
+                                            <label class="custom-control-label" for="Active_@item.NurseId"></label>
+                                        </div>
+                                    }
+                                </td>
+                                <td>@item.CreatedOn.ToShortDateString()</td>
+                                <td>
+                                    <a href="@Url.Action("Edit",new { Id= item.NurseId })" class=" btn btn-sm btn-circle btn btn-primary">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="@Url.Action("Delete",new { Id= item.NurseId})" class="btn btn-sm btn-circle btn btn-danger">
+                                        <i class="fa fa-trash" onclick="return confirm('Are you sure to delete')"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>

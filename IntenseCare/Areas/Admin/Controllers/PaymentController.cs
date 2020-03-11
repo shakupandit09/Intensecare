@@ -33,13 +33,47 @@ namespace IntenseCare.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Admin");
             }
         }
+        public ActionResult Payadd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Payadd(FormCollection form)
+        {
+            tblPayment ad = new tblPayment();
+            ad.PatientId = Convert.ToInt32(form["patientid"]);
+            ad.DoctorId = Convert.ToInt32(form["doctorid"]);
+            if (form["admitId"] == "")
+            {
+                ad.AdmitDetailId = 0;
+            }
+            else
+            {
+                ad.AdmitDetailId = Convert.ToInt32(form["admitId"]);
+            }
+            ad.PaymentAmt = Convert.ToInt32(form["payamt"]);
+            ad.TransactionId = form["tranid"];
+            ad.TransactionType = form["trantype"];
+            if (form["chno"] == "")
+            {
+                ad.ChequeNo = 0;
+            }
+            else { 
+                ad.ChequeNo = Convert.ToInt32(form["chno"]);
+            }
+            ad.CardType = form["Cardtype"];
+            ad.PaidOn = DateTime.Now;
+            dc.tblPayments.Add(ad);
+            dc.SaveChanges();
+            return RedirectToAction("Index", "Payment");
+        }
         public ActionResult Details(int id)
         {
             tblPayment  ad = dc.tblPayments.SingleOrDefault(ob => ob.PaymentId == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            ViewBag.PatientName = (from ob1 in dc.tblPatients where ob1.PatientId == ad.PatientId select ob1).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
-            string pname = ViewBag.patientName;
+            tblPatient patient = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientId select ob2).Take(1).SingleOrDefault();
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            ViewBag.PatientName = patient.FirstName + " " + patient.LastName;
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
             return View(ad);
         }
     }

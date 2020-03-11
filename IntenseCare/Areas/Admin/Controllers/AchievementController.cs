@@ -30,11 +30,32 @@ namespace IntenseCare.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Admin");
             }          
         }
+        //public ActionResult Add()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Add(FormCollection form)
+        //{
+        //    tblAchievement ad = new tblAchievement();
+        //    ad.DoctorId= Convert.ToInt32(form["did"]);
+        //    ad.Achievement = form["achieve"];
+        //    ad.AchievementDescription = form["achievedes"];
+     
+        //    ad.AchievedDate =Convert.ToDateTime(form["adate"]);
+        //    dc.tblAchievements.Add(ad);
+        //    dc.SaveChanges();
+        //    return RedirectToAction("Index", "Achievement");
+        //}
+
         public ActionResult Detail(int id)
         {
             tblAchievement ad = dc.tblAchievements.SingleOrDefault(ob => ob.AchievementId == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
+
+            //ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
+            //string name = ViewBag.DoctorName;
             return View(ad);
         }
     }

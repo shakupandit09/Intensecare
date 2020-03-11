@@ -1,45 +1,91 @@
-﻿@model IntenseCare.Models.tblPayment 
+﻿@model IntenseCare.Models.tblPayment
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","Payment")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","Payment")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark">Payment Details</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4" style="width:96%; margin:20px; ">
+            <div class="card-body" style="align-content:center">
 
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">AdmitId : <b>@Model.AdmitDetailId</b></h5><br />                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a href="@Url.Action("Detail","Patient", new { id = Model.PatientId})">
+                        Patient : <b>@ViewBag.PatientName</b>
+                    </a>
+                    <br />
+                    <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                        Doctor : <b>@ViewBag.DoctorName</b>
+                    </a>
+                </h5><br />
+                     <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                         Total amount : <b>@Model.PaymentAmt</b>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date of payment : <b>@Model.PaidOn.ToShortDateString()</b>
+                     </h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> Transaction Type : <b>@Model.TransactionType</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> Card Type : <b>@Model.CardType</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> TransactionId : <b>@Model.TransactionId</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">ChequeNo : <b>@Model.ChequeNo</b></h5><br />
+
+            </div>
         </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.Patientname's profile</h3>
+    </div>
+   
+</div>
+
+
+
+
+
+
+
+@*<div>
+
+        <div class="card shadow md-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 fornt fa-weight-bold text-dark">
+                    <a href="@Url.Action("Index","Payment")" class="btn btn-dark">
+                        <i class="fa fa-backward fa-1x"></i>
+                    </a>
+                </h6>
+
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align:center">
                         </div>
-                        Payment Id :<b>@Model.PaymentId </b><br />
-                        Doctor Id :<b>@ViewBag.DoctorName</b><br />
+                        <div class="col-md-8">
+                            <div class="row">
+                                <h3 class="text-dark"> @ViewBag.Patientname's profile</h3>
+                            </div>
+                            Payment Id :<b>@Model.PaymentId </b><br />
+                            Doctor Id :<b>@ViewBag.DoctorName</b><br />
 
-                        Admit Id :<b>@Model.AdmitDetailId</b><br />
-                        Transaction Type: <b>@Model.TransactionType</b><br />
-                        Transaction Id :<b>@Model.TransactionId </b><br />
-                        Card Type :<b>@Model.CardType</b><br />
+                            Admit Id :<b>@Model.AdmitDetailId</b><br />
+                            Transaction Type: <b>@Model.TransactionType</b><br />
+                            Transaction Id :<b>@Model.TransactionId </b><br />
+                            Card Type :<b>@Model.CardType</b><br />
 
-                        Cheque No :<b>@Model.ChequeNo</b><br />
-                        PaidOn : <b>@Model.PaidOn</b><br />
-                        Payment Amount : <b>@Model.PaymentAmt</b><br />
+                            Cheque No :<b>@Model.ChequeNo</b><br />
+                            PaidOn : <b>@Model.PaidOn</b><br />
+                            Payment Amount : <b>@Model.PaymentAmt</b><br />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@
 
 
 

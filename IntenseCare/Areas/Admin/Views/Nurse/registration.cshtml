@@ -15,15 +15,15 @@
         var contact_no = document.frmCreate.ContactNo;
         var Address = document.frmCreate.Address;
 
-        var name_pat = /^[A-Za-z]{5,20}+$/;
+        var name_pat = /^[A-Za-z]{3,15}$/;
         if (firstname.value != "" && firstname.value.match(name_pat)) {
         }
         else {
-            alert("FirstName is Minimum 5 Characters and Maximum 20 Contain");
+            alert("FirstName is Minimum 3 Characters and Maximum 15 Contain");
             firstname.focus();
             return false;
         }
-        var name_pat = /^[A-Za-z]{3,10}+$/;
+        var name_pat = /^[A-Za-z]{3,15}$/;
         if (lastname.value != "" && lastname.value.match(name_pat)) {
         }
         else {
@@ -90,7 +90,7 @@
                     <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name">
                 </div>
             </div>
-            <div class="form-group row">
+            @*<div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Pin</label>
                     <input type="password" class="form-control" id="Pin" name="Pin" placeholder="Enter Pin">
@@ -100,15 +100,15 @@
                     <input type="password" class="form-control" id="Cpin" name="Cpin" placeholder="Enter Cpin ">
                 </div>
 
-            </div>
+            </div>*@
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Email-Id</label>
-                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address">
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address" onblur="return CheckEmail(this.value)" />
                 </div>
                 <div class="col-sm-6">
                     <label>ContactNo</label>
-                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number">
+                    <input type="text" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number" onblur=" return CheckCno(this.value)" />
                 </div>
 
             </div>
@@ -144,7 +144,7 @@
                 <a class="d-block small mt-3" href="@Url.Action("Index","Nurse")">Back To List</a>
             </div>
         </form>
-       
+
     </div>
 </div>
 
@@ -187,8 +187,66 @@
         });
 
     });
-
 </script>
+<script>
+    function CheckEmail(val) {
+        if (val != "") {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("CheckEmail", "Nurse")",
+                data: { id: val },
+                    success: function (response) {
+                        if (response == "false") {
+                        }
+                        else {
+                            alert('E-Mail Already Exist');
+                            $('#Email').val("");
+
+                            $('#Email').focus();
+                        }
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+            }
+    }
+</script>
+<script>
+    function CheckCno(val) {
+        if (val != "") {
+        $.ajax(
+            {
+                type: "POST",
+                url: "@Url.Action("CheckCno", "Nurse")",
+                data: { id: val },
+                    success: function (response) {
+                        if (response == "false") {
+                        }
+                        else {
+                            alert('Contact No Already Exist');
+                            $('#ContactNo').val("");
+
+                            $('#ContactNo').focus();
+                        }
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+            }
+    }
+</script>
+
 
 
 

@@ -1,59 +1,106 @@
-﻿@model IntenseCare.Models.tblDiagnoseDetail 
+﻿@model IntenseCare.Models.tblDiagnoseDetail
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","DiagnoseDetails")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","DiagnoseDetails")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark">Diagnose Details</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4" style="width:96%; margin:20px;">
+            <div class="card-body">
+                @*<h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">DiagnosisId : <b>@Model.DiagnosisId</b></h5><br />*@
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">AdmitId : <b>@Model.AdmitDetailId</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                        Doctor : <b>@ViewBag.DoctorName</b>
+                    </a>
+                </h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a href="@Url.Action("Detail","Patient", new { id = Model.PatientId})">
+                        Patient : <b>@ViewBag.PatientName</b>
+                    </a>
+                </h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Diagnosis : <b>@Model.Diagnosis</b></h5><br />
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> Remarks : <b>@Model.Remarks</b></h5><br />
 
-        </div>
-        <div class="card-body">
-            <div>
                 <div class="row">
-                    <div class="col-md-4" style="text-align:center">
+                    <div class="col-5">
+                        <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                             FormReport :
+                        </h5>
                     </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
-                        </div>                        
-                        Doctor Id :  @ViewBag.DoctorName<br/>
-                        Diagnose Id :<b>@Model.DiagnosisId</b><br/>
-                        Admit Id : <b>@Model.AdmitDetailId</b><br/>
-                        Diagnoses : <b>@Model.Diagnosis</b><br/>
-                        Remarks :<b>@Model.Remarks</b><br/>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsFromreport &nbsp; &nbsp; :@if (Model.IsFormReport == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Insert_@Model.DiagnosisId" onchange="return activate(@Model.DiagnosisId)">
-                                        <label class="custom-control-label" for="Insert_@Model.DiagnosisId"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Insert_@Model.DiagnosisId" onchange="return activate(@Model.DiagnosisId)">
-                                        <label class="custom-control-label" for="Insert_@Model.DiagnosisId"></label>
-                                    </div>
-                                }
-                            </h5>
-                         </div>
+                    <div class="col-1">
+                        @if (Model.IsFormReport == true)
+                        {
+                            <div class="alert-success" style="padding:2px; margin:5px;  solid:#808080">
+                                Yes
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert-success" style="padding:2px; margin:5px; solid:#808080">
+                                No
+                            </div>
+                        }
+                    </div>
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+   
 </div>
+
+    @*<div class="card-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4" style="text-align:center">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+
+                                </div>
+                                Doctor Id :  @ViewBag.DoctorName<br/>
+                                Diagnose Id :<b>@Model.DiagnosisId</b><br/>
+                                Admit Id : <b>@Model.AdmitDetailId</b><br/>
+                                Diagnoses : <b>@Model.Diagnosis</b><br/>
+                                Remarks :<b>@Model.Remarks</b><br/>
+                                <div class="row">
+                                    <h5 class="fa fa-1x">
+                                        IsFromreport &nbsp; &nbsp; :@if (Model.IsFormReport == true)
+                                        {
+                                            <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                                <input type="checkbox" checked class="custom-control-input" id="Insert_@Model.DiagnosisId" onchange="return activate(@Model.DiagnosisId)">
+                                                <label class="custom-control-label" for="Insert_@Model.DiagnosisId"></label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
+                                                <input type="checkbox" class="custom-control-input" id="Insert_@Model.DiagnosisId" onchange="return activate(@Model.DiagnosisId)">
+                                                <label class="custom-control-label" for="Insert_@Model.DiagnosisId"></label>
+                                            </div>
+                                        }
+                                    </h5>
+                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
 
 

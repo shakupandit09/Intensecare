@@ -49,7 +49,10 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             tblPatientDetail  ad = dc.tblPatientDetails.SingleOrDefault(ob => ob.PatientDetailId  == id);
-            return View();
+            tblPatient patient = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientId select ob2).Take(1).SingleOrDefault();
+            //var doctor = from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1;
+            ViewBag.PatientName = patient.FirstName + " "+ patient.LastName;
+            return View(ad);
         }
     }
 }

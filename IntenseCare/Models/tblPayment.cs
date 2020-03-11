@@ -20,7 +20,7 @@ namespace IntenseCare.Models
         public int PaymentAmt { get; set; }
         public string TransactionType { get; set; }
         public string CardType { get; set; }
-        public Nullable<int> TransactionId { get; set; }
+        public string TransactionId { get; set; }
         public Nullable<int> ChequeNo { get; set; }
         public System.DateTime PaidOn { get; set; }
         public Nullable<int> AdmitDetailId { get; set; }

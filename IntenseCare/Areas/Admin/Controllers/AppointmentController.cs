@@ -52,11 +52,14 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             tblAppoinment  ad = dc.tblAppoinments .SingleOrDefault(ob => ob.AppointmentID  == id);
-            ViewBag.PatientName = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientID select ob2).Take(1).SingleOrDefault().FirstName;
-            ViewBag.DoctorName = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorID select ob1).Take(1).SingleOrDefault().FirstName;
-
-            string name = ViewBag.DoctorName;
-            string pname = ViewBag.patientName;
+            tblPatient  patient  = (from ob2 in dc.tblPatients where ob2.PatientId == ad.PatientID select ob2).Take(1).SingleOrDefault();
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorID select ob1).Take(1).SingleOrDefault();
+            ViewBag.PatientName = patient.FirstName +" "+ patient.LastName;
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
+            tblDoctorSlot slot = dc.tblDoctorSlots.SingleOrDefault(ob => ob.DoctorSlotId == ad.DoctorSlotId);
+            ViewBag.DocSlot = slot.StartTime + " to " + slot.EndTime;
+            //string name = ViewBag.DoctorName;
+            //string pname = ViewBag.patientName;
             return View(ad);
         }
     }

@@ -3,76 +3,100 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
-    <div class="card card-register mx-auto mt-5">
-        <div class="card-header">Update Admit Patient's Record</div>
-        <div class="card-body">
-            <form method="post">
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <div class="form-label-group">
-                                <input type="text" id="DoctorId" name="DoctorId" class="form-control" value="@Model.DoctorId" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <div class="form-label-group">
-                                <input type="text" id="PatientId" name="PatientId" class="form-control" value="@Model.PatientId" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <div class="form-label-group">
-                                <input type="text" id="NurseId" name="NurseId" class="NurseId" value="@Model.NurseId" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <div class="form-label-group">
-                                <input type="text" id="IsDischarge" name="IsDischarge" class="form-control" value="@Model.IsDischarge" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <div class="form-label-group">
-                                <input type="text" id="WardType" name="WardType" class="form-control" value="@Model.WardType" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <div class="form-label-group">
-                                <input type="text" id="WardNo" name="WardNo" class="form-control" value="@Model.WardNo" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
-            </form>
-        </div>
+<script>
+    function Validate() {
+        var DocId = document.frmCreate.DoctorId;
+        var pid = document.frmCreate.PatientId;
+        var nid = document.frmCreate.NurseId;
+        var wtype = document.frmCreate.WardType;
+        var wno = document.frmCreate.WardNo;
+        //var contact_no = document.frmCreate.ContactNo;
+        //var Address = document.frmCreate.Address;
+
+        var did_pat = /^[0-9]+$/;
+        if (DocId.value != "" && DocId.value.match(did_pat)) {
+        }
+        else {
+            alert("Doctor id should be digit");
+            DocId.focus();
+            return false;
+        }
+        var pid_pat = /^[0-9]+$/;
+        if (pid.value != "" && pid.value.match(pid_pat)) {
+        }
+        else {
+            alert("patient id should be digit");
+            pid.focus();
+            return false;
+        }
+        var nid_pat = /^[0-9]+$/;
+        if (nid.value != "" && pid.value.match(nid_pat)) {
+        }
+        else {
+            alert("Nurse id should be digit");
+            nid.focus();
+            return false;
+        }
+        var wtype_pat = /^[a-zA-Z]+$/;
+        if (wtype.value != "" && wtype.value.match(wtype_pat)) {
+        }
+        else {
+            alert("Ward type is not proper");
+            wtype.focus();
+            return false;
+        }
+        var wno_pat = /^[0-9]+$/;
+        if (wno.value != "" && wno.value.match(wno_pat)) {
+        }
+        else {
+            alert("wno should be digit only");
+            wno.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Update Admit Patient's Record</h6>
     </div>
-</div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>DoctorId</label>
+                    <input type="text" class="form-control" id="DoctorId" name="DoctorId" placeholder="DoctorId" value="@Model.DoctorId">
+
+                </div>
+                <div class="col-sm-6">
+                    <label>PatientId</label>
+                    <input type="text" class="form-control" id="PatientId" name="PatientId" placeholder="PatientId" value="@Model.PatientId">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <label>NurseId</label>
+                    <input type="text" class="form-control" id="NurseId" name="NurseId" placeholder="NurseId" value="@Model.NurseId">
+
+                </div>
+                <div class="col-sm-4">
+                    <label>WardType</label>
+                    <input type="text" class="form-control" id="WardType" name="WardType" placeholder="WardType" value="@Model.WardType">
+                </div>
+                <div class="col-sm-4">
+                    <label>WardNo</label>
+                    <input type="text" class="form-control" id="WardNo" name="WardNo" placeholder="WardNo" value="@Model.WardNo">
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" onclick="return Validate()" />
+                <a class="d-block small mt-3" href="@Url.Action("Index","Admit")">Back To List</a>
+            </div>
+        </form>
+    </div>
+    </div>
+
 
 
 

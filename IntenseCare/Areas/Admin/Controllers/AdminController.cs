@@ -19,7 +19,7 @@ namespace IntenseCare.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(string Email, string Password)
         {
-            tblAdmin ad = (from ob in dc.tblAdmins where ob.Emailid == Email && ob.Password == Password select ob).Take(1).SingleOrDefault();
+            tblAdmin ad = (from ob in dc.tblAdmins where ob.Emailid == Email && ob.Password == Password && ob.IsActive == true select ob).Take(1).SingleOrDefault();
             if (ad != null)
             {
                 Session["loginId"] = ad.AdminId;
@@ -29,6 +29,7 @@ namespace IntenseCare.Areas.Admin.Controllers
 
             else
             {
+                ViewBag.message = "Invalid Email or password";
                 return View();
             }
         }
@@ -72,14 +73,41 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return RedirectToAction("Index","Admin");
         }
-        //public string code()
-        //{
-        //    string code = DateTime.Now.ToString("dd-mm-yyyy-HH-mm-ss-ff").Replace("-", "");
-        //    return code;
-        //}
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+            tblAdmin user = dc.tblAdmins.SingleOrDefault(ob => ob.Emailid == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CheckCno(string id)
+        {
+            string response;
+            tblAdmin user = dc.tblAdmins.SingleOrDefault(ob => ob.ContactNo == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Detail(int id)
         {
             tblAdmin ad = dc.tblAdmins.SingleOrDefault(ob => ob.AdminId == id);
+            tblAdmin admin = (from ob2 in dc.tblAdmins where ob2.AdminId == ad.CreatedBy select ob2).Take(1).SingleOrDefault();
+            ViewBag.AdminName = admin.Name;
             return View(ad);
         }
         public ActionResult Delete(int id)
@@ -123,28 +151,16 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
         }
-        //[HttpPost]
-        //public JsonResult CheckEmail(string id)
-        //{
-        //    string response;
-        //    tblAdmin user = dc.tblAdmins.SingleOrDefault(ob => ob.Emailid == id);
-        //    if (user != null)
-        //    {
-        //        response = "true";
-        //    }
-        //    else
-        //    {
-        //        response = "false";
-        //    }
-        //    return Json(response, JsonRequestBehavior.AllowGet);
-        //}
+       
         public ActionResult Dashboard()
         {
             ViewBag.DoctorCount = (from ob in dc.tblDoctors where ob.IsActive == true select ob).ToList().Count().ToString();
-            ViewBag.NurseCount = (from ob in dc.tblNurses where ob.IsActive == true select ob).ToList().Count().ToString();
             ViewBag.PatientCount = (from ob in dc.tblPatients select ob).ToList().Count().ToString();
+            ViewBag.AppointmentCount = (from ob in dc.tblAppoinments select ob).ToList().Count().ToString();
+            ViewBag.AdmitCount = (from ob in dc.tblAdmitDetails select ob).ToList().Count().ToString();
+            ViewBag.NurseCount = (from ob in dc.tblNurses select ob).ToList().Count().ToString();
             ViewBag.TodayAppointmentCount = (from ob in dc.tblAppoinments where ob.Appointment_date == DateTime.Today orderby ob.Appointment_time descending select ob).ToList().Count().ToString();
-            ViewBag.AppoitntmentCount = (from ob in dc.tblAppoinments select ob).ToList().Count().ToString();
+           
             return View();
         }
         public ActionResult Schart()
@@ -185,7 +201,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             string[] x = new string[patient.ToList().Count];
             int[] y = new int[patient.ToList().Count];
             int i = 0;
-            foreach (tblPatientDetail p  in patient)
+            foreach (tblPatientDetail p in patient)
             {
                 x[i] = p.PatientDetailId.ToString();
                 y[i] = (from ob in dc.tblAdmitDetails where ob.AdmitDetailId == p.PatientDetailId select ob).ToList().Count;
@@ -201,7 +217,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             string[] x = new string[patient.ToList().Count];
             int[] y = new int[patient.ToList().Count];
             int i = 0;
-            foreach (tblPatientDetail p  in patient)
+            foreach (tblPatientDetail p in patient)
             {
                 x[i] = p.PatientDetailId.ToString();
                 y[i] = (from ob in dc.TblInHouseTreatements where ob.InHouseTreatementId == p.PatientDetailId select ob).ToList().Count;
@@ -211,5 +227,8 @@ namespace IntenseCare.Areas.Admin.Controllers
             ViewBag.y = y;
             return View();
         }
+
+
+
     }
 }

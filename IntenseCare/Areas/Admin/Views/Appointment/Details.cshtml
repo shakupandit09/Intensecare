@@ -3,7 +3,6 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
 
     <div class="card shadow md-4">
         <div class="card-header py-3">
@@ -12,107 +11,66 @@
                     <i class="fa fa-backward fa-1x"></i>
                 </a>
             </h6>
-
+            <h3 class="text text-dark"><b>Appointment Detail</b></h3>
         </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow mb-4" style="width:500px; margin:20px; height:320px">
+                <div class="card-body">
+                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">DoctorSlot  : <b>@ViewBag.DocSlot</b></h5><br />
+                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                        <a href="@Url.Action("Detail","Patient", new { id = Model.PatientID})">
+                            Patient : <b>@ViewBag.PatientName</b>
+                        </a>
+                        <br />
+                        <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorID})">
+                            Doctor : <b>@ViewBag.DoctorName</b>
+                        </a>
+                    </h5><br />
+                    <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                        BookOn : <b>@Model.BookedOn.ToShortDateString()</b>
+                        @* &nbsp;&nbsp; Max Time : <b>@Model.MaxTime.ToShortDateString()</b>*@
+                    </h5><br />
+                    <div class="row">
+                        <div class="col-4">
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                                New :
+                            </h5>
+                        </div>
+                        <div class="col-4">
+                            @if (Model.IsNew == true)
+                            {
+                                <div class="alert-success" style="padding:5px; margin:5px; border:1px solid #808080 ">
+                                    Yes
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert-success" style="padding:5px; margin:5px; border:1px solid #808080 ">
+                                    No
+                                </div>
+                            }
+                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.PatientName's profile</h3>
+                </div>
+            </div>
+        </div>
+                <div class="col-md-6">
+                    <div class="card shadow mb-4" style="width:500px; margin:20px">
+                        <div class="card-body">
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Reason : <b>@Model.Reason</b></h5><br />
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Description : <b>@Model.Description</b></h5><br />
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif"> Appointment Status : <b>@Model.AppointmentStatus</b></h5><br />
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Appointment_date : <b>@Model.Appointment_date.ToShortDateString()</b></h5><br />
+                            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">Appointment_time : <b>@Model.Appointment_time</b></h5><br />
+
                         </div>
-                        Appointment Id : <b>@Model.AppointmentID</b><br />
-                        Doctor Id :<b>@ViewBag.DoctorName</b><br />
-                        Slot Id :<b>@Model.DoctorSlotId</b><br />
-                        Reason :<b>@Model.Reason</b><br />
-                        Description :<b>@Model.Description</b><br />
-                        Appointment Status :<b>@Model.AppointmentStatus</b><br />
-                        Appointment Date :<b>@Model.Appointment_date</b><br />
-                        Appointment Time  : <b>@Model.Appointment_time</b><br />
-                        BookedOn :<b>@Model.BookedOn</b><br />
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsNew &nbsp; &nbsp; :@if (Model.IsNew == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="New_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="New_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="New_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="New_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsFinished &nbsp; &nbsp; :@if (Model.IsFinished == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Finished_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="Finished_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Finished_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="Finished_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsConfirmed &nbsp; &nbsp; :@if (Model.IsConfirmed == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Confirmed_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="Confirmed_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Confirmed_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="Confirmed_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                        <div class="row">
-                            <h5 class="fa fa-1x">
-                                IsCancelled &nbsp; &nbsp; :@if (Model.sCancelled == true)
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" checked class="custom-control-input" id="Cancelled_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="Cancelled_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="custom-control custom-switch" style=" float : right; margin-left:10px">
-                                        <input type="checkbox" class="custom-control-input" id="Cancelled_@Model.AppointmentID" onchange="return activate(@Model.AppointmentID)">
-                                        <label class="custom-control-label" for="Cancelled_@Model.AppointmentID"></label>
-                                    </div>
-                                }
-                            </h5>
-                        </div>
-                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
+   
 
 

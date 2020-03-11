@@ -1,4 +1,4 @@
-﻿@model IEnumerable <IntenseCare.Models.Datamodel>
+﻿@model IEnumerable<IntenseCare.Models.Datamodel>
 
 @{
     ViewBag.Title = "Index";
@@ -18,53 +18,57 @@
     </script>
 
 }
-<p>
-    @Html.ActionLink("Add", "add", new { })
-</p>
-<h2>List of Diagnosis Details </h2>
-<div class="col-md-12">
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
-                <th>PatientId</th>
-                <th>Diagnosis</th>
-                <th>Remark</th>
-                <th>IsFromReport</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-
-                    <td><a href="@Url.Action("Details","DiagnoseDetails",new { id = item.Diagnose.DiagnosisId})">@item.Patient.FirstName </a></td>
-                    <td>@item.Diagnose.Diagnosis</td>
-                    <td>@item.Diagnose.Remarks</td>
-
-                    <td id="ActiveContent">
-                        @if (item.Diagnose.IsFormReport == true)
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" checked class="custom-control-input" id="FormReport_@item.Diagnose.DiagnosisId" onchange="return activate(@item.Diagnose.DiagnosisId)">
-                                <label class="custom-control-label" for="FormReport_@item.Diagnose.DiagnosisId"></label>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="FormReport_@item.Diagnose.DiagnosisId" onchange="return activate(@item.Diagnose.DiagnosisId)">
-                                <label class="custom-control-label" for="FormReport_@item.Diagnose.DiagnosisId"></label>
-                            </div>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="card shadow mb-4">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-dark">List of Diagnosis Details</h6>
 </div>
+<div class="card-body">
 
+    <div class="col-md-12">
+
+        <table class=" table table-hover table-bordered" border="0" id="example">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Patient</th>
+                    <th>Diagnosis</th>
+                    <th>Remark</th>
+                    <th>IsFromReport</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td><a href="@Url.Action("Details","DiagnoseDetails",new { id = item.Diagnose.DiagnosisId})">@item.Patient.FirstName </a></td>
+                        <td>@item.Diagnose.Diagnosis</td>
+                        <td>@item.Diagnose.Remarks</td>
+
+                        <td id="ActiveContent">
+                            @if (item.Diagnose.IsFormReport == true)
+                            {
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" checked class="custom-control-input" id="FormReport_@item.Diagnose.DiagnosisId" onchange="return activate(@item.Diagnose.DiagnosisId)">
+                                    <label class="custom-control-label" for="FormReport_@item.Diagnose.DiagnosisId"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="FormReport_@item.Diagnose.DiagnosisId" onchange="return activate(@item.Diagnose.DiagnosisId)">
+                                    <label class="custom-control-label" for="FormReport_@item.Diagnose.DiagnosisId"></label>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
 @* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 <script>
             function activate(id) {
@@ -74,10 +78,10 @@
                         url: "@Url.Action("Active", "DiagnoseDetails")" + "/" + id,
                         success: function (response) {
                             if (response == true) {
-                                alert('Account Activated');
+                                alert('Report Generated');
                             }
                             else {
-                                alert('Account Deactivated');
+                                alert('Report Not Generated');
                             }
                         },
                         failure: function (response) {

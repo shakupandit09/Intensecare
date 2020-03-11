@@ -55,7 +55,14 @@ namespace IntenseCare.Areas.Admin.Controllers
             ad.Address = form["Address"];
             ad.CityID = Convert.ToInt32(form["ddCity"]);
             ad.Degree = form["Degree"];
-            ad.YearOfExperience = Convert.ToInt32(form["YearOfExp"]);
+            if (form["YearOfExp"] == "")
+            {
+                ad.YearOfExperience = "";
+            }
+            else {
+            
+            ad.YearOfExperience = form["YearOfExp"];
+            }
             ad.IsActive = true;
             ad.IsVerified = true;
             ad.IsMobileVerified = true;
@@ -84,6 +91,10 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Detail(int id)
         {
             tblDoctor ad = dc.tblDoctors.SingleOrDefault(ob => ob.DoctorId == id);
+            tblAdmin admin = (from ob2 in dc.tblAdmins where ob2.AdminId == ad.ApprovedBy select ob2).Take(1).SingleOrDefault();
+            ViewBag.AdminName = admin.Name;
+            CityMaster city = (from ob3 in dc.CityMasters where ob3.ID == ad.CityID select ob3).Take(1).SingleOrDefault();
+            ViewBag.CityName = city.Name;
             return View(ad);
         }
         public string code()
@@ -106,18 +117,40 @@ namespace IntenseCare.Areas.Admin.Controllers
             return View(ad);
         }
         [HttpPost]
-        public ActionResult Edit(FormCollection form)
+        public ActionResult Edit(FormCollection form ,HttpPostedFileBase txtfile)
         {
+            string name = "";
+            if (txtfile != null)
+            {
+                int size = (int)txtfile.ContentLength / 1024;
+                var extension = System.IO.Path.GetExtension(txtfile.FileName);
+                if (size <= 1024 && (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png")))
+                {
+                    name = code() + "" + extension;
+                    string path = Server.MapPath("~/Areas/image/");
+                    txtfile.SaveAs(path + "" + name);
+                }
+            }
             int id = Convert.ToInt32(TempData["UpdateId"]);
 
             tblDoctor ad = dc.tblDoctors.SingleOrDefault(ob => ob.DoctorId == id);
             ad.FirstName = form["FirstName"];
             ad.LastName = form["LastName"];
             ad.Email = form["Email"];
+            if (form["YearOfExp"] == "")
+            {
+                ad.YearOfExperience = "";
+            }
+            else
+            {
+
+                ad.YearOfExperience = form["YearOfExp"];
+            }
             ad.ContactNo = form["ContactNo"];
             ad.Address = form["Address"];
+            ad.ProfileImageUrl = name.ToString();
             dc.SaveChanges();
-            return RedirectToAction("list");
+            return RedirectToAction("Index","Doctor");
         }
         [HttpPost]
         public JsonResult Active(int id)
@@ -133,6 +166,36 @@ namespace IntenseCare.Areas.Admin.Controllers
             }
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+           tblDoctor user = dc.tblDoctors.SingleOrDefault(ob => ob.Email == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CheckCno(string id)
+        {
+            string response;
+            tblDoctor user = dc.tblDoctors.SingleOrDefault(ob => ob.ContactNo == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
     }  
 }

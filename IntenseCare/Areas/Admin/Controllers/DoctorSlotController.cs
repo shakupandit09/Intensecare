@@ -8,6 +8,7 @@ using IntenseCare.Models;
 namespace IntenseCare.Areas.Admin.Controllers
 {
     public class DoctorSlotController : Controller
+
     {
         AppointmentEntities10 dc = new AppointmentEntities10();
         // GET: Admin/DoctorSlot
@@ -31,9 +32,11 @@ namespace IntenseCare.Areas.Admin.Controllers
         }
         public ActionResult Details(int id)
         {
+            string[] day = { "MON", "TUE", "Wed", "Thu", "Fri", "Sat", "Sun" };
             tblDoctorSlot  ad = dc.tblDoctorSlots .SingleOrDefault(ob => ob.DoctorSlotId == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName;
+            ViewBag.DayName = day[ad.DayWeek];
             return View(ad);
         }
         public ActionResult Insert()
@@ -46,7 +49,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             tblDoctorSlot  ad = new tblDoctorSlot ();
             ad.DoctorId = Convert.ToInt32(form["DoctorId"]);
             ad.StartTime = TimeSpan.Parse(form["StartTime"]);
-            ad.DayWeek  = Convert.ToInt32(form["DayWeek"]);
+            ad.DayWeek = Convert.ToInt32(form["DayWeek"]);
             ad.EndTime  = TimeSpan.Parse(form["EndTime"]);
             ad.OpdShedule  = Convert.ToDateTime(form["OpdShedule"]);
             dc.tblDoctorSlots.Add(ad);
@@ -55,7 +58,7 @@ namespace IntenseCare.Areas.Admin.Controllers
         }
         public ActionResult Delete(int id)
         {
-            tblDoctorSlot  ad = dc.tblDoctorSlots.SingleOrDefault(ob => ob.DoctorSlotId  == id);
+            tblDoctorSlot  ad = dc.tblDoctorSlots.SingleOrDefault(ob => ob.DoctorSlotId  == id);    
             dc.tblDoctorSlots.Remove(ad);
             dc.SaveChanges();
             return RedirectToAction("Index","DoctorSlot");
@@ -64,7 +67,6 @@ namespace IntenseCare.Areas.Admin.Controllers
         {
             TempData["UpdateId"] = id;
             tblDoctorSlot  ad = dc.tblDoctorSlots .SingleOrDefault(ob => ob.DoctorSlotId  == id);
-
             return View(ad);
         }
         [HttpPost]

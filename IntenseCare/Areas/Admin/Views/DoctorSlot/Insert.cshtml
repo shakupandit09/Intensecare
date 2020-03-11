@@ -3,6 +3,30 @@
     ViewBag.Title = "Insert";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script type="text/javascript">
+        function Validate() {
+            var DoctorId = document.frmCreate.DoctorId;
+            var DayWeek = document.frmCreate.DayWeek;
+           
+            var DoctorId_pat = /^[0-9]{1,3}$/;
+            if (DoctorId.value != "" && DoctorId.value.match(DoctorId_pat)) {
+            }
+            else {
+                alert("Doctor id is digit only");
+                DoctorId.focus();
+                return false;
+            }
+            var DayWeek_pat = /^[0-9]{1}$/;
+            if (DayWeek.value != "" && DayWeek.value.match(DayWeek_pat)) {
+            }
+            else {
+                alert("DayWeek id is digit only");
+                DayWeek.focus();
+                return false;
+            }
+            return true;
+        }
+</script>
 
 <div class="card shadow mb-3">
     <div class="card-header py-3">
@@ -12,29 +36,33 @@
         <form class="user" method="post" name="frmCreate">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Doctor</label>
                     <input type="text" class="form-control" id="DoctorId" name="DoctorId" placeholder="DoctorId" required>
                 </div>
                 <div class="col-sm-6">
+                    <label>DayWeek</label>
                     <input type="text" class="form-control" id="DayWeek" name="DayWeek" placeholder="DayWeek" required>
                 </div>
             </div>
             <div class="form-group row">
+                <label>StartTime</label>
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="time" class="form-control" id="StartTime" name="StartTime" placeholder="StartTime" required>
                 </div>
+                <label>EndTime</label>
                 <div class="col-sm-6">
                     <input type="time" class="form-control" id="EndTime" name="EndTime" placeholder="EndTime" required>
                 </div>
 
             </div>
-            <div class="form-group row">
+            @*<div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
                     <input type="date" class="form-control" id="OpdShedule" name="OpdShedule" placeholder="OpdShedule" required>
                 </div>
-            </div>
+            </div>*@
 
             <div class="text-center">
-                <input type="submit" value="Add Doctor Slot" class="btn btn-success" />
+                <input type="submit" value="Add Doctor Slot" class="btn btn-success" onclick="return Validate()"/>
                 <a class="d-block small mt-3" href="@Url.Action("Index","DoctorSlot")">Back To List</a>
             </div>
         </form>

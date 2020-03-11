@@ -1,71 +1,46 @@
-﻿@model IntenseCare.Models.tblDoctorSlot 
+﻿@model IntenseCare.Models.tblDoctorSlot
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">Update Doctor Slot Record</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" method="post" name="frmCreate">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Doctor</label>
+                    
+                    <input type="text" class="form-control" id="DoctorId" name="DoctorId" value="@Model.DoctorId" required>
+                </div>
+                <div class="col-sm-6 ">
+                    <label>StartTime</label>
+                    <input type="time" class="form-control" id="StartTime" name="StartTime" value="@Model.StartTime" required>
 
-<div class="container">
-    <div class="card card-register mx-auto mt-5">
-        <div class="card-header">Update Doctor Absents Record</div>
-        <div class="card-body">
-            <form method="post">
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="DoctorId" name="DoctorId" class="form-control" value="@Model.DoctorId" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="StartTime" name="StartTime" class="form-control" value="@Model.StartTime" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label>EndTime</label>
+                    <input type="time" class="form-control" id="EndTime" name="EndTime" value="@Model.EndTime" required>
                 </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="EndTime" name="EndTime" class="form-control" value="@Model.EndTime" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-4">
+                    <label>DayWeek</label>
+                    <input type="text" class="form-control" id="DayWeek" name="DayWeek" value="@Model.DayWeek" required>
                 </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="DayWeek" name="DayWeek" class="form-control" value="@Model.DayWeek" required="required" autofocus="autofocus">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="col-sm-4">
+                    <label>OpdShedule</label>
+                    <input type="date" class="form-control" id="OpdShedule" name="OpdShedule" value="@Model.OpdShedule">
                 </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-lg-12">
-                            <div class="form-label-group">
-                                <input type="text" id="OpdShedule" name="OpdShedule" class="form-control" value="@Model.OpdShedule">
-                                @*<label for="Name">Enter name</label>*@
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success" />
-            </form>
-        </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" name="btnsubmit" value="Update" class="btn btn-success"/>
+                <a class="d-block small mt-3" href="@Url.Action("Index","DoctorSlot")">Back To List</a>
+            </div>
+        </form>
     </div>
 </div>
 

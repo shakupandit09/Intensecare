@@ -51,8 +51,8 @@ namespace IntenseCare.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             tblDoctorAbsence  ad = dc.tblDoctorAbsences .SingleOrDefault(ob => ob.DoctorAbsenceId  == id);
-            ViewBag.DoctorName = (from ob in dc.tblDoctors where ob.DoctorId == ad.DoctorId select ob).Take(1).SingleOrDefault().FirstName;
-            string name = ViewBag.DoctorName;
+            tblDoctor doctor = (from ob1 in dc.tblDoctors where ob1.DoctorId == ad.DoctorId select ob1).Take(1).SingleOrDefault();
+            ViewBag.DoctorName = "Dr." + doctor.FirstName + " " + doctor.LastName; ;
             return View(ad);
         }
         public ActionResult Delete(int id)

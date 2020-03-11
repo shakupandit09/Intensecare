@@ -3,6 +3,20 @@
     ViewBag.Title = "Insert";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script>
+    function Validate() {
+        var DoctorId = document.frmCreate.DoctorId;
+        var DoctorId_pat = /^[0-9]{1,2}$/;
+        if (DoctorId.value != "" && DoctorId.value.match(DoctorId_pat)) {
+        }
+        else {
+            alert("DoctorId is  digit only");
+            DoctorId.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -15,25 +29,24 @@
                     <input type="text" class="form-control" id="DoctorId" name="DoctorId" placeholder="DoctorId">
                 </div>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="FromDate">
+                    <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="FromDate" required>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="ToDate">
+                    <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="ToDate" required>
                 </div>
                 <div class="col-sm-6">
-                    <input type="time" class="form-control" id="FromTime" name="FromTime" placeholder="FromTime">
+                    <input type="time" class="form-control" id="FromTime" name="FromTime" placeholder="FromTime" required>
                 </div>
 
             </div>
 
             <div class="text-center">
-                <input type="submit" value="Add Doctor Absent" class="btn btn-success"/>
+                <input type="submit" value="Add Doctor Absent" class="btn btn-success"  onclick="return Validate()"/>
                 <a class="d-block small mt-3" href="@Url.Action("Index","DoctorAbsent")">Back To List</a>
             </div>
         </form>
     </div>
-    </div>      
-       
-           
+</div>
+

@@ -83,9 +83,43 @@ namespace IntenseCare.Areas.Admin.Controllers
             dc.SaveChanges();
             return Json(ad.IsActive, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string id)
+        {
+            string response;
+            tblNurse user = dc.tblNurses.SingleOrDefault(ob => ob.EmailId == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CheckCno(string id)
+        {
+            string response;
+            tblNurse user = dc.tblNurses.SingleOrDefault(ob => ob.ContactNo == id);
+            if (user != null)
+            {
+                response = "true";
+            }
+            else
+            {
+                response = "false";
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Detail(int id)
         {
-            tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);           
+            tblNurse ad = dc.tblNurses.SingleOrDefault(ob => ob.NurseId == id);
+            tblAdmin admin = (from ob2 in dc.tblAdmins where ob2.AdminId == ad.CreatedBy select ob2).Take(1).SingleOrDefault();
+            ViewBag.AdminName = admin.Name;
+            CityMaster city = (from ob3 in dc.CityMasters where ob3.ID == ad.CityId select ob3).Take(1).SingleOrDefault();
+            ViewBag.CityName = city.Name;
             return View(ad);
         }
         public ActionResult Edit(int id)
@@ -103,7 +137,7 @@ namespace IntenseCare.Areas.Admin.Controllers
             tblNurse  ad = dc.tblNurses .SingleOrDefault(ob => ob.NurseId  == id);
             ad.FirstName = form["FirstName"];
             ad.LastName = form["LastName"];
-            ad.EmailId  = form["Email"];
+            //ad.EmailId  = form["Email"];
             ad.ContactNo = form["ContactNo"];
             ad.Address = form["Address"];
             dc.SaveChanges();

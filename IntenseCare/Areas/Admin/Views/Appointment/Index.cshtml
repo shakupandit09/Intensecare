@@ -17,63 +17,67 @@
     </script>
 
 }
-<p>
-    @Html.ActionLink("Add Appointment", "add", new { })
-</p>
-<h2>List of Appointment Details</h2>
-<div class="col-md-12">
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
-                <th>PatientId</th>
-                <th>AppoinmentStatus</th>
-                <th>AppointmentDate</th>
-                <th>IsNew</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">List of Appointment Details</h6>
+    </div>
+    <div class="card-body">
 
-                <td><a href="@Url.Action("Details","Appointment",new { id = item.Patient.PatientId})">@item.Patient.FirstName </a></td>
+        <div class="col-md-12">
 
-               @* <td>@item.Doctor.FirstName</td>*@
-              @*  <td>@item.Patient.FirstName</td>*@
-                <td>@item.Appoint.AppointmentStatus</td>
-                <td>@item.Appoint.Appointment_date</td>
-
-                <td id="ActiveContent">
-                    @if (item.Appoint.IsNew == true)
+            <table class=" table table-hover table-bordered" border="0" id="example">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>PatientId</th>
+                        <th>AppoinmentStatus</th>
+                        <th>AppointmentDate</th>
+                        <th>New</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
                     {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" checked class="custom-control-input" id="New_@item.Appoint.AppointmentID" onchange="return activate(@item.Appoint.AppointmentID)">
-                            <label class="custom-control-label" for="New_@item.Appoint.AppointmentID"></label>
-                        </div>
+                        <tr>
+
+                            <td><a href="@Url.Action("Details","Appointment",new { id = item.Patient.PatientId})">@item.Patient.FirstName </a></td>
+
+                            @* <td>@item.Doctor.FirstName</td>*@
+                            @*  <td>@item.Patient.FirstName</td>*@
+                            <td>@item.Appoint.AppointmentStatus</td>
+                            <td>@item.Appoint.Appointment_date</td>
+
+                            <td id="ActiveContent">
+                                @if (item.Appoint.IsNew == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="New_@item.Appoint.AppointmentID" onchange="return activate(@item.Appoint.AppointmentID)">
+                                        <label class="custom-control-label" for="New_@item.Appoint.AppointmentID"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="New_@item.Appoint.AppointmentID" onchange="return activate(@item.Appoint.AppointmentID)">
+                                        <label class="custom-control-label" for="New_@item.Appoint.AppointmentID"></label>
+                                    </div>
+                                }
+                            </td>
+                            @*<td>
+                                    <a href="@Url.Action("Details","Appointment",new { Id= item.AppointmentID})" class="btn btn-sm btn-circle btn-primary">
+                                        <i class="fa fa-D" />
+                                    </a>
+                                </td>*@
+                        </tr>
                     }
-                    else
-                    {
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="New_@item.Appoint.AppointmentID" onchange="return activate(@item.Appoint.AppointmentID)">
-                            <label class="custom-control-label" for="New_@item.Appoint.AppointmentID"></label>
-                        </div>
-                    }
-                </td>
-                @*<td>
-                    <a href="@Url.Action("Details","Appointment",new { Id= item.AppointmentID})" class="btn btn-sm btn-circle btn-primary">
-                        <i class="fa fa-D" />
-                    </a>
-                </td>*@
-            </tr>
-            }
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+        @* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 
-@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
-
-<script>
+        <script>
             function activate(id) {
                 $.ajax(
                     {
@@ -96,7 +100,7 @@
                     }
                     );
                 }
-</script>
+        </script>
 
 
 

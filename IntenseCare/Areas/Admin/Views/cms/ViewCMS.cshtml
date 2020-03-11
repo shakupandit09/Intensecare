@@ -3,11 +3,51 @@
     ViewBag.Title = "ViewCMS";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
-    <h2>@Model.PageTittle</h2>
-    <hr />
-    <p>@Html.Raw(Model.Description)</p>
+@section scripts{
+}
+<script src="~/Scripts/tinymce/tinymce.js"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "image media link",
+    });
+</script>
+<div class="card shadow mb-4">
+    <form method="post">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> CMS Edit Page</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <input type="hidden" value="@Model.CMSPageId" name="id" />
+                Page Title :
+                <br />
+                @foreach (var item in ViewBag.cms)
+                {
+                    <div style="margin-left:5px">
+                        <a href="@Url.Action("ViewCMS", "cms", new { id = item.CMSPageId })"> @item.PageTittle</a> <span> | </span>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card-body">
+            <textarea name="BlogContent" id="BlogContent" style="height:600px">
+              @Model.Description
+            </textarea>
+        </div>
+        <div class="card-body">
+            <input type="submit" value="Update" class="btn btn-success col-lg-3 offset-4" />
+        </div>
+    </form>
+
+
 </div>
+@*<div>
+        <h2>@Model.PageTittle</h2>
+        <hr />
+        <p>@Html.Raw(Model.Description)</p>
+    </div>*@
 
 
 

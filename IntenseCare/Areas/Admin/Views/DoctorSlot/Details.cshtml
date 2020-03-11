@@ -1,40 +1,77 @@
-﻿@model IntenseCare.Models.tblDoctorSlot 
+﻿@model IntenseCare.Models.tblDoctorSlot
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div>
 
-    <div class="card shadow md-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fornt fa-weight-bold text-dark">
-                <a href="@Url.Action("Index","DoctorSlot")" class="btn btn-dark">
-                    <i class="fa fa-backward fa-1x"></i>
-                </a>
-            </h6>
+<div class="card shadow md-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fornt fa-weight-bold text-dark">
+            <a href="@Url.Action("Index","DoctorSlot")" class="btn btn-dark">
+                <i class="fa fa-backward fa-1x"></i>
+            </a>
+        </h6>
+        <h3 class="text-dark">Doctor Slot Details</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-10" style="width:96%; margin:20px">
+            <div class="card-body">
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    <a href="@Url.Action("Detail","Doctor", new { id = Model.DoctorId})">
+                        Doctor : <b>@ViewBag.DoctorName</b>
+                    </a>
+                    </h5><br />
+
+                <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                    DayWeek : <b>@ViewBag.DayName</b>
+                    &nbsp;&nbsp; OpdShedule : <b>@Model.OpdShedule</b>
+                </h5><br />
+
+            </div>
+            <h5 class="text" style="font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif">
+                &nbsp;&nbsp; &nbsp;&nbsp; StartTime : <b>@Model.StartTime</b>
+                &nbsp;&nbsp; EndTime : <b>@Model.EndTime</b>
+            </h5><br />
 
         </div>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <h3 class="text-dark"> @ViewBag.DoctorName'Profile</h3>
-                        </div>
-                        DoctorSlot Id :<b>@Model.DoctorSlotId</b><br />
-                        DayWeek :<b>@Model.DayWeek</b><br />
-                        Start Time :<b>@Model.StartTime</b><br />
-                        End time  : <b>@Model.EndTime</b><br />
-                        Opd Schedule :<b>@Model.OpdShedule</b>
+    </div>
+</div>
+    </div>
 
+@*<div>
+
+        <div class="card shadow md-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 fornt fa-weight-bold text-dark">
+                    <a href="@Url.Action("Index","DoctorSlot")" class="btn btn-dark">
+                        <i class="fa fa-backward fa-1x"></i>
+                    </a>
+                </h6>
+
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align:center">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <h3 class="text-dark"> @ViewBag.DoctorName'Profile</h3>
+                            </div>
+                            DoctorSlot Id :<b>@Model.DoctorSlotId</b><br />
+                            DayWeek :<b>@Model.DayWeek</b><br />
+                            Start Time :<b>@Model.StartTime</b><br />
+                            End time  : <b>@Model.EndTime</b><br />
+                            Opd Schedule :<b>@Model.OpdShedule</b>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@
 
 
 

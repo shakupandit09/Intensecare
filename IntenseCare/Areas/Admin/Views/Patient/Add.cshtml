@@ -3,20 +3,23 @@
     ViewBag.Title = "Add";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 @section scripts{
 }
-<script>
+@*<script>
     function Validate() {
         var firstname = document.frmCreate.FirstName;
         var lastname = document.frmCreate.LastName;
-        var password = document.frmCreate.Password;
-        var cpassword = document.frmCreate.cpassword;
+        var pin = document.frmCreate.Pin;
         var email = document.frmCreate.Email;
         var contact_no = document.frmCreate.ContactNo;
         var Address = document.frmCreate.Address;
-        var Degree = document.frmCreate.Degree;
-        var Special = document.frmCreate.Specialization;
-        var YearOfExp = document.frmCreate.YearOfExp;
+        var ReferenceBy = document.frmCreate.ReferenceBy;
+
+
+        //var Degree = document.frmCreate.Degree;
+        //var Special = document.frmCreate.Specialization;
+        //var YearOfExp = document.frmCreate.YearOfExp;
 
         var name_pat = /^[A-Za-z]{3,15}$/;
         if (firstname.value != "" && firstname.value.match(name_pat)) {
@@ -49,7 +52,7 @@
             return false;
         }
 
-        var email_pat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var email_pat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (email.value != "" && email.value.match(email_pat)) {
         }
         else {
@@ -80,34 +83,29 @@
             return false;
         }
         var Spe_pat = /^[A-Za-z]+$/;
-        if (Special.value != "") {
-            if (Special.value.match(Spe_pat)) {
-            }
-            else {
-                alert("Specialization is not Proper");
-                Special.focus();
-                return false;
-            }
-            
-        }
-        var YOE_pat = /^[0-9]{1,2}$/;
-        if (YearOfExp.value != "") {
-           if( YearOfExp.value.match(YOE_pat)) {
-        }
-        else {
-            alert("Year Of Exp is not Proper");
-            YearOfExp.focus();
+        if (Special.value.match(Spe_pat)) {
+
+            alert("Specialization is not Proper");
+            Special.focus();
             return false;
         }
+        //var YOE_pat = /^[0-9]{1,2}$/;
+        //if (YearOfExp.value != "" && YearOfExp.value.match(YOE_pat)) {
+        //}
+        //else {
+        //    alert("Year Of Exp is not Proper");
+        //    YearOfExp.focus();
+        //    return false;
+        //}
         return true;
     }
-</script>
+</script>*@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark">Add New Doctor</h6>
+        <h6 class="m-0 font-weight-bold text-dark">Sign Up </h6>
     </div>
     <div class="card-body">
-        <form class="user" method="post" name="frmCreate" enctype="multipart/form-data">
+        <form class="user" method="post" name="frmCreate">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>FirstName</label>
@@ -122,27 +120,27 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Password</label>
+                    <label>Pin</label>
                     <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password">
 
                 </div>
-                <div class="col-sm-6">
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Enter Cpassword ">
-
-                </div>
-
-            </div>
-            <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Email Id</label>
                     <input type="email" class="form-control" id="Email" name="Email" placeholder="Email Address" onblur="return CheckEmail(this.value)" />
 
                 </div>
+
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-6">
                     <label>ContactNo</label>
-                    <input type="text" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number" onblur=" return CheckCno(this.value)">
+                    <input type="number" class="form-control" id="ContactNo" name="ContactNo" placeholder="Contact Number" onblur=" return CheckCno(this.value)">
 
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>Gender</label>
+                    <input type="radio" id="Gen" name="Gen" value="Female" required>Female
+                    <input type="radio" id="Gen" name="Gen" value="Male" required>Male
                 </div>
 
             </div>
@@ -164,75 +162,55 @@
 
             </div>
             <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Gender</label>
-                    <input type="radio" id="Gen" name="Gen" value="Female" required>Female
-                    <input type="radio" id="Gen" name="Gen" value="Male" required>Male
-                </div>
                 <div class="col-sm-6">
                     <label>Enter DOB</label>
                     <input type="Date" class="form-control" id="DOB" name="DOB" placeholder="Enter Date of birth" required>
-
                 </div>
-            </div>
-            <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Address</label>
                     <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address">
 
                 </div>
-                <div class="col-sm-6">
-                    <label>Degree</label>
-                    <select name="Degree" id="Degree" value="select" required>
-                        <option value=""></option>
-                        <option value="MD">MD</option>
-                        <option value="MS">MS</option>
-                        <option value="MM">MM</option>
-                        <option value="MD-PHD">MD-PHD</option>
-                        <option value="MBBS">MBBS</option>
-                        <option value="BHMS">BHMS</option>
-                        <option value="BAMS">BAMS</option>
-                    </select>
-
-                </div>
             </div>
             <div class="form-group row">
+
+                <div class="col-sm-6">
+                    <label>History</label>
+                    <input type="text" class="form-control" id="History" name="History" placeholder="Enter History  ">
+
+                </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Year Of Exp</label>
-                    <input type="text" class="form-control" id="YearOfExp" name="YearOfExp" placeholder="Enter YearOfExp">
+                    <label>ReferencedBy</label>
+                    <input type="text" class="form-control" id="ReferencedBy" name="ReferencedBy" placeholder="Enter ReferencedBy">
 
                 </div>
 
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label>Specialization</label>
-                    <input type="text" class="form-control" id="Specialization" name="Specialization" placeholder="Enter Specialization">
+                    <label>NomineeName</label>
+                    <input type="text" class="form-control" id="NomineeName" name="NomineeName" placeholder="Enter NomineeName">
 
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-label-group">
-                        <input type="file" accept="~/Areas/image/*" onchange=" return loadFile(event)" class="form-control-file" placeholder="Choose your Profile Image" id="txtfile" name="txtfile" />
-                        <label><b>Image Upload</b></label>
-                    </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>NomineeAddress</label>
+                    <input type="text" class="form-control" id="NomineeAddress" name="NomineeAddress" placeholder="Enter NomineeAddress">
+
                 </div>
-                <div class="col-4">
-                    <img src="#" name="txtProfPic" id="txtProfPic" class="img img-thumbnail" style="width:100px; height:100px" hidden />
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label>NomineeContactNo</label>
+                    <input type="text" class="form-control" id="NomineeContactNo" name="NomineeContactNo" placeholder="Enter Specialization">
+
                 </div>
             </div>
-
             <div class="text-center">
-                <input type="submit" value="Add Doctor" class="btn btn-success" onclick="return Validate()" />
-                <a class="d-block small mt-3" href="@Url.Action("Index","Doctor")">Back To List</a>
+                <input type="submit" value="Submit" class="btn btn-success" onclick="return Validate()" />
+                @* <a class="d-block small mt-3" href="@Url.Action("Index","Patient")">Back To List</a>*@
             </div>
         </form>
-        <script>
-            var loadFile = function (event) {
-                var output = document.getElementById('txtProfPic');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.hidden = false;
-            };
-        </script>
 
     </div>
 </div>
@@ -245,7 +223,7 @@
            // alert("Aavi Gayu");
             $.ajax({
                 type: "post",
-                url: "@Url.Action("GetState","Doctor")",
+                url: "@Url.Action("GetState","Patient")",
                 data: { cid: $('#ddCountry').val() },
                 datatype: "json",
                 traditional: true,
@@ -262,7 +240,7 @@
            //alert("Aavi Gayu");
             $.ajax({
                 type: "post",
-                url: "@Url.Action("getCity", "Doctor")",
+                url: "@Url.Action("getCity", "Patient")",
                 data: { sid: $('#ddState').val() },
                 datatype: "json",
                 traditional: true,
@@ -284,7 +262,7 @@
         $.ajax(
             {
                 type: "POST",
-                url: "@Url.Action("CheckEmail", "Doctor")",
+                url: "@Url.Action("CheckEmail", "Patient")",
                 data: { id: val },
                     success: function (response) {
                         if (response == "false") {
@@ -313,7 +291,7 @@
         $.ajax(
             {
                 type: "POST",
-                url: "@Url.Action("CheckCno", "Doctor")",
+                url: "@Url.Action("CheckCno", "Patient")",
                 data: { id: val },
                     success: function (response) {
                         if (response == "false") {
@@ -336,9 +314,6 @@
             }
     }
 </script>
-
-
-
 
 
 

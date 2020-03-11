@@ -6,33 +6,39 @@
 }
 
 <p>
-    @Html.ActionLink("Add", "add", new { })
+    @Html.ActionLink("Add Payment", "Payadd", new { })
 </p>
-<h2>List of Payment Details </h2>
-<div class="col-md-12">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">List of Payment Details </h6>
+    </div>
+    <div class="card-body">
+        <div class="col-md-12">
 
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
-                <th>PatientId</th>
-                <th>PaymentAmt</th>
-                <th>PaidOn</th>
+            <table class=" table table-hover" border="1" id="example">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>PatientId</th>
+                        <th>PaymentAmt</th>
+                        <th>PaidOn</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
-                <td><a href="@Url.Action("Details","Payment",new { id = item.payment.PaymentId})">@item.Patient.FirstName </a></td>
-                <td>@item.payment.PaymentAmt</td>
-                <td>@item.payment.PaidOn</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+                            <td><a href="@Url.Action("Details","Payment",new { id = item.payment.PaymentId})">@item.Patient.FirstName </a></td>
+                            <td>@item.payment.PaymentAmt</td>
+                            <td>@item.payment.PaidOn</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 

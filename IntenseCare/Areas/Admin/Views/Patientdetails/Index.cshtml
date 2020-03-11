@@ -5,55 +5,60 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Add", "add", new { })
-</p>
-<h2>List of Patient Details </h2>
-<div class="col-md-12">
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">List of Patient Details</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="col-md-12">
 
 
-    <table class=" table table-hover" id="example">
-        <thead class="thead-dark">
-            <tr>
-                <th>PatientId</th>
-                <th>Symptoms</th>
-                <th>IsActive</th>
+            <table class=" table table-hover" border="1" id="example">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Patient</th>
+                        <th>Symptoms</th>
+                        <th>IsActive</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
-                    <td><a href="@Url.Action("Detail","Patient",new { id = item.Patient.PatientId})">@item.Patient.FirstName </a></td>
-                    <td>@item.patientDetail.Symptoms</td>
-                    <td id="ActiveContent">
-                        @if (item.patientDetail.IsActive == true)
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" checked class="custom-control-input" id="Active_@item.patientDetail.PatientDetailId" onchange="return activate(@item.patientDetail.PatientDetailId)">
-                                <label class="custom-control-label" for="Active_@item.patientDetail.PatientDetailId"></label>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="Active_@item.patientDetail.PatientDetailId" onchange="return activate(@item.patientDetail.PatientDetailId)">
-                                <label class="custom-control-label" for="Active_@item.patientDetail.PatientDetailId"></label>
-                            </div>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                            <td><a href="@Url.Action("Details","Patientdetails",new { id = item.Patient.PatientId})">@item.Patient.FirstName</a></td>
+                            <td>@item.patientDetail.Symptoms</td>
+                            <td id="ActiveContent">
+                                @if (item.patientDetail.IsActive == true)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" checked class="custom-control-input" id="Active_@item.patientDetail.PatientDetailId" onchange="return activate(@item.patientDetail.PatientDetailId)">
+                                        <label class="custom-control-label" for="Active_@item.patientDetail.PatientDetailId"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="Active_@item.patientDetail.PatientDetailId" onchange="return activate(@item.patientDetail.PatientDetailId)">
+                                        <label class="custom-control-label" for="Active_@item.patientDetail.PatientDetailId"></label>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 
-@* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+        @* <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 
-<script>
+        <script>
             function activate(id) {
                     $.ajax(
                         {
@@ -76,7 +81,7 @@
                             }
                     );
                 }
-</script>
+        </script>
 
 
 
